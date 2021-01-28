@@ -1,0 +1,81 @@
+#bf {
+    background-image: url(/public/images/bf.gif);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#apex {
+    background-image: url(/public/images/apex.gif);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#dis {
+    background-image: url(/public/images/discord.gif);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#r6 {
+    background-image: url(/public/images/r6.gif);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#home {
+    background-image: url(/public/images/landing.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+nav {
+    padding: 5px;
+    overflow: hidden;
+    z-index: 100;
+    color: white;
+    background: rgb(34, 34, 34);
+    position: relative;
+    height: 70px;
+    /* box-shadow: 10px 0 5px 2px rgb(34, 34, 34); */
+    width: 100%;
+    /* backdrop-filter: blur(40px); */
+}
+
+li:hover {
+    transition: all 0.5s;
+    /* transform: scale(1.1); */
+}
+
+.dot {
+    margin-left: -15px;
+    transition: all 0.3s;
+    height: 60px;
+    width: 60px;
+    box-shadow: 0px 0 0px 0px rgb(250, 250, 250);
+    /* background-color: #bbb; */
+    border: white 2px solid;
+    border-radius: 50%;
+}
+
+.dot:hover {
+    transition: all 0.5;
+    box-shadow: 0px 0 5px 2px rgb(250, 250, 250);
+    transform: scale(1.05);
+}
+
+ul {
+    display: flex;
+    flex-direction: row;
+    list-style-type: none;
+    justify-content: space-around;
+}
+
+li {
+    text-align: center;
+    transition: all 0.5s;
+}

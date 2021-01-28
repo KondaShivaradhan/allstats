@@ -1,0 +1,189 @@
+* {
+    margin: 0;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+#card {
+    background: rgb(0, 0, 0);
+}
+
+@keyframes name {
+    from {
+        letter-spacing: 1rem;
+    }
+    to {
+        letter-spacing: 1.3rem;
+    }
+}
+
+#Ghead {
+    color: white;
+    text-align: center;
+    letter-spacing: 0.5rem;
+    font-family: 'Russo One', sans-serif;
+    font-size: 35px;
+}
+
+td {
+    width: 160px !important;
+}
+
+.con {
+    position: relative;
+    z-index: 11;
+    padding: 30px;
+    height: auto;
+    border-radius: 10px;
+    /* font-family: 'Roboto', sans-serif; */
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+#apexL>.con {
+    /* background: linear-gradient(rgba(0, 0, 0, 0.164), rgba(0, 0, 0, 0.315), rgba(0, 0, 0, 0.315), rgba(246, 0, 0, 0.808)); */
+}
+
+@keyframes kills100 {
+    from {
+        box-shadow: 0px 0px 15px 7px rgba(255, 255, 255, 0.75);
+    }
+    to {
+        box-shadow: 0px 0px 11px 7px rgba(255, 255, 255, 0.363);
+    }
+}
+
+
+/* 
+@keyframes kills500 {
+    0% {
+        box-shadow: 10px 0px 15px -7px rgba(248, 246, 126, 0.75);
+    }
+    25% {
+        box-shadow: 10px 10px 15px -7px rgba(248, 246, 126, 0.75);
+    }
+    50% {
+        box-shadow: 0px 0px 15px -7px rgba(248, 246, 126, 0.75);
+    }
+     to {
+        box-shadow: 10px 10px 15px -7px rgba(248, 246, 126, 0.75);
+    } 
+
+
+}
+*/
+
+.kills {
+    animation: kills 1.5s infinite alternate-reverse;
+}
+
+.kills500 {
+    animation: kills500 1s infinite alternate-reverse;
+}
+
+#opp {
+    background: rgba(255, 255, 0, 0.52);
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); */
+    height: 120px !important;
+    width: 120px !important;
+    overflow: hidden;
+    margin: 6px;
+    text-align: center;
+    font-family: arial;
+    transition: all 0.6s;
+}
+
+#opp:hover #stattop {
+    background: linear-gradient(rgba(0, 0, 0, 0.719), rgba(0, 0, 0, 0.808));
+    transition: all 0.4s;
+}
+
+#stats {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+}
+
+#opp:hover {
+    transform: translateY(20px);
+    transform: scale(1.2);
+    transition: all 0.4s;
+}
+
+#opp:hover #stats {
+    opacity: 100;
+    transition: all 0.6s;
+}
+
+#opp:hover #stattop {
+    background: linear-gradient(rgba(0, 0, 0, 0.719), rgba(0, 0, 0, 0.808));
+    transition: all 0.4s;
+}
+
+#oimg {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    transition: all 0.4s;
+}
+
+#opp:hover #oimg {
+    height: 50%;
+    width: 50%;
+    transition: all 0.6s;
+}
+
+.price {
+    color: rgb(255, 255, 255);
+}
+
+#apexL {
+    overflow: hidden;
+    color: white;
+    position: relative;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: auto;
+}
+
+#banner {
+    animation: spacing 3s ease-out;
+    text-align: center;
+    letter-spacing: 0.2rem;
+    font-size: 40px;
+    animation-fill-mode: forwards;
+}
+
+@keyframes spacing {
+    from {
+        letter-spacing: 0.2rem;
+    }
+    to {
+        letter-spacing: 0.8rem;
+    }
+}
+
+#back {
+    background: linear-gradient(rgba(0, 0, 0, 0.466), rgba(0, 0, 0, 0.5)), url('https://wallpapercave.com/wp/wp4013111.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: all 0.8s;
+}
+
+#eddi {
+    font-family: 'Potta One', cursive;
+}
+
+#shade {
+    animation: back 1s alternate infinite;
+    background: linear-gradient(rgba(0, 0, 0, 0.589), rgba(0, 0, 0, 0.589));
+}

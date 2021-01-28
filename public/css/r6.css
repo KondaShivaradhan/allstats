@@ -1,0 +1,151 @@
+* {
+    margin: 0;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    /* overflow-y: hidden; */
+    background: black;
+}
+
+#bf {}
+
+#card {
+    float: right;
+    background: rgb(0, 0, 0);
+    height: auto;
+}
+
+#vback {
+    position: relative;
+    object-fit: cover;
+}
+
+@keyframes name {
+    from {
+        letter-spacing: 1rem;
+    }
+    to {
+        letter-spacing: 1.3rem;
+    }
+}
+
+#Ghead {
+    color: white;
+    text-align: center;
+    letter-spacing: 0.5rem;
+    font-family: 'Russo One', sans-serif;
+    font-size: 2em;
+}
+
+td {
+    width: 160px !important;
+}
+
+.con {
+    position: relative;
+    z-index: 11;
+    padding: 30px;
+    height: auto;
+    border-radius: 10px;
+    /* font-family: 'Roboto', sans-serif; */
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+#R6C>.con {
+    background: linear-gradient(rgba(0, 0, 0, 0.164), rgba(0, 0, 0, 0.315), rgba(0, 0, 0, 0.315), rgb(240, 177, 60));
+}
+
+#opp {
+    overflow: hidden;
+    display: flex;
+    background: rgba(255, 255, 0, 0.52);
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); */
+    height: 120px;
+    width: 120px;
+    margin: auto;
+    text-align: center;
+    font-family: arial;
+    transition: all 0.6s;
+}
+
+#stats {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+}
+
+#opp:hover {
+    transform: scale(1.2);
+    transition: all 0.4s;
+}
+
+#opp:hover #stats {
+    opacity: 100;
+    transition: all 0.6s;
+}
+
+#opp:hover #stattop {
+    background: linear-gradient(rgba(0, 0, 0, 0.719), rgba(0, 0, 0, 0.808));
+    transition: all 0.4s;
+}
+
+#oimg {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    transition: all 0.4s;
+}
+
+#opp:hover #oimg {
+    height: 50%;
+    width: 50%;
+    transition: all 0.6s;
+}
+
+#R6C {
+    overflow: hidden;
+    color: white;
+    position: relative;
+    /* top: 50%;
+    left: 50%; */
+    border-radius: 20px;
+    /* box-shadow: 0px 0 20px 0px rgb(255, 255, 255); */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.301), rgba(0, 0, 0, 0.233)), url(/public/images/sledge.jpg);
+    /* transform: translate(-52%, -50%); */
+    /* animation: backr6 3s alternate infinite ease-in-out; */
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    width: auto;
+    background-position: center;
+    min-height: 100vh;
+    width: 100vw;
+}
+
+@keyframes back {
+    from {
+        background-position: 45% 40%;
+    }
+    to {
+        background-position: 65% 55%;
+    }
+}
+
+@keyframes backr6 {
+    from {
+        background-position-y: 60%;
+    }
+    to {
+        background-position-y: 65%;
+    }
+}

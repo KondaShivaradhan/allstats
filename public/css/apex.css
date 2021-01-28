@@ -1,0 +1,35 @@
+.parallax-window {
+    min-height: 400px;
+    background: url(https://wallpapercave.com/wp/wp5265367.jpg);
+    background-size: cover;
+    background-position: bottom;
+    background-attachment: fixed;
+    color: black;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+html,
+body {
+    background-color: rgb(53, 53, 53);
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+* {
+    margin: 0;
+}
+
+#temp {
+    color: white;
+    text-align: center;
+    padding: 10px;
+    height: 100vh;
+}
+
+h4 {
+    letter-spacing: 0.4em;
+    text-align: center;
+}
