@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <!-- css -->
+    <link rel="stylesheet" href="/public/css/r6.css">
+    <link rel="stylesheet" href="/public/css/head.css">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
+    <!-- Aos -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+</head>
+<style>
+    html {
+        scroll-behavior: smooth;
+    }
+</style>
+
+<body>
+    <%- include('header'); -%>
+        <div id="card" name="r6siege">
+            <div id="R6C">
+                <div class="con">
+                    <h3 id="Ghead">Rainbow 6 siege </h3>
+
+                    <div style="text-align: center;margin-top: 2%;">
+
+                        <div style="display: inline-block;">
+                            <table>
+
+                                <tr style="background-color: rgba(255, 0, 0, 0);width: 100%;height: 70px;">
+                                    <td colspan='5'><span style="font-size: 25px;font-weight: 900;letter-spacing: 5px;text-shadow: 2px 2px 8px #000000">
+                                        <%= r.username%>
+                                    </span></td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="3">
+                                        <div style="height: 120px;width: 150px"><img style="border-radius: 20px;max-width:100%;
+                                    max-height:100%;" src="<%= r.avatar_url_256 %>" alt=""> </div>
+                                    </td>
+                                </tr>
+                                <tr style=" font-family: 'Roboto', sans-serif;">
+                                    <td> <span style="font-size: 15px;font-weight: 900;letter-spacing: 2px;">Level</span>
+                                    </td>
+                                    <td><span style="font-size: 15px;font-weight: 900;letter-spacing: 2px;">Playtime</span>
+                                    </td>
+                                    <td> <span style="font-size: 15px;font-weight: 900;letter-spacing: 2px;">W/L</span>
+
+                                    </td>
+                                    <td>
+                                        </span><span style="font-size: 15px;font-weight: 900;letter-spacing: 2px;">
+                                        K/D</span></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span style="font-size: 30px;color: rgb(255, 255, 255);">
+                                        <%= r.progression.level%>
+                                    </span>
+                                    </td>
+                                    <td>
+                                        <span style="font-size: 30px;color: white;">
+                                        <%= Math.round( r.stats.general.playtime/86400) %>Days
+                                    </span>
+                                    </td>
+                                    <td><span style="font-size: 30px;color: white;">
+                                        <%= r.stats.general.wl%>
+                                </td>
+                                <td> <span style="font-size: 30px;color: white;">
+                                        <%= r.stats.general.kd%>
+                                    </span></td>
+                                </tr>
+                            </table>
+
+                        </div>
+
+                    </div>
+                    <br>
+                    <div style="padding: 30px; height:70%;position: relative;width: 100%;">
+                        <div style="display: flex; flex-direction: row-reverse;flex-wrap: wrap;justify-content: space-evenly;gap: 1%;">
+                            <% r1.operators.forEach(element=> {%>
+                                <% if(element.kd>0 && !element.name.includes('Recruit')) {%>
+                                    <!-- style="background: url('<%= element.badge_image%>');background-size: cover;background-repeat: no-repeat;" -->
+                                    <div id="opp" style="background: url('<%= element.badge_image%>');background-size: cover;background-repeat: no-repeat;border-radius: 20px;">
+                                        <div id="stattop" style="height: 100%;width:100%;position: relative;top:50%;left:50%;transform: translate(-50%,-50%);">
+                                            <!-- <img id="oimg" src="<%= element.badge_image%>" alt=""> -->
+                                            <div id="stats">
+                                                <h5 style="font-weight: 500;">
+                                                    <span style="font-weight: 600;color: rgb(127, 255, 255);">
+                                                    <%= element.name%>
+                                                </span>
+                                                </h5>
+                                                <p class="price">
+                                                    <%= element.kd%> <span style="color:rgb(223, 169, 10);font-weight: 600;">KD</span><br>
+                                                        <%= element.wl%> <span style="color:rgb(223, 169, 10);font-weight: 600;">WL</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <% } %>
+                                        <% }); %>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>

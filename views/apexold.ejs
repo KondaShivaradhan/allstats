@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="preload" href="https://images.hdqwalls.com/wallpapers/4k-apex-legends-2020-ja.jpg" as="image">
+    <link rel="preload" href="https://cdn.wallpapersafari.com/62/4/KyTmfc.jpg" as="image">
+    <link rel="preload" href="https://wallpapercave.com/wp/wp5400337.png" as="image">
+    <link rel="preload" href="https://wallpapercave.com/wp/wp4013111.png" as="image">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <!-- css -->
+    <link rel="stylesheet" href="/public/css/head.css">
+    <link rel="stylesheet" href="/public/css/apexold.css">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Potta+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
+    <!-- Aos -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        var i = 0;
+        var j = 0;
+
+        function start() {
+            if (i >= 4) {
+                i = 0
+            }
+            if (j >= 3) {
+                j = 0
+            }
+            var back = document.getElementById('back')
+            var h2text = ["", "Games Played<br> <span id='banner'>  <% ap.stats.forEach(element=> {%><% if (element.metadata.name=='Matches Played' ) { %><%= element.value %><% }%><% });%></span>", "Total Damage <br> <span id='banner'><% ap.stats.forEach(element=> {%><% if (element.metadata.name=='Damage' ) { %><%= element.value %><% }%><% });%></span>", "<span id='banner'>Blazing Bane</span>", "Headshots<br> <span id='banner'>  <% ap.stats.forEach(element=> {%><% if (element.metadata.name=='Headshots' ) { %><%= element.value %><% }%><% });%></span>", '<img style="border-radius: 20px;max-width:100%;max-height:100%;" src="<%= ap.metadata.rankImage %>" alt="">']
+            var h2 = document.getElementById("eddi");
+            h2.style.transition = "0.5s"; //fade speed
+            var images = ['', 'https://images.hdqwalls.com/wallpapers/4k-apex-legends-2020-ja.jpg', 'https://cdn.wallpapersafari.com/62/4/KyTmfc.jpg', 'https://wallpapercave.com/wp/wp5400337.png', 'https://wallpapercave.com/wp/wp4013111.png']
+            setTimeout(function() {
+                    h2.style.opacity = 0;
+                    setTimeout(function() {
+                        back.style.background = "URL(" + images[j] + ")"
+                        back.style.backgroundSize = "cover"
+                        back.style.backgroundPosition = "50% 30%"
+                        back.style.animationName = "back"
+                        h2.innerHTML = h2text[i];
+                        h2.style.opacity = 1;
+                    }, 500);
+                }, 1000)
+                // setTimeout(function() {
+                //     h2.style.opacity = 0;
+
+            //     back.style.background = "URL(" + images[j] + ")"
+            //     back.style.backgroundSize = "cover"
+            //     back.style.backgroundPosition = "50% 30%"
+            //     back.style.animationName = "back"
+            //     h2.innerHTML = h2text[i];
+            //     h2.style.opacity = 1;
+            // }, 500);
+
+            i++
+            j++;
+        }
+    </script>
+
+</head>
+
+<body onload=" setInterval(() => {
+    start()
+}, 5000);">
+    <%- include('header'); -%>
+        <div id="card" name="apexlegends">
+            <div id="apexL">
+                <div class="row" id="back" style="text-align: center;">
+                    <div id="shade" class="col-md-12" style="height: 60vh;">
+                        <div style="position: relative;left: 50%;top: 50%;transform: translate(-50%,-50%);">
+                            <div id="eddi" style="font-size: 28px;width: auto;margin: 0 auto;background-color:rgba(80, 18, 18, 0);">
+                                Apex Stats
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="con">
+                    <h3 id="Ghead">Apex Legends</h3>
+                    <div style="text-align: center;margin-top: 2%;">
+                        <div style="display: inline-block;background-color: rgba(255, 0, 0, 0);">
+                            <img style="border-radius: 20px;max-width:100%;
+                            max-height:100%;" src="<%= ap.metadata.rankImage %>" alt="">
+                            <table>
+                                <tr style=" font-family: 'Roboto', sans-serif;">
+                                    <td> <span style="font-size: 15px;font-weight: 900;letter-spacing: 2px;">
+                                            Level</span>
+
+                                    </td>
+                                    <!-- <td><span style="font-size: 15px;font-weight: 900;letter-spacing: 2px;">Matches Played</span>
+                                    </td> -->
+                                    <td> <span style="font-size: 15px;font-weight: 900;letter-spacing: 2px;">RP</span>
+
+                                    </td>
+                                    <td>
+                                        </span><span style="font-size: 15px;font-weight: 900;letter-spacing: 2px;">
+                                            Kills</span></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span style="font-size: 30px;color: rgb(255, 255, 255);">
+                                            <%= ap.metadata.level %>
+
+                                        </span>
+                                    </td>
+
+                                    <td><span style="font-size: 30px;color: white;">
+                                            <% ap.stats.forEach(element=> {%>
+                                                <% if (element.metadata.name=='Rank Score' ) { %>
+                                                    <%= element.value%>
+                                                        <% }%>
+                                                            <% });%>
+                                    </td>
+                                    <td> <span style="font-size: 30px;color: white;">
+                                            <% ap.stats.forEach(element=> {%>
+                                                <% if (element.metadata.name=='Kills' ) { %>
+                                                    <%= element.value%>
+                                                        <% }%>
+                                                            <% });%>
+                                        </span></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="container" style="padding: 30px; height:auto;position: relative;">
+                        <div style="display: flex; flex-direction: row;flex-wrap: wrap;justify-content: space-between; gap: 6%;height: 90%;">
+                            <div style="display: flex; flex-direction: row;flex-wrap: wrap;justify-content: space-between; gap: 5%;height: 100%;">
+                                <% ap.children.forEach(element=> {%>
+                                    <% element.stats.forEach(stat=> {%>
+                                        <% if(stat.metadata.name=='Kills' ){%>
+                                            <% if(stat.value>=500){%>
+                                                <div id="opp" class="kills500" style=" height: 150px;width: 150px;background: url('<%= element.metadata.icon%>');background-size: cover;background-repeat: no-repeat;border-radius: 20px;">
+                                                    <div id="stattop" style="height: 100%;width:100%;position: relative;top:50%;left:50%;transform: translate(-50%,-50%);">
+
+                                                        <div id="stats">
+                                                            <h5 style="font-weight: 500;">
+                                                                <span style="font-weight: 600;color: rgb(127, 255, 255);">
+                                                                    <%= element.metadata.legend_name%>
+                                                                </span>
+                                                            </h5>
+                                                            <p class="price">
+                                                                <% element.stats.forEach(stat=> {%>
+                                                                    <% if(stat.metadata.name=='Kills' ){%>
+                                                                        <% if(stat.value>=100){%>
+                                                                            <%= stat.value %> <span style="color:rgb(223, 10, 10);font-weight: 600;">
+                                                                                    <%= stat.metadata.name %>
+                                                                                </span><br>
+                                                                                <% } else{ %>
+                                                                                    <%= stat.value %> <span style="color:rgb(223, 209, 10);font-weight: 600;">
+                                                                                            <%= stat.metadata.name %>
+                                                                                        </span><br>
+                                                                                        <% }%>
+                                                                                            <% } %>
+                                                                                                <% }); %>
+
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <% } else{ %>
+                                                    <div id="opp" style=" height: 150px;width: 150px;background: url('<%= element.metadata.icon%>');background-size: cover;background-repeat: no-repeat;border-radius: 20px;">
+                                                        <div id="stattop" style="height: 100%;width:100%;position: relative;top:50%;left:50%;transform: translate(-50%,-50%);">
+
+                                                            <div id="stats">
+                                                                <h5 style="font-weight: 500;">
+                                                                    <span style="font-weight: 600;color: rgb(127, 255, 255);">
+                                                                        <%= element.metadata.legend_name%>
+                                                                    </span>
+                                                                </h5>
+                                                                <p class="price">
+                                                                    <% element.stats.forEach(stat=> {%>
+                                                                        <% if(stat.metadata.name=='Kills' ){%>
+                                                                            <% if(stat.value>=100){%>
+                                                                                <%= stat.value %> <span style="color:rgb(223, 10, 10);font-weight: 600;">
+                                                                                        <%= stat.metadata.name %>
+                                                                                    </span><br>
+                                                                                    <% } else{ %>
+                                                                                        <%= stat.value %> <span style="color:rgb(223, 209, 10);font-weight: 600;">
+                                                                                                <%= stat.metadata.name
+                                                                                                    %>
+                                                                                            </span><br>
+                                                                                            <% }%>
+                                                                                                <% } %>
+                                                                                                    <% }); %>
+
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <% }%>
+                                                        <% } %>
+                                                            <% }); %>
+                                                                <% }); %>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+</body>
+<%- include('footer'); -%>
+
+
+</html>

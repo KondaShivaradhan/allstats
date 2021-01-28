@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Apex</title>
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <!-- css -->
+    <link rel="stylesheet" href="/public/css/apex.css">
+    <link rel="stylesheet" href="/public/css/head.css">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
+    <!-- parallax scroll -->
+    <script src="/public/parallax.js-1.5.0/parallax.js"></script>
+
+</head>
+
+<body>
+    <%- include('header'); -%>
+        <div class="parallax-window">
+        </div>
+        <div class="container" id="temp">
+            <h4>Blazing Bane</h4>
+            <div class="row">
+                <div class="col-md-1">
+                    <img style="border-radius: 20px;max-width:100%;
+                                                max-height:100%;" src="<%= ap.metadata.rankImage %>" alt="">
+                    <%= ap.metadata.level %>
+                </div>
+                <div class="col-md-1">
+
+                </div>
+            </div>
+
+        </div>
+        <div class="container" id="temp">
+            asdfasd
+        </div>
+        <div class="container" id="temp">
+            asdfasd
+        </div>
+</body>
+
+</html>
