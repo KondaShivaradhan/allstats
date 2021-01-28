@@ -4,7 +4,8 @@
     "description": "An web Application created to showcase stats of BlazingBane",
     "main": "app.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node app.js"
     },
     "author": "BlazingBane",
     "license": "ISC",
