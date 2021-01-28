@@ -1,0 +1,25 @@
+{
+    "name": "stats",
+    "version": "1.0.0",
+    "description": "An web Application created to showcase stats of BlazingBane",
+    "main": "app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "BlazingBane",
+    "license": "ISC",
+    "dependencies": {
+        "apex-api": "^3.1.0",
+        "apexlegendsjs": "^2.0.0",
+        "apextab-api": "^1.0.5",
+        "axios": "^0.21.0",
+        "battlefield-stats": "^1.0.8",
+        "battlefield-stats-express": "^1.0.1",
+        "ejs": "^3.1.5",
+        "express": "^4.17.1",
+        "nodemon": "^2.0.6",
+        "r6statsapi": "^1.0.3",
+        "rainbowsix-api-node": "^0.0.1",
+        "rainbowsix-siege-api": "^1.0.3"
+    }
+}
