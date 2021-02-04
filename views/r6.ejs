@@ -140,47 +140,38 @@
                 <!-- top operators -->
                 <div class="row" id="topOp">
                     <div class="col-md-12">
-                        <h3 id="Ghead">Most Played Operators</h3>
+                        <h3 id="Ghead">Most Played</h3>
 
                     </div>
                     <div class="col-md-6" id="attackB">
                         <% r1.operators.forEach(element=> {%>
                             <% if(element.kills == amax) { var maxd = element %>
                                 <div>
-                                    <div>
-                                        <div>
-                                            <span style="font-weight: 600;color: rgb(127, 255, 255);letter-spacing: 1px;">
+                                    <span style="font-weight: 600;color: rgb(127, 255, 255);letter-spacing: 1px;">
                                                     <%= element.name%>
                                                     </span>
-                                            <img src="<%= element.badge_image%>" alt="">
+                                    <img src="<%= element.badge_image%>" alt="">
+                                    <p class="price">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <%= element.kills%> <span style="color:rgb(223, 169, 10);font-weight: 600;">Kills</span><br>
+                                                    <%= parseFloat(element.kd).toFixed(2) %> <span style="color:rgb(223, 169, 10);font-weight: 600;">KD</span><br>
 
-                                            <h5 style="font-weight: 500;">
+                                                        <%= parseFloat(element.wl).toFixed(2) %> <span style="color:rgb(223, 169, 10);font-weight: 600;">WL</span><br>
+                                                            <%= element.headshots %> <span style="color:rgb(223, 169, 10);font-weight: 600;">Kills</span><br>
 
-                                            </h5>
-                                            <p class="price">
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <%= element.kills%> <span style="color:rgb(223, 169, 10);font-weight: 600;">Kills</span><br>
-                                                            <%= parseFloat(element.kd).toFixed(2) %> <span style="color:rgb(223, 169, 10);font-weight: 600;">KD</span><br>
+                                                                <%= Math.round(element.playtime/3600) %> <span style="color:rgb(223, 169, 10);font-weight: 600;">Hours</span></div>
 
-                                                                <%= parseFloat(element.wl).toFixed(2) %> <span style="color:rgb(223, 169, 10);font-weight: 600;">WL</span><br>
-                                                                    <%= element.headshots %> <span style="color:rgb(223, 169, 10);font-weight: 600;">Kills</span><br>
+                                            <div class="col-md-6">
 
-                                                                        <%= Math.round(element.playtime/3600) %> <span style="color:rgb(223, 169, 10);font-weight: 600;">Hours</span></div>
-                                                    <br>
-
-                                                    <div class="col-md-6">
-
-                                                        <% for (const value of element.abilities) { %>
-                                                            <% for(var value2 in value){ %>
-                                                                <%= value[value2] %> <br>
-                                                                    <% } %>
-                                                                        <%  }%>
-                                                    </div>
-                                                </div>
-                                            </p>
+                                                <% for (const value of element.abilities) { %>
+                                                    <% for(var value2 in value){ %>
+                                                        <%= value[value2] %> <br>
+                                                            <% } %>
+                                                                <%  }%>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </p>
                                 </div>
                                 <% } %>
                                     <% }); %>
@@ -188,43 +179,38 @@
                     <div class="col-md-6" id="defendB">
                         <% r1.operators.forEach(element=> {%>
                             <% if(element.kills == dmax) { var maxd = element %>
-                                <div>
-                                    <div>
-                                        <div>
 
-                                            <span style="font-weight: 600;color: rgb(127, 255, 255);letter-spacing: 1px;">
+                                <div>
+                                    <span style="font-weight: 600;color: rgb(127, 255, 255);letter-spacing: 1px;">
                                                     <%= element.name%>
                                                     </span>
-                                            <img src="<%= element.badge_image%>" alt="">
-                                            <h5 style="font-weight: 500;">
+                                    <img src="<%= element.badge_image%>" alt="">
+                                    <p class="price">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <%= element.kills%> <span style="color:rgb(223, 169, 10);font-weight: 600;">Kills</span><br>
+                                                    <%= parseFloat(element.kd).toFixed(2) %> <span style="color:rgb(223, 169, 10);font-weight: 600;">KD</span><br>
 
-                                            </h5>
-                                            <p class="price">
-                                                <div class="row">
-                                                    <div class="col-md-6">
-                                                        <%= element.kills%> <span style="color:rgb(223, 169, 10);font-weight: 600;">Kills</span><br>
-                                                            <%= parseFloat(element.kd).toFixed(2) %> <span style="color:rgb(223, 169, 10);font-weight: 600;">KD</span><br>
+                                                        <%= parseFloat(element.wl).toFixed(2) %> <span style="color:rgb(223, 169, 10);font-weight: 600;">WL</span><br>
+                                                            <%= element.headshots %> <span style="color:rgb(223, 169, 10);font-weight: 600;">Kills</span><br>
 
-                                                                <%= parseFloat(element.wl).toFixed(2) %> <span style="color:rgb(223, 169, 10);font-weight: 600;">WL</span><br>
-                                                                    <%= element.headshots %> <span style="color:rgb(223, 169, 10);font-weight: 600;">Kills</span><br>
+                                                                <%= Math.round(element.playtime/3600) %> <span style="color:rgb(223, 169, 10);font-weight: 600;">Hours</span></div>
+                                            <br>
 
-                                                                        <%= Math.round(element.playtime/3600) %> <span style="color:rgb(223, 169, 10);font-weight: 600;">Hours</span></div>
-                                                    <br>
+                                            <div class="col-md-6">
 
-                                                    <div class="col-md-6">
+                                                <% for (const value of element.abilities) { %>
+                                                    <% for(var value2 in value){ %>
 
-                                                        <% for (const value of element.abilities) { %>
-                                                            <% for(var value2 in value){ %>
-                                                                <%= value[value2] %> <br>
-                                                                    <% } %>
-                                                                        <%  }%>
-                                                    </div>
-                                                </div>
-
-                                            </p>
+                                                        <%= value[value2] %> <br>
+                                                            <% } %>
+                                                                <%  }%>
+                                            </div>
                                         </div>
-                                    </div>
+
+                                    </p>
                                 </div>
+
                                 <% } %>
                                     <% }); %>
                     </div>
@@ -236,11 +222,6 @@
                     </div>
                 </div>
                 <div style="padding: 30px; text-align: center;height:70%;position: relative;width: 100%;background: linear-gradient(45deg,rgb(57, 132, 245), rgba(0, 0, 0, 0.315), rgba(0, 0, 0, 0.315), rgb(57, 132, 245));">
-                    <!-- <h3 style="font-weight: 500;">
-                        <span style="font-weight: 600;color: rgb(255, 255, 255);">
-                            Attackers
-                        </span>
-                    </h3> -->
                     <div style="display: flex; flex-direction: row-reverse;flex-wrap: wrap;justify-content: space-evenly;gap: 1%;">
                         <% r1.operators.forEach(element=> {%>
                             <% if(!element.name.includes('Recruit') && !element.role.includes('Defender')) {%>
@@ -273,11 +254,6 @@
                     </div>
                 </div>
                 <div style="padding: 30px;text-align: center; height:70%;position: relative;width: 100%;background: linear-gradient(135deg,rgb(240, 177, 60),rgb(0, 0, 0),rgb(0, 0, 0),rgb(240, 177, 60));">
-                    <h3 style="font-weight: 500;">
-                        <span style="font-weight: 600;color: rgb(255, 255, 255);">
-                            Defenders
-                        </span>
-                    </h3>
                     <div style="display: flex; flex-direction: row-reverse;flex-wrap: wrap;justify-content: space-evenly;gap: 1%;">
                         <% r1.operators.forEach(element=> {%>
                             <% if( !element.name.includes('Recruit') && !element.role.includes('Attacker')) {%>

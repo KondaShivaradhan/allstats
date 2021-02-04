@@ -14,6 +14,23 @@ html {
     background: rgb(0, 0, 0);
 }
 
+#parawindow {
+    height: 110px;
+    width: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.609), rgba(0, 0, 0, 0.568)), url('https://i.redd.it/toy9ezqt6lr41.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#para {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 @keyframes name {
     from {
         letter-spacing: 1rem;
