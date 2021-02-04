@@ -60,16 +60,12 @@ app.get('/bfv', function(req, res) {
 });
 app.get('/apex', function(req, res) {
     apex.user('BlazingBane', 'PC').then(data => {
-        console.log('====================================');
-        console.log('====================================');
-        console.log(data.data.stats)
-
         var aap = data.data
-            // app.forEach(element => {
-            //     console.log(element.metadata.name);
-            // });
         global.ap = aap
     });
+    // apex.weaponInfo('[alternator, devotion, eva8auto, flatline, g7scout, havoc, hemlok, kraber, longbow, mastiff, mozambique, p2020, peacekeeper, prowler, r99, r301, re45, spitfire, tripletake, wingman]').then(data => {
+    //     console.log(data)
+    // });
     if (typeof ap != 'undefined')
         res.render('apexold', { ap });
     else {
@@ -86,11 +82,28 @@ app.get('/r6', function(req, res) {
         global.r1 = rdata
             // JSON.stringify
     })
-    if (typeof r != 'undefined' && typeof r1 != 'undefined')
-        res.render('r6', { r, r1 });
-    else {
+    if (typeof r != 'undefined' && typeof r1 != 'undefined') {
+        var dmax = 1;
+        var amax = 1;
+        r1.operators.forEach(element => {
+            if (dmax < element.kills && element.role == 'Defender') {
+                dmax = element.kills
+            }
+        })
+        r1.operators.forEach(element => {
+
+            if (amax < element.kills && element.role == 'Attacker') {
+                amax = element.kills
+            }
+        })
+        res.render('r6', { r, r1, dmax, amax });
+    } else {
         res.send("refresh the site")
+            // res.redirect('/r6')
     }
+});
+app.get('/discord', function(req, res) {
+    res.render('discord')
 });
 app.listen(process.env.PORT || 5000)
 console.log('====================================');

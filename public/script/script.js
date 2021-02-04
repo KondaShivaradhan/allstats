@@ -39,7 +39,6 @@ function ed() {
         panes[0].addEventListener("click", () => {
             location.href = links[0];
         });
-        // options.style.background = "URL('/public/images/bfv.jpg')"
         options.style.backgroundSize = "cover";
 
     } else if (overlap.isSameNode(topElt2)) {
@@ -56,7 +55,6 @@ function ed() {
         panes[2].addEventListener("click", () => {
             location.href = links[2];
         });
-        // options.style.background = "URL('/public/images/sledge.jpg')"
         options.style.backgroundSize = "cover";
 
     } else if (overlap.isSameNode(topElt4)) {
@@ -65,7 +63,6 @@ function ed() {
         panes[3].addEventListener("click", () => {
             location.href = links[3];
         });
-        // options.style.background = "URL('/public/images/bf1.jpg')"
 
         options.style.backgroundSize = "cover";
 
@@ -75,31 +72,24 @@ function ed() {
             alert('came')
             location.href = links[4];
         });
-        // options.style.background = "URL('https://vistapointe.net/images/battlefield-4-7.jpg')"
         options.style.backgroundSize = "cover";
     }
 
 }
 
-
-
-
 function reset(divs, x) {
     for (var i = 0; i < 5; i++) {
         if (i == x) {
             divs[i].style.zIndex = '300';
-            // divs[i].style.background = "red";
             divs[i].style.transform = "translateZ(95px)";
         } else if (i < x) {
             divs[i].style.zIndex = '200';
 
-            // divs[i].style.background = "white";
             divs[i].style.transform = "translateZ(-250px) rotateY(45deg)";
 
         } else if (i > x) {
             divs[i].style.zIndex = '200';
 
-            // divs[i].style.background = "white";
             divs[i].style.transform = "translateZ(-250px) rotateY(-45deg)";
         }
     }

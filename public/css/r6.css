@@ -11,16 +11,7 @@ html {
 }
 
 body {
-    /* overflow-y: hidden; */
-    background: black;
-}
-
-#bf {}
-
-#card {
-    float: right;
-    background: rgb(0, 0, 0);
-    height: auto;
+    background-color: black;
 }
 
 #vback {
@@ -37,12 +28,29 @@ body {
     }
 }
 
+#parawindow {
+    height: 110px;
+    width: 100%;
+    background: url('https://i.redd.it/f9qwtceyhyr41.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#para {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 #Ghead {
     color: white;
     text-align: center;
     letter-spacing: 0.5rem;
     font-family: 'Russo One', sans-serif;
-    font-size: 2em;
+    font-size: 1.8em;
 }
 
 td {
@@ -52,7 +60,6 @@ td {
 .con {
     position: relative;
     z-index: 11;
-    padding: 30px;
     height: auto;
     border-radius: 10px;
     /* font-family: 'Roboto', sans-serif; */
@@ -60,16 +67,16 @@ td {
 }
 
 #R6C>.con {
-    background: linear-gradient(rgba(0, 0, 0, 0.164), rgba(0, 0, 0, 0.315), rgba(0, 0, 0, 0.315), rgb(240, 177, 60));
+    /* background: linear-gradient(rgba(0, 0, 0, 0.164), rgba(0, 0, 0, 0.315), rgba(0, 0, 0, 0.315), rgb(240, 177, 60)); */
 }
 
 #opp {
-    overflow: hidden;
+    overflow: scroll;
     display: flex;
     background: rgba(255, 255, 0, 0.52);
     /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); */
-    height: 120px;
-    width: 120px;
+    height: 150px;
+    width: 150px;
     margin: auto;
     text-align: center;
     font-family: arial;
@@ -113,23 +120,8 @@ td {
 }
 
 #R6C {
-    overflow: hidden;
     color: white;
     position: relative;
-    /* top: 50%;
-    left: 50%; */
-    border-radius: 20px;
-    /* box-shadow: 0px 0 20px 0px rgb(255, 255, 255); */
-    background-image: linear-gradient(rgba(0, 0, 0, 0.301), rgba(0, 0, 0, 0.233)), url(/public/images/sledge.jpg);
-    /* transform: translate(-52%, -50%); */
-    /* animation: backr6 3s alternate infinite ease-in-out; */
-    background-size: cover;
-    background-repeat: no-repeat;
-    min-height: 100vh;
-    width: auto;
-    background-position: center;
-    min-height: 100vh;
-    width: 100vw;
 }
 
 @keyframes back {
@@ -148,4 +140,43 @@ td {
     to {
         background-position-y: 65%;
     }
+}
+
+@keyframes spacing {
+    from {
+        letter-spacing: 0.2rem;
+    }
+    to {
+        letter-spacing: 0.8rem;
+    }
+}
+
+#banner {
+    animation: spacing 3s ease-out;
+    text-align: center;
+    letter-spacing: 0.2rem;
+    font-size: 40px;
+    animation-fill-mode: forwards;
+}
+
+#back {
+    background: linear-gradient(rgba(0, 0, 0, 0.466), rgba(0, 0, 0, 0.5)), url('/public/images/sledge.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transition: all 0.8s;
+}
+
+#eddi {
+    font-family: 'Potta One', cursive;
+}
+
+#shade {
+    animation: back 1s alternate infinite;
+    background: linear-gradient(rgba(0, 0, 0, 0.589), rgba(0, 0, 0, 0.589));
+}
+
+#topOp {
+    background-color: black;
+    text-align: center;
 }

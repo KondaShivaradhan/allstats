@@ -79,3 +79,10 @@ li {
     text-align: center;
     transition: all 0.5s;
 }
+
+footer {
+    background-color: rgb(77, 48, 48);
+    height: 300px;
+    color: white;
+    text-align: center;
+}
