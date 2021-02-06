@@ -52,7 +52,7 @@
             j = 0
         }
         var back = document.getElementById('back')
-        var h2text = ["", "Games Played<br> <span id='banner'>  <%= r.stats.general.games_played %></span>", "Melee Kills <br> <span id='banner'><%= r.stats.general.melee_kills %></span>", "<span id='banner'><%= r.username %></span>", "Headshots<br> <span id='banner'> <%= r.stats.general.headshots %></span>", "Play Time <br> <span id='banner'><%= Math.round( r.stats.general.playtime/86400) %>Days</span>"]
+        var h2text = ["", "Games Played<br> <span id='banner'>  <%= ro.stats.general.games_played %></span>", "Melee Kills <br> <span id='banner'><%= ro.stats.general.melee_kills %></span>", "<span id='banner'><%= ro.username %></span>", "Headshots<br> <span id='banner'> <%= ro.stats.general.headshots %></span>", "Play Time <br> <span id='banner'><%= Math.round( ro.stats.general.playtime/86400) %>Days</span>"]
         var h2 = document.getElementById("eddi");
         h2.style.transition = "0.5s"; //fade speed
         var images = ['', 'https://www.teahub.io/photos/full/12-124675_rainbow-six-siege.jpg', 'https://www.wallpapertip.com/wmimgs/30-304388_rainbow-six-siege.jpg', 'https://i.pinimg.com/originals/18/75/19/187519a4719ca8baead7eba222787ef1.jpg', 'https://www.wallpapertip.com/wmimgs/30-304388_rainbow-six-siege.jpg']
@@ -74,7 +74,7 @@
 
 <body onload="setInterval(() => {start()}, 5000);">
 
-    <%- include('header'); -%>
+    <%- include('headerO'); -%>
         <div id="R6C">
             <div class="row" id="back" style="text-align: center;">
                 <div id="shade" class="col-md-12" style="height: 60vh;">
@@ -89,7 +89,7 @@
             <div id="parawindow">
                 <div id="para">
                     <h3 id="Ghead">
-                        <%= r.username %>
+                        <%= ro.username %>
                     </h3>
                 </div>
             </div>
@@ -115,19 +115,19 @@
                             <tr>
                                 <td>
                                     <span style="font-size: 30px;color: rgb(255, 255, 255);">
-                                        <%= r.progression.level%>
+                                        <%= ro.progression.level%>
                                     </span>
                                 </td>
                                 <td>
                                     <span style="font-size: 30px;color: white;">
-                                            <%= r.stats.general.kills%>
+                                            <%= ro.stats.general.kills%>
                                     </span>
                                 </td>
                                 <td><span style="font-size: 30px;color: white;">
-                                        <%= r.stats.general.wl%>
+                                        <%= ro.stats.general.wl%>
                                 </td>
                                 <td> <span style="font-size: 30px;color: white;">
-                                        <%= r.stats.general.kd%>
+                                        <%= ro.stats.general.kd%>
                                     </span></td>
                             </tr>
                         </table>
@@ -136,7 +136,6 @@
 
                 </div>
                 <br>
-
                 <!-- ranked -->
                 <div id="ranked" class="container" style="text-align: center;">
                     <table style="overflow: hidden;width: auto;background-color: rgba(76, 95, 98, 0.404);margin: 0 auto;border-radius: 12px;">
@@ -171,13 +170,16 @@
                 </div>
                 <br>
                 <!-- top operators -->
-                <div class="row" id="topOp">
-                    <div class="col-md-12">
-                        <h3 id="Ghead">Most Played</h3>
-
+                <div id="parawindow">
+                    <div id="para">
+                        <h3 id="Ghead">
+                            Most Played
+                        </h3>
                     </div>
+                </div>
+                <div class="row" id="topOp">
                     <div class="col-md-6" id="attackB">
-                        <% r1.operators.forEach(element=> {%>
+                        <% r1o.operators.forEach(element=> {%>
                             <% if(element.kills == amax) { var maxd = element %>
                                 <div>
                                     <span style="font-weight: 600;color: rgb(127, 255, 255);letter-spacing: 1px;">
@@ -210,7 +212,7 @@
                                     <% }); %>
                     </div>
                     <div class="col-md-6" id="defendB">
-                        <% r1.operators.forEach(element=> {%>
+                        <% r1o.operators.forEach(element=> {%>
                             <% if(element.kills == dmax) { var maxd = element %>
 
                                 <div>
@@ -248,15 +250,16 @@
                                     <% }); %>
                     </div>
                 </div>
+
                 <!-- Attacking Operators -->
-                <div id="parawindow">
+                <div id="parawindow" style="height: 70px;">
                     <div id="para">
                         <h3 id="Ghead">Attackers </h3>
                     </div>
                 </div>
                 <div style="padding: 30px; text-align: center;height:70%;position: relative;width: 100%;background: linear-gradient(45deg,rgb(57, 132, 245), rgba(0, 0, 0, 0.315), rgba(0, 0, 0, 0.315), rgb(57, 132, 245));">
                     <div style="display: flex; flex-direction: row-reverse;flex-wrap: wrap;justify-content: space-evenly;gap: 1%;">
-                        <% r1.operators.forEach(element=> {%>
+                        <% r1o.operators.forEach(element=> {%>
                             <% if(!element.name.includes('Recruit') && !element.role.includes('Defender')) {%>
                                 <div id="opp" style="background: url('<%= element.badge_image%>');background-size: cover;background-repeat: no-repeat;border-radius: 20px;">
                                     <div id="stattop" style="height: 100%;width:100%;position: relative;top:50%;left:50%;transform: translate(-50%,-50%);">
@@ -281,14 +284,14 @@
                     </div>
                 </div>
                 <!-- Defending Operators -->
-                <div id="parawindow">
+                <div id="parawindow" style="height: 70px;">
                     <div id="para">
                         <h3 id="Ghead">Defenders</h3>
                     </div>
                 </div>
                 <div style="padding: 30px;text-align: center; height:70%;position: relative;width: 100%;background: linear-gradient(135deg,rgb(240, 177, 60),rgb(0, 0, 0),rgb(0, 0, 0),rgb(240, 177, 60));">
                     <div style="display: flex; flex-direction: row-reverse;flex-wrap: wrap;justify-content: space-evenly;gap: 1%;">
-                        <% r1.operators.forEach(element=> {%>
+                        <% r1o.operators.forEach(element=> {%>
                             <% if( !element.name.includes('Recruit') && !element.role.includes('Attacker')) {%>
                                 <div id="opp" style="background: url('<%= element.badge_image%>');background-size: cover;background-repeat: no-repeat;border-radius: 20px;">
                                     <div id="stattop" style="height: 100%;width:100%;position: relative;top:50%;left:50%;transform: translate(-50%,-50%);">
@@ -311,6 +314,7 @@
                     </div>
                 </div>
             </div>
+
         </div>
 
 </body>

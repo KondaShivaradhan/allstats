@@ -28,6 +28,14 @@ body {
     }
 }
 
+#ranked tr {
+    border-bottom: white 1px solid;
+}
+
+td {
+    padding: 5px;
+}
+
 #parawindow {
     height: 110px;
     width: 100%;

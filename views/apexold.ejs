@@ -40,32 +40,21 @@
                 j = 0
             }
             var back = document.getElementById('back')
-            var h2text = ["", "Games Played<br> <span id='banner'>  <% ap.stats.forEach(element=> {%><% if (element.metadata.name=='Matches Played' ) { %><%= element.value %><% }%><% });%></span>", "Total Damage <br> <span id='banner'><% ap.stats.forEach(element=> {%><% if (element.metadata.name=='Damage' ) { %><%= element.value %><% }%><% });%></span>", "<span id='banner'>Blazing Bane</span>", "Headshots<br> <span id='banner'>  <% ap.stats.forEach(element=> {%><% if (element.metadata.name=='Headshots' ) { %><%= element.value %><% }%><% });%></span>", '<img style="border-radius: 20px;max-width:100%;max-height:100%;" src="<%= ap.metadata.rankImage %>" alt="">']
+            var h2text = ["", "Games Played<br> <span id='banner'>  <% ap.stats.forEach(element=> {%><% if (element.metadata.name=='Matches Played' ) { %><%= element.value %><% }%><% });%></span>", "Total Damage <br> <span id='banner'><% ap.stats.forEach(element=> {%><% if (element.metadata.name=='Damage' ) { %><%= element.value %><% }%><% });%></span>", "<span id='banner'><%= ap.metadata.platformUserHandle %> </span>", "Headshots<br> <span id='banner'>  <% ap.stats.forEach(element=> {%><% if (element.metadata.name=='Headshots' ) { %><%= element.value %><% }%><% });%></span>", '<img style="border-radius: 20px;max-width:100%;max-height:100%;" src="<%= ap.metadata.rankImage %>" alt="">']
             var h2 = document.getElementById("eddi");
             h2.style.transition = "0.5s"; //fade speed
             var images = ['', 'https://images.hdqwalls.com/wallpapers/4k-apex-legends-2020-ja.jpg', 'https://cdn.wallpapersafari.com/62/4/KyTmfc.jpg', 'https://wallpapercave.com/wp/wp5400337.png', 'https://wallpapercave.com/wp/wp4013111.png']
             setTimeout(function() {
-                    h2.style.opacity = 0;
-                    setTimeout(function() {
-                        back.style.background = "URL(" + images[j] + ")"
-                        back.style.backgroundSize = "cover"
-                        back.style.backgroundPosition = "50% 30%"
-                        back.style.animationName = "back"
-                        h2.innerHTML = h2text[i];
-                        h2.style.opacity = 1;
-                    }, 500);
-                }, 1000)
-                // setTimeout(function() {
-                //     h2.style.opacity = 0;
-
-            //     back.style.background = "URL(" + images[j] + ")"
-            //     back.style.backgroundSize = "cover"
-            //     back.style.backgroundPosition = "50% 30%"
-            //     back.style.animationName = "back"
-            //     h2.innerHTML = h2text[i];
-            //     h2.style.opacity = 1;
-            // }, 500);
-
+                h2.style.opacity = 0;
+                setTimeout(function() {
+                    back.style.background = "URL(" + images[j] + ")"
+                    back.style.backgroundSize = "cover"
+                    back.style.backgroundPosition = "50% 30%"
+                    back.style.animationName = "back"
+                    h2.innerHTML = h2text[i];
+                    h2.style.opacity = 1;
+                }, 500);
+            }, 1000)
             i++
             j++;
         }
@@ -90,10 +79,12 @@
                 </div>
                 <div id="parawindow">
                     <div id="para">
-                        <h3 id="Ghead">Apex Legends</h3>
+                        <h3 id="Ghead">
+                            <%= ap.metadata.platformUserHandle %>
+                        </h3>
                     </div>
                 </div>
-                <div class="con">
+                <div class="con" style="text-align: center;">
                     <div style="text-align: center;margin-top: 2%;">
                         <div style="display: inline-block;background-color: rgba(255, 0, 0, 0);">
                             <img style="border-radius: 20px;max-width:100%;
@@ -146,74 +137,45 @@
                                 <% ap.children.forEach(element=> {%>
                                     <% element.stats.forEach(stat=> {%>
                                         <% if(stat.metadata.name=='Kills' ){%>
-                                            <% if(stat.value>=500){%>
-                                                <div id="opp" class="kills500" style=" height: 150px;width: 150px;background: url('<%= element.metadata.icon%>');background-size: cover;background-repeat: no-repeat;border-radius: 20px;">
-                                                    <div id="stattop" style="height: 100%;width:100%;position: relative;top:50%;left:50%;transform: translate(-50%,-50%);">
+                                            <div id="opp" style=" height: 150px;width: 150px;background: url('<%= element.metadata.icon%>');background-size: cover;background-repeat: no-repeat;border-radius: 20px;">
+                                                <div id="stattop" style="height: 100%;width:100%;position: relative;top:50%;left:50%;transform: translate(-50%,-50%);">
 
-                                                        <div id="stats">
-                                                            <h5 style="font-weight: 500;">
-                                                                <span style="font-weight: 600;color: rgb(127, 255, 255);">
-                                                                    <%= element.metadata.legend_name%>
-                                                                </span>
-                                                            </h5>
-                                                            <p class="price">
-                                                                <% element.stats.forEach(stat=> {%>
-                                                                    <% if(stat.metadata.name=='Kills' ){%>
-                                                                        <% if(stat.value>=100){%>
-                                                                            <%= stat.value %> <span style="color:rgb(223, 10, 10);font-weight: 600;">
-                                                                                    <%= stat.metadata.name %>
-                                                                                </span><br>
-                                                                                <% } else{ %>
-                                                                                    <%= stat.value %> <span style="color:rgb(223, 209, 10);font-weight: 600;">
-                                                                                            <%= stat.metadata.name %>
-                                                                                        </span><br>
-                                                                                        <% }%>
-                                                                                            <% } %>
-                                                                                                <% }); %>
-
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <% } else{ %>
-                                                    <div id="opp" style=" height: 150px;width: 150px;background: url('<%= element.metadata.icon%>');background-size: cover;background-repeat: no-repeat;border-radius: 20px;">
-                                                        <div id="stattop" style="height: 100%;width:100%;position: relative;top:50%;left:50%;transform: translate(-50%,-50%);">
-
-                                                            <div id="stats">
-                                                                <h5 style="font-weight: 500;">
-                                                                    <span style="font-weight: 600;color: rgb(127, 255, 255);">
+                                                    <div id="stats">
+                                                        <h5 style="font-weight: 500;">
+                                                            <span style="font-weight: 600;color: rgb(127, 255, 255);">
                                                                         <%= element.metadata.legend_name%>
                                                                     </span>
-                                                                </h5>
-                                                                <p class="price">
-                                                                    <% element.stats.forEach(stat=> {%>
-                                                                        <% if(stat.metadata.name=='Kills' ){%>
-                                                                            <% if(stat.value>=100){%>
-                                                                                <%= stat.value %> <span style="color:rgb(223, 10, 10);font-weight: 600;">
+                                                        </h5>
+                                                        <p class="price">
+                                                            <% element.stats.forEach(stat=> {%>
+                                                                <% if(stat.metadata.name=='Kills' ){%>
+                                                                    <% if(stat.value>=1000){%>
+                                                                        <%= stat.value %> <span style="color:rgb(223, 10, 10);font-weight: 600;">
                                                                                         <%= stat.metadata.name %>
                                                                                     </span><br>
-                                                                                    <% } else{ %>
-                                                                                        <%= stat.value %> <span style="color:rgb(223, 209, 10);font-weight: 600;">
+                                                                            <% } else{ %>
+                                                                                <%= stat.value %> <span style="color:rgb(223, 209, 10);font-weight: 600;">
                                                                                                 <%= stat.metadata.name
                                                                                                     %>
                                                                                             </span><br>
-                                                                                            <% }%>
-                                                                                                <% } %>
-                                                                                                    <% }); %>
+                                                                                    <% }%>
 
-                                                                </p>
-                                                            </div>
-                                                        </div>
+                                                                                        <% } %>
+                                                                                            <% }); %>
+
+                                                        </p>
                                                     </div>
-                                                    <% }%>
-                                                        <% } %>
-                                                            <% }); %>
-                                                                <% }); %>
+                                                </div>
+                                            </div>
+                                            <% }%>
+                                                <% }); %>
+                                                    <% }); %>
                             </div>
 
                         </div>
-                    </div>
 
+                    </div>
+                    <p style="font-size: 13px;">*Note: Legends with 'KILLS' trackers active will be displayed</p>
                 </div>
             </div>
 

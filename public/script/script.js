@@ -3,7 +3,7 @@ function ed() {
     var panes = document.getElementsByClassName('pane')
     var shade = document.getElementById('shade')
     var overlap = document.getElementById('overlap')
-    var links = ['/bfv', '/r6', '/apex', '/bf1', '/discord']
+    var links = ['/bfv', '/BlazingBaneR6', '/BlazingBaneApex', '/bf1', '/discord']
         // var audio = document.getElementById('audio');
         // var source = document.getElementById('audioSource');
         // audio.volume = 0.2;
