@@ -81,15 +81,15 @@ client.on('message', message => {
 
             })
             .catch(error => console.error(error));
-        wait(3 * 1000).then(() => {
-            message.channel.send(file)
-            fs.writeFile('/Spec.txt', file, function(err) {
-                if (err) {
-                    return console.log(err);
-                }
-                console.log("The file was saved!");
-            });
-        });
+        // wait(3 * 1000).then(() => {
+        //     message.channel.send(file)
+        //     fs.writeFile('/Spec.txt', file, function(err) {
+        //         if (err) {
+        //             return console.log(err);
+        //         }
+        //         console.log("The file was saved!");
+        //     });
+        // });
     }
 })
 
