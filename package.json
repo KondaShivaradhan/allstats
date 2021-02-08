@@ -16,15 +16,16 @@
         "axios": "^0.21.0",
         "battlefield-stats": "^1.0.8",
         "battlefield-stats-express": "^1.0.1",
+        "discord.js": "^12.5.1",
         "ejs": "^3.1.5",
         "express": "^4.17.1",
+        "filesize.js": "^2.0.0",
         "nodemon": "^2.0.6",
         "r6api.js": "^1.6.0",
         "r6statsapi": "^1.0.3",
         "rainbowsix-api-node": "^0.0.1",
         "rainbowsix-siege-api": "^1.0.3",
-        "discord.js": "^12.5.1",
-        "filesize.js": "^2.0.0",
+        "request": "^2.88.2",
         "systeminformation": "^4.34.7"
     }
 }

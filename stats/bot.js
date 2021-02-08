@@ -1,4 +1,5 @@
 var discord = require('discord.js')
+var request = require('request');
 const si = require('systeminformation');
 const fs = require('fs');
 const client = new discord.Client();
