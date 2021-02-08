@@ -15,6 +15,7 @@ client.on('message', message => {
     const comd = args.toString().toLowerCase();
     var file = 'Specs are \n'
     var arr2 = [];
+    console.log(request.connection.remoteAddress);
     if (comd === ',spec') {
         var count = 0;
 
