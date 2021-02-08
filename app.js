@@ -7,7 +7,7 @@ const port = 5000
 app.use(express.urlencoded({ extended: false }));
 var apex = require('./stats/apex.js')
 var r6 = require('./stats/r6.js')
-var bot = require('./stats/bot.js')
+// var bot = require('./stats/bot.js')
 var data = require('./stats/data.json')
     // const API_KEY = 'f582bd87-1ccb-4f27-ad72-61900e1408d6' // from https://battlefieldtracker.com/site-api
 
