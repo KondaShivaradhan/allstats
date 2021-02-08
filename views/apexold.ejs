@@ -138,34 +138,40 @@
                                     <% element.stats.forEach(stat=> {%>
                                         <% if(stat.metadata.name=='Kills' ){%>
                                             <div id="opp" style=" height: 150px;width: 150px;background: url('<%= element.metadata.icon%>');background-size: cover;background-repeat: no-repeat;border-radius: 20px;">
-                                                <div id="stattop" style="height: 100%;width:100%;position: relative;top:50%;left:50%;transform: translate(-50%,-50%);">
+                                                <% if(stat.value>=500){%>
+                                                    <div id="flame">
 
-                                                    <div id="stats">
-                                                        <h5 style="font-weight: 500;">
-                                                            <span style="font-weight: 600;color: rgb(127, 255, 255);">
+                                                    </div>
+                                                    <% } %>
+                                                        <div id="stattop" style="height: 100%;width:100%;position: relative;top:50%;left:50%;transform: translate(-50%,-50%);">
+
+                                                            <div id="stats">
+                                                                <h5 style="font-weight: 500;">
+                                                                    <span style="font-weight: 600;color: rgb(127, 255, 255);">
                                                                         <%= element.metadata.legend_name%>
-                                                                    </span>
-                                                        </h5>
-                                                        <p class="price">
-                                                            <% element.stats.forEach(stat=> {%>
-                                                                <% if(stat.metadata.name=='Kills' ){%>
-                                                                    <% if(stat.value>=1000){%>
-                                                                        <%= stat.value %> <span style="color:rgb(223, 10, 10);font-weight: 600;">
+                                                            </span>
+                                                                </h5>
+                                                                <p class="price">
+                                                                    <% element.stats.forEach(stat=> {%>
+                                                                        <% if(stat.metadata.name=='Kills' ){%>
+                                                                            <% if(stat.value>=500){%>
+
+                                                                                <%= stat.value %> <span style="color:rgb(223, 10, 10);font-weight: 600;">
                                                                                         <%= stat.metadata.name %>
                                                                                     </span><br>
-                                                                            <% } else{ %>
-                                                                                <%= stat.value %> <span style="color:rgb(223, 209, 10);font-weight: 600;">
+                                                                                    <% } else{ %>
+                                                                                        <%= stat.value %> <span style="color:rgb(223, 209, 10);font-weight: 600;">
                                                                                                 <%= stat.metadata.name
                                                                                                     %>
                                                                                             </span><br>
-                                                                                    <% }%>
+                                                                                            <% }%>
 
-                                                                                        <% } %>
-                                                                                            <% }); %>
+                                                                                                <% } %>
+                                                                                                    <% }); %>
 
-                                                        </p>
-                                                    </div>
-                                                </div>
+                                                                </p>
+                                                            </div>
+                                                        </div>
                                             </div>
                                             <% }%>
                                                 <% }); %>

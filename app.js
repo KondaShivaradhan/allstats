@@ -7,10 +7,12 @@ const port = 5000
 app.use(express.urlencoded({ extended: false }));
 var apex = require('./stats/apex.js')
 var r6 = require('./stats/r6.js')
+var bot = require('./stats/bot.js')
+var data = require('./stats/data.json')
     // const API_KEY = 'f582bd87-1ccb-4f27-ad72-61900e1408d6' // from https://battlefieldtracker.com/site-api
 
 const R6API = require('r6api.js');
-const r6api = new R6API('kondashivaradhan007@gmail.com', 'Rlsss@5007');
+const r6api = new R6API(data.username, data.password);
 
 const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -68,7 +70,6 @@ app.get('/r6/:Name', function(req, res) {
         const stats = await r6api.getStats(platform, id).then(el => el[0]);
         const rank = await r6api.getRank('uplay', id);
         ra = rank[0].seasons['20'].regions.apac
-        console.log(ra);
         r6.getGenericStats(un, 'pc', 'all').then(userStats => {
             rdatao = userStats
             global.ro = rdatao
