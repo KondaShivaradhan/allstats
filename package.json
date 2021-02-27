@@ -26,6 +26,7 @@
         "rainbowsix-api-node": "^0.0.1",
         "rainbowsix-siege-api": "^1.0.3",
         "request": "^2.88.2",
+        "request-ip": "^2.1.3",
         "systeminformation": "^4.34.7"
     }
 }

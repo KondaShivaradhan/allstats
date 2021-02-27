@@ -65,19 +65,7 @@
                     </div>
                 </div>
             </div>
-            <div class="pane" style="background: linear-gradient(rgba(0, 0, 0, 0.335), rgba(0, 0, 0, 0.418)),url('/public/images/bf1m.jpg');background-size: cover;" id="d2">
-                <div>
-                    <div class="logo" style="background: url('/public/images/bf1logo.jpg');background-size: cover;background-position: center;">
-                    </div>
-                    <div id="contains">
-                        <h4>
-                            Stats for Battlefield 1
-                        </h4>
-                        <button type="button" name="" id="" class="btn btn-primary">View Stats</button>
 
-                    </div>
-                </div>
-            </div>
             <div class="pane" style="background: linear-gradient(rgba(0, 0, 0, 0.335), rgba(0, 0, 0, 0.418)),url('/public/images/discord.jpg');background-size: cover;" id="d2">
                 <div>
                     <div class="logo" style="background: url('/public/images/discord.gif');background-size: cover;background-position: center;">
@@ -96,8 +84,25 @@
             </div>
         </div>
     </div>
-    </div>
-
+    <script type="text/javascript">
+        (function() {
+            function scrollHorizontally(e) {
+                e = window.event || e;
+                var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
+                document.getElementById('shade').scrollLeft -= (delta * 760);
+                e.preventDefault();
+            }
+            if (document.getElementById('shade').addEventListener) {
+                // IE9, Chrome, Safari, Opera
+                document.getElementById('shade').addEventListener('mousewheel', scrollHorizontally, false);
+                // Firefox
+                document.getElementById('shade').addEventListener('DOMMouseScroll', scrollHorizontally, false);
+            } else {
+                // IE 6/7/8
+                document.getElementById('shade').attachEvent('onmousewheel', scrollHorizontally);
+            }
+        })();
+    </script>
 </body>
 
 </html>

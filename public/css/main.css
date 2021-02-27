@@ -52,9 +52,11 @@
 }
 
 #shade {
+    scroll-behavior: smooth;
     height: 100vh;
     display: flex;
     flex-wrap: nowrap;
+    position: relative;
     gap: 30%;
     overflow-x: scroll;
     /* background: linear-gradient(rgba(228, 19, 19, 0), rgba(0, 0, 0, 0), rgb(251, 0, 0)); */
@@ -64,10 +66,10 @@
 }
 
 #shade>div {
+    z-index: 220;
     color: white;
     transform-style: preserve-3d;
     position: relative;
-    z-index: 200;
     border-radius: 25px;
     transform: scale(0.7);
     transition: all 0.7s ease;
@@ -117,7 +119,7 @@ body {
 }
 
 #overlap {
-    background-color: rgba(0, 0, 0, 0);
+    /* pointer-events: none; */
     position: fixed;
     visibility: visible;
     z-index: 100;
