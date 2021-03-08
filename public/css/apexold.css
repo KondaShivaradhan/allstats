@@ -62,9 +62,11 @@ td {
     font-family: 'IBM Plex Sans', sans-serif;
 }
 
+
+/* 
 #apexL>.con {
-    /* background: linear-gradient(rgba(0, 0, 0, 0.164), rgba(0, 0, 0, 0.315), rgba(0, 0, 0, 0.315), rgba(246, 0, 0, 0.808)); */
-}
+    background: linear-gradient(rgba(0, 0, 0, 0.164), rgba(0, 0, 0, 0.315), rgba(0, 0, 0, 0.315), rgba(246, 0, 0, 0.808));
+} */
 
 @keyframes kills100 {
     from {
@@ -75,25 +77,37 @@ td {
     }
 }
 
-
-/* 
-@keyframes kills500 {
-    0% {
-        box-shadow: 10px 0px 15px -7px rgba(248, 246, 126, 0.75);
-    }
-    25% {
-        box-shadow: 10px 10px 15px -7px rgba(248, 246, 126, 0.75);
-    }
-    50% {
-        box-shadow: 0px 0px 15px -7px rgba(248, 246, 126, 0.75);
-    }
-     to {
-        box-shadow: 10px 10px 15px -7px rgba(248, 246, 126, 0.75);
-    } 
-
-
+#audio {
+    animation: buttonA 1s infinite alternate ease;
+    position: fixed;
+    z-index: 1000;
+    border-radius: 50%;
+    border: 2px white solid;
+    height: 40px;
+    width: 40px;
+    right: 50px;
+    bottom: 50px;
+    background-color: rgba(0, 0, 0, 0.377);
 }
-*/
+
+@keyframes buttonA {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.2);
+    }
+}
+
+#audiocon {
+    transition: all 0.5s ease-in-out;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 30px;
+}
 
 .kills {
     animation: kills 1.5s infinite alternate-reverse;

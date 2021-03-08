@@ -33,7 +33,8 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <!-- parallax-window -->
     <script src="/public/script/parallax.js"></script>
-
+    <!-- font awesome -->
+    <script src="https://use.fontawesome.com/4afcb75146.js"></script>
 </head>
 <style>
     html {
@@ -70,11 +71,30 @@
         i++
         j++;
     }
+
+    function audio() {
+        var audio = document.getElementById('music')
+        var acon = document.getElementById('audiocon')
+        if (audio.paused) {
+            console.log('paused');
+            audio.play();
+            acon.className = "fa fa-volume-up";
+        } else {
+            console.log('playing');
+            audio.pause();
+            acon.className = "fa fa-volume-off";
+        }
+    }
 </script>
 
 <body onload="setInterval(() => {start()}, 5000);">
 
     <%- include('headerO'); -%>
+        <audio id="music" loop src="/public/music/r6.mp3"></audio>
+
+        <div id="audio" onclick="audio()">
+            <i id="audiocon" class="fa fa-volume-off" aria-hidden="true"></i>
+        </div>
         <div id="R6C">
             <div class="row" id="back" style="text-align: center;">
                 <div id="shade" class="col-md-12" style="height: 60vh;">

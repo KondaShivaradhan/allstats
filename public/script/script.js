@@ -78,6 +78,16 @@ function reset(divs, x) {
     }
 }
 
+function audio() {
+    var audio = document.getElementById('music')
+    if (audio.mute == false) {
+        document.getElementById('audioPlayer').muted = true;
+    } else {
+        audio.mute = true
+        document.getElementById('audioPlayer').muted = false;
+    }
+}
+
 function calcSpaceBetween() {
     var red_pos = $('#d1').position().left + $('#d1').width();
     var blu_pos = $('#d2').position().left;

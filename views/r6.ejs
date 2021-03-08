@@ -16,7 +16,8 @@
     <link rel="preload" href="https://wallpapercave.com/wp/wp4013111.png" as="image">
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-
+    <!-- font awesome -->
+    <script src="https://use.fontawesome.com/4afcb75146.js"></script>
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
@@ -54,7 +55,7 @@
         var back = document.getElementById('back')
         var h2text = ["", "Games Played<br> <span id='banner'>  <%= r.stats.general.games_played %></span>", "Melee Kills <br> <span id='banner'><%= r.stats.general.melee_kills %></span>", "<span id='banner'><%= r.username %></span>", "Headshots<br> <span id='banner'> <%= r.stats.general.headshots %></span>", "Play Time <br> <span id='banner'><%= Math.round( r.stats.general.playtime/86400) %>Days</span>"]
         var h2 = document.getElementById("eddi");
-        h2.style.transition = "0.5s"; //fade speed
+        h2.style.transition = "0.5s";
         var images = ['', 'https://www.teahub.io/photos/full/12-124675_rainbow-six-siege.jpg', 'https://www.wallpapertip.com/wmimgs/30-304388_rainbow-six-siege.jpg', 'https://i.pinimg.com/originals/18/75/19/187519a4719ca8baead7eba222787ef1.jpg', 'https://www.wallpapertip.com/wmimgs/30-304388_rainbow-six-siege.jpg']
         setTimeout(function() {
             h2.style.opacity = 0;
@@ -70,11 +71,29 @@
         i++
         j++;
     }
+
+    function audio() {
+        var audio = document.getElementById('music')
+        var acon = document.getElementById('audiocon')
+        if (audio.paused) {
+            console.log('paused');
+            audio.play();
+            acon.className = "fa fa-volume-up";
+        } else {
+            console.log('playing');
+            audio.pause();
+            acon.className = "fa fa-volume-off";
+        }
+    }
 </script>
 
 <body onload="setInterval(() => {start()}, 5000);">
 
     <%- include('header'); -%>
+        <audio id="music" loop src="/public/music/r6.mp3"></audio>
+        <div id="audio" onclick="audio()">
+            <i id="audiocon" class="fa fa-volume-off" aria-hidden="true"></i>
+        </div>
         <div id="R6C">
             <div class="row" id="back" style="text-align: center;">
                 <div id="shade" class="col-md-12" style="height: 60vh;">
@@ -261,17 +280,17 @@
                                 <div id="opp" style="background: url('<%= element.badge_image%>');background-size: cover;background-repeat: no-repeat;border-radius: 20px;">
                                     <div id="stattop" style="height: 100%;width:100%;position: relative;top:50%;left:50%;transform: translate(-50%,-50%);">
                                         <div id="stats">
-                                            <h3 style="font-weight: 500;">
+                                            <h5 style="font-weight: 500;">
                                                 <span style="font-weight: 600;color: rgb(127, 255, 255);">
                                                     <%= element.name%>
                                                 </span>
-                                                </h5>
-                                                <p class="price">
-                                                    <%= element.kills%> <span style="color:rgb(223, 169, 10);font-weight: 600;">Kills</span><br>
+                                            </h5>
+                                            <p class="price">
+                                                <%= element.kills%> <span style="color:rgb(223, 169, 10);font-weight: 600;">Kills</span><br>
 
-                                                        <%= element.kd%> <span style="color:rgb(223, 169, 10);font-weight: 600;">KD</span><br>
-                                                            <%= element.wl%> <span style="color:rgb(223, 169, 10);font-weight: 600;">WL</span>
-                                                </p>
+                                                    <%= element.kd%> <span style="color:rgb(223, 169, 10);font-weight: 600;">KD</span><br>
+                                                        <%= element.wl%> <span style="color:rgb(223, 169, 10);font-weight: 600;">WL</span>
+                                            </p>
                                         </div>
                                     </div>
                                 </div>

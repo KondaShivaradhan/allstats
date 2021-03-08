@@ -96,6 +96,16 @@ footer {
     font-family: ;
 }
 
+a {
+    color: white;
+    text-decoration: none;
+}
+
+a:hover {
+    color: rgb(248, 183, 123);
+    text-decoration: none;
+}
+
 #footer>h3 {
     font-family: 'Big Shoulders Display', cursive;
     margin: 0px;

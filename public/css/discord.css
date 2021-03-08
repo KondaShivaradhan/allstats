@@ -1,0 +1,67 @@
+* {
+    margin: 0;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+#back {
+    overflow: hidden;
+    position: relative;
+    height: 70vh;
+    border-radius: 30px;
+    top: 50%;
+    padding: 20px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#discord {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 100%;
+    width: 90%;
+}
+
+body {
+    position: relative;
+    font-family: "Libre Baskerville", serif;
+}
+
+h1 {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: white;
+    font-size: 7vmin;
+    text-align: center;
+    text-transform: uppercase;
+    transform: translate3d(-50%, -50%, 0);
+}
+
+.wrap {
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.wrap .bg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    background: url("https://aysdiscord.com/img/discord_dark.png") no-repeat center center;
+    background-size: cover;
+    transform: scale(1.1);
+}

@@ -32,7 +32,8 @@ app.get('/BlazingBaneApex', function(req, res) {
         if (typeof ap != 'undefined')
             res.render('apexold', { ap });
         else {
-            res.send("refresh the site")
+            res.render('refresh')
+
         }
         throw new Error("error occurred");
     }).catch(() => {
@@ -52,7 +53,8 @@ app.get('/apex/:Name', function(req, res) {
         if (typeof ap != 'undefined')
             res.render('apexold', { ap });
         else {
-            res.send("refresh the site")
+            res.render('refresh')
+
         }
         throw new Error("error occurred");
     }).catch(() => {
@@ -137,7 +139,8 @@ app.get('/BlazingBaneR6', function(req, res) {
                 })
                 res.render('r6', { r, r1, dmax, amax, ra });
             } else {
-                res.send("refresh the site")
+                res.render('refresh')
+
             }
             throw new Error("error occurred");
         }).catch(() => {

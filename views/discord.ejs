@@ -8,7 +8,7 @@
     <!-- bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <!-- css -->
-    <link rel="stylesheet" href="/public/css/r6.css">
+    <link rel="stylesheet" href="/public/css/discord.css">
     <link rel="stylesheet" href="/public/css/head.css">
     <link rel="preload" href="https://www.teahub.io/photos/full/12-124675_rainbow-six-siege.jpg" as="image">
     <link rel="preload" href="https://www.wallpapertip.com/wmimgs/30-304388_rainbow-six-siege.jpg" as="image">
@@ -16,7 +16,8 @@
     <link rel="preload" href="https://wallpapercave.com/wp/wp4013111.png" as="image">
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-
+    <!-- font awesome -->
+    <script src="https://use.fontawesome.com/4afcb75146.js"></script>
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
@@ -33,15 +34,56 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <!-- parallax-window -->
     <script src="/public/script/parallax.js"></script>
+    <!-- RXJS -->
+    <script src="https://unpkg.com/rxjs/bundles/rxjs.umd.min.js"></script>
 
 </head>
 
 <body>
     <%- include('header'); -%>
 
-        <iframe src="https://discordapp.com/widget?id=515165357812613140&amp;theme=dark" width="350" height="500" allowtransparency="true" frameborder="0"></iframe>
-
+        <div class="wrap">
+            <div class="bg"></div>
+            <div class="container" id="text" style="height: 90vh;padding: 10px;">
+                <div id="back">
+                    <iframe id="discord" src="https://discordapp.com/widget?id=515165357812613140&amp;theme=dark" allowtransparency="true" frameborder="0"></iframe>
+                </div>
+            </div>
+        </div>
 </body>
 <%- include('footer') -%>
+    <script>
+        var lFollowX = 0,
+            lFollowY = 0,
+            x = 0,
+            y = 0,
+            friction = 1 / 30;
+
+        function moveBackground() {
+            x += (lFollowX - x) * friction;
+            y += (lFollowY - y) * friction;
+
+            translate = 'translate(' + x + 'px, ' + y + 'px) scale(1.1)';
+
+            $('.bg').css({
+                '-webit-transform': translate,
+                '-moz-transform': translate,
+                'transform': translate
+            });
+
+            window.requestAnimationFrame(moveBackground);
+        }
+
+        $(window).on('mousemove click', function(e) {
+
+            var lMouseX = Math.max(-100, Math.min(100, $(window).width() / 2 - e.clientX));
+            var lMouseY = Math.max(-100, Math.min(100, $(window).height() / 2 - e.clientY));
+            lFollowX = (20 * lMouseX) / 100; // 100 : 12 = lMouxeX : lFollow
+            lFollowY = (10 * lMouseY) / 100;
+
+        });
+
+        moveBackground();
+    </script>
 
 </html>
