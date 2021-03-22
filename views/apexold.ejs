@@ -87,12 +87,10 @@
             }
         }
 
-        // function close() {
-        //     alert('ca,e')
-        //     var modal = document.getElementById('modal');
-        //     modal.style.display = 'none'
-        // }
+
         $(document).ready(function() {
+            var audio = document.getElementById("myaudio");
+            audio.volume = 0.2;
             $("#close").click(function() {
                 alert('came')
                 $('#modal').hide()
