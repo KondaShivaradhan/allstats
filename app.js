@@ -108,6 +108,9 @@ app.get('/r6/:Name', function(req, res) {
     }
     start()
 });
+app.get('/pc', function(req, res) {
+    res.render('pc')
+});
 app.get('/BlazingBaneR6', function(req, res) {
     const username = 'BlazingBane'
     platform = 'uplay';
