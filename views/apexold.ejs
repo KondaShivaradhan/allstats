@@ -28,6 +28,8 @@
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
     <!-- font awesome -->
     <script src="https://use.fontawesome.com/4afcb75146.js"></script>
+    <!-- parallaxjs -->
+    <script src="/public/script/parallax.js"></script>
     <script>
         var i = 0;
         var j = 0;
@@ -59,6 +61,18 @@
             j++;
         }
 
+        function test(y) {
+            var temp = '<span id="close">x</span>'
+            var content = document.createTextNode(temp);
+            var modal = document.getElementById('modal');
+            modal.style.display = 'block'
+            $("#modal").empty();
+            var cln = y.cloneNode(true);
+            cln.appendChild(content);
+
+            modal.appendChild(cln)
+        }
+
         function audio() {
             var audio = document.getElementById('music')
             var acon = document.getElementById('audiocon')
@@ -66,22 +80,26 @@
                 console.log('paused');
                 audio.play();
                 acon.className = "fa fa-volume-up";
-
-                // document.getElementById('audioOFF').style.transition = 'all 0.5s';
-                // document.getElementById('audioON').style.transition = 'all 0.5s';
-                // document.getElementById('audioON').style.display = '';
-                // document.getElementById('audioOFF').style.display = 'none';
             } else {
                 console.log('playing');
                 audio.pause();
                 acon.className = "fa fa-volume-off";
-
-                // document.getElementById('audioOFF').style.transition = 'all 0.5s';
-                // document.getElementById('audioON').style.transition = 'all 0.5s';
-                // document.getElementById('audioOFF').style.display = '';
-                // document.getElementById('audioON').style.display = 'none';
             }
         }
+
+        // function close() {
+        //     alert('ca,e')
+        //     var modal = document.getElementById('modal');
+        //     modal.style.display = 'none'
+        // }
+        $(document).ready(function() {
+            $("#close").click(function() {
+                alert('came')
+                $('#modal').hide()
+                var modal = document.getElementById('modal');
+
+            });
+        });
     </script>
 
 </head>
@@ -94,6 +112,9 @@
         <div id="audio" onclick="audio()">
             <i id="audiocon" class="fa fa-volume-off" aria-hidden="true"></i>
         </div>
+        <!-- <div id="modal">
+            <span id="close">x</span>
+        </div> -->
         <div id="card" name="apexlegends">
             <div id="apexL">
                 <div class="row" id="back" style="text-align: center;">
@@ -158,12 +179,17 @@
                         </div>
                     </div>
 
+                    <!-- Modal -->
+
                     <div class="container" style="padding: 30px; height:auto;position: relative;">
                         <div style="display: flex; flex-direction: row;flex-wrap: wrap;justify-content: space-between; gap: 2%;height: 100%;">
                             <% ap.children.forEach(element=> {%>
                                 <% element.stats.forEach(stat=> {%>
                                     <% if(stat.metadata.name=='Kills' ){%>
-                                        <div id="opp" style=" height: 150px;width: 150px;background: url('<%= element.metadata.icon%>');background-size: cover;background-repeat: no-repeat;border-radius: 20px;">
+                                        <!-- <div id="opp" onclick="test('<%= element.metadata.legend_name%>')" style=" height: 150px;width: 150px;background: url('<%= element.metadata.icon%>');background-size: cover;background-repeat: no-repeat;border-radius: 20px;"> -->
+                                        <a href="/<%= ap.metadata.platformUserHandle %>/<%= element.metadata.legend_name%>">
+                                            <div id="opp" onclick="test(this)" style=" height: 150px;width: 150px;background: url('<%= element.metadata.icon%>');background-size: cover;background-repeat: no-repeat;border-radius: 20px;">
+
                                             <% if(stat.value>=500){%>
                                                 <div id="flame">
 
@@ -194,11 +220,11 @@
 
                                                                                             <% } %>
                                                                                                 <% }); %>
-
                                                             </p>
                                                         </div>
                                                     </div>
                                         </div>
+                                    </a>
                                         <% }%>
                                             <% }); %>
                                                 <% }); %>
@@ -207,10 +233,9 @@
                     <p style="font-size: 13px;">*Note: Legends with 'KILLS' trackers active will be displayed</p>
                 </div>
             </div>
-
         </div>
+
 </body>
 <%- include('footer'); -%>
-
 
 </html>

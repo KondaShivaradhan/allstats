@@ -26,7 +26,9 @@ app.get('/bfv', function(req, res) {
 app.get('/BlazingBaneApex', function(req, res) {
     apex.user('BlazingBane', 'PC').then(data => {
         var aap = data.data
+        console.log(aap.children[0].stats);
         global.ap = aap
+
     });
     wait(3 * 1000).then(() => {
         if (typeof ap != 'undefined')
@@ -70,7 +72,8 @@ app.get('/r6/:Name', function(req, res) {
         const id = await r6api.getId(platform, username).then(el => el[0].userId);
         const stats = await r6api.getStats(platform, id).then(el => el[0]);
         const rank = await r6api.getRank('uplay', id);
-        ra = rank[0].seasons['20'].regions.apac
+        ba = rank[0]
+        ra = rank[0].seasons[Object.keys(ba.seasons)].regions.apac
         r6.getGenericStats(un, 'pc', 'all').then(userStats => {
             rdatao = userStats
             global.ro = rdatao
@@ -112,7 +115,8 @@ app.get('/BlazingBaneR6', function(req, res) {
         const id = await r6api.getId(platform, username).then(el => el[0].userId);
         const stats = await r6api.getStats(platform, id).then(el => el[0]);
         const rank = await r6api.getRank('uplay', id);
-        ra = rank[0].seasons['20'].regions.apac
+        ba = rank[0]
+        ra = rank[0].seasons[Object.keys(ba.seasons)].regions.apac
         r6.getGenericStats('BlazingBane', 'pc', 'all').then(userStats => {
             rdata = userStats
             global.r = rdata
@@ -151,6 +155,28 @@ app.get('/BlazingBaneR6', function(req, res) {
 });
 app.get('/discord', function(req, res) {
     res.render('discord')
+});
+app.get('/:User/:Legend', function(req, res) {
+    const id = req.params.User
+    const legend = req.params.Legend
+
+    apex.user(id, 'PC').then(data => {
+
+
+        adata = {...data.data }
+
+        wait(2 * 1000).then(() => {
+            if (typeof adata != 'undefined')
+                res.render('legends', { id, legend, adata })
+            else {
+                res.render('refresh')
+            }
+            throw new Error("error occurred");
+        }).catch(() => {
+            console.log('waiting failed');
+        });
+    });
+
 });
 app.listen(process.env.PORT || 5000)
 console.log('====================================');

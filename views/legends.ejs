@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= legend%>
+    </title>
+    <link rel="preload" href="https://images.hdqwalls.com/wallpapers/4k-apex-legends-2020-ja.jpg" as="image">
+    <link rel="preload" href="https://cdn.wallpapersafari.com/62/4/KyTmfc.jpg" as="image">
+    <link rel="preload" href="https://wallpapercave.com/wp/wp5400337.png" as="image">
+    <link rel="preload" href="https://wallpapercave.com/wp/wp4013111.png" as="image">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <!-- css -->
+    <link rel="stylesheet" href="/public/css/head.css">
+    <link rel="stylesheet" href="/public/css/legend.css">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Potta+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
+    <!-- font awesome -->
+    <script src="https://use.fontawesome.com/4afcb75146.js"></script>
+    <!-- parallaxjs -->
+    <script src="/public/script/parallax.js"></script>
+</head>
+
+<% adata.children.forEach(element=> {%>
+    <% if(element.metadata.legend_name == legend) {%>
+
+        <body style="background: url('<%= element.metadata.bgimage%>');background-position: center;background-repeat: no-repeat;">
+            <% }%>
+
+                <% }); %>
+                    <%- include('header'); -%>
+                        <div class="container-fluid" style="background-color: rgb(0, 0, 0);padding: 20px; ">
+                            <div class="container">
+                                <% adata.children.forEach(element=> {%>
+                                    <% if(element.metadata.legend_name == legend) {%>
+
+                                        <!-- <div class="row" style="height:auto;overflow:hidden;border-radius: 20px;  border: 1px solid #ffffff;
+                        box-shadow:  -1px 1px 5px #ffffff,
+                             -2px 2px 5px #ffffff,
+                             -3px 3px 5px #ffffff,
+                             -4px 4px 5px #ffffff,
+                             -5px 5px 5px #ffffff;">
+                            <img src="<%= element.metadata.bgimage%>" alt="" height="100%" width="100%" srcset="">
+                        </div> -->
+                                        <center>
+                                            <h2>
+                                                <%= legend%>
+                                            </h2>
+                                        </center>
+                                        <hr>
+                                        <div id="stats">
+                                            <div style="background: rgba(117, 117, 75, 0);position: relative;top:-60px">
+                                                <img src="<%= element.metadata.icon%>" height="100%" width="100%" alt="">
+                                            </div>
+
+                                            <div style="height: 100%; width: 100%; background-color: rgba(255, 0, 0, 0);">
+                                                <table>
+                                                    <thead style="border-bottom:black 2px solid ;">
+                                                        <tr>
+                                                            <th scope="col">Name</th>
+                                                            <th scope="col">Value</th>
+                                                            <th scope="col">Rank</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <% element.stats.forEach(stat=> {%>
+                                                            <tr>
+                                                                <th>
+                                                                    <%= stat.metadata.name%>
+                                                                </th>
+                                                                <td>
+                                                                    <%= stat.displayValue%>
+                                                                </td>
+                                                                <%if(stat.displayRank!=''){ %>
+                                                                    <td>
+                                                                        <%=stat.displayRank %>
+                                                                    </td>
+                                                                    <% } else{ %>
+                                                                        <td>
+                                                                            NAN
+                                                                        </td>
+                                                                        <% } %>
+
+                                                            </tr>
+                                                            <% }); %>
+
+                                                    </tbody>
+                                                </table>
+                                                <!-- <% element.stats.forEach(stat=> {%>
+                                    <%= stat.metadata.name%> :
+                                        <%= stat.displayValue%> <br>
+                                            <%if(stat.displayRank!=''){ %>
+                                                RANK :
+                                                <%=stat.displayRank %> <br>
+                                                    <% } %>
+                                                        <% }); %> -->
+                                            </div>
+                                        </div>
+                                        <% }%>
+
+                                            <% }); %>
+                                                <!-- <%= JSON.stringify(adata)%> -->
+                            </div>
+                        </div>
+                        </div>
+                        <!-- <h1>
+            <%= id%>
+        </h1> -->
+
+        </body>
+        <%- include('footer'); -%>
+
+</html>

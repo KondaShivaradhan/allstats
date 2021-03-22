@@ -3,7 +3,7 @@ function ed() {
     var panes = document.getElementsByClassName('pane')
     var shade = document.getElementById('shade')
     var overlap = document.getElementById('overlap')
-    var links = ['/bfv', '/BlazingBaneR6', '/BlazingBaneApex', '/discord']
+    var links = ['/bfv', '/BlazingBaneR6', '/BlazingBaneApex', '/discord', '/pc']
     rect = panes[0].getBoundingClientRect();
     x = rect.left;
     y = rect.top;
@@ -24,6 +24,10 @@ function ed() {
     y4 = rect4.top;
     topElt4 = document.elementFromPoint(x4, y4);
 
+    rect5 = panes[4].getBoundingClientRect();
+    x5 = rect5.left;
+    y5 = rect5.top;
+    topElt5 = document.elementFromPoint(x5, y5);
 
     if (overlap.isSameNode(topElt)) {
         reset(panes, 0)
@@ -57,11 +61,20 @@ function ed() {
 
         options.style.backgroundSize = "cover";
 
+    } else if (overlap.isSameNode(topElt5)) {
+        reset(panes, 4)
+
+        panes[4].addEventListener("click", () => {
+            location.href = links[4];
+        });
+
+        options.style.backgroundSize = "cover";
+
     }
 }
 
 function reset(divs, x) {
-    for (var i = 0; i < 4; i++) {
+    for (var i = 0; i < 5; i++) {
         if (i == x) {
             divs[i].style.zIndex = '300';
             divs[i].style.transform = "translateZ(95px)";

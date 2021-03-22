@@ -220,3 +220,20 @@ td {
     animation: back 1s alternate infinite;
     background: linear-gradient(rgba(0, 0, 0, 0.589), rgba(0, 0, 0, 0.589));
 }
+
+#modal {
+    overflow: scroll;
+    padding: 20px;
+    /* display: none; */
+    border-radius: 30px;
+    box-shadow: 0px 0px 30px 3px black;
+    position: fixed;
+    z-index: 1000;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: auto;
+    width: auto;
+    background: red;
+    transition: all 1s ease-in-out;
+}

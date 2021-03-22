@@ -31,6 +31,13 @@
     background: #555;
 }
 
+#pc {
+    top: 50%;
+    left: 50%;
+    position: relative;
+    transform: translate(-50%, -50%);
+}
+
 #options {
     height: 100vh;
     /* background: url('/public/images/bfv.jpg'); */
