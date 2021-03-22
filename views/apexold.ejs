@@ -35,6 +35,8 @@
         var j = 0;
 
         function start() {
+            var audio = document.getElementById("myaudio");
+            audio.volume = 0.2;
             if (i >= 4) {
                 i = 0
             }
@@ -89,8 +91,7 @@
 
 
         $(document).ready(function() {
-            var audio = document.getElementById("myaudio");
-            audio.volume = 0.2;
+
             $("#close").click(function() {
                 alert('came')
                 $('#modal').hide()
