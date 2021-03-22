@@ -35,8 +35,7 @@
         var j = 0;
 
         function start() {
-            var audio = document.getElementById("myaudio");
-            audio.volume = 0.2;
+
             if (i >= 4) {
                 i = 0
             }
@@ -76,6 +75,7 @@
         }
 
         function audio() {
+
             var audio = document.getElementById('music')
             var acon = document.getElementById('audiocon')
             if (audio.paused) {
@@ -91,7 +91,8 @@
 
 
         $(document).ready(function() {
-
+            var audio = document.getElementById("music");
+            audio.volume = 0.04;
             $("#close").click(function() {
                 alert('came')
                 $('#modal').hide()

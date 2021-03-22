@@ -85,6 +85,10 @@
             acon.className = "fa fa-volume-off";
         }
     }
+    $(document).ready(function() {
+        var audio = document.getElementById("music");
+        audio.volume = 0.04;
+    });
 </script>
 
 <body onload="setInterval(() => {start()}, 5000);">
