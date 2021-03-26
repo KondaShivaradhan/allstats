@@ -9,7 +9,6 @@ var apex = require('./stats/apex.js')
 var r6 = require('./stats/r6.js')
     // var bot = require('./stats/bot.js')
     // const API_KEY = 'f582bd87-1ccb-4f27-ad72-61900e1408d6' // from https://battlefieldtracker.com/site-api
-
 const R6API = require('r6api.js');
 const r6api = new R6API(process.env.username, process.env.password);
 
@@ -82,11 +81,11 @@ app.get('/r6/:Name', function(req, res) {
         const rank = await r6api.getRank('uplay', id, { regions: ['apac'] });
         ba = rank[0]
         ra = rank[0].seasons[Object.keys(ba.seasons)].regions.apac
-        r6.getGenericStats(un, 'pc', 'all').then(userStats => {
+        await r6.getGenericStats(un, 'pc', 'all').then(userStats => {
             rdatao = userStats
             global.ro = rdatao
         })
-        r6.getOperatorStats(un, 'pc').then(userStats => {
+        await r6.getOperatorStats(un, 'pc').then(userStats => {
             var rdatao = userStats
             global.r1o = rdatao
             if (typeof ro != 'undefined' && typeof r1o != 'undefined') {
@@ -147,38 +146,55 @@ app.get('/BlazingBaneR6', function(req, res) {
         const rank = await r6api.getRank('uplay', id);
         ba = rank[0]
         ra = rank[0].seasons[Object.keys(ba.seasons)].regions.apac
-        r6.getGenericStats('BlazingBane', 'pc', 'all').then(userStats => {
+        await r6.getGenericStats('BlazingBane', 'pc', 'all').then(userStats => {
             rdata = userStats
             global.r = rdata
         })
-        r6.getOperatorStats('BlazingBane', 'pc').then(userStats => {
-            var rdata = userStats
-            global.r1 = rdata
-                // JSON.stringify
-        })
-        wait(100).then(() => {
-            if (typeof r != 'undefined' && typeof r1 != 'undefined') {
-                var dmax = 1;
-                var amax = 1;
-                r1.operators.forEach(element => {
-                    if (dmax < element.kills && element.role == 'Defender') {
-                        dmax = element.kills
-                    }
-                })
-                r1.operators.forEach(element => {
+        await r6.getOperatorStats('BlazingBane', 'pc').then(userStats => {
+                var rdata = userStats
+                global.r1 = rdata
+                if (typeof r != 'undefined' && typeof r1 != 'undefined') {
+                    var dmax = 1;
+                    var amax = 1;
+                    r1.operators.forEach(element => {
+                        if (dmax < element.kills && element.role == 'Defender') {
+                            dmax = element.kills
+                        }
+                    })
+                    r1.operators.forEach(element => {
 
-                    if (amax < element.kills && element.role == 'Attacker') {
-                        amax = element.kills
-                    }
-                })
-                res.render('r6', { r, r1, dmax, amax, ra });
-            } else {
-                res.render('refresh')
-            }
-            throw new Error("error occurred");
-        }).catch(() => {
-            console.log('waiting failed');
-        });
+                        if (amax < element.kills && element.role == 'Attacker') {
+                            amax = element.kills
+                        }
+                    })
+                    res.render('r6', { r, r1, dmax, amax, ra });
+                } else {
+                    res.render('refresh')
+                }
+            })
+            // wait(1000).then(() => {
+            //     if (typeof r != 'undefined' && typeof r1 != 'undefined') {
+            //         var dmax = 1;
+            //         var amax = 1;
+            //         r1.operators.forEach(element => {
+            //             if (dmax < element.kills && element.role == 'Defender') {
+            //                 dmax = element.kills
+            //             }
+            //         })
+            //         r1.operators.forEach(element => {
+
+        //             if (amax < element.kills && element.role == 'Attacker') {
+        //                 amax = element.kills
+        //             }
+        //         })
+        //         res.render('r6', { r, r1, dmax, amax, ra });
+        //     } else {
+        //         res.render('refresh')
+        //     }
+        //     throw new Error("error occurred");
+        // }).catch(() => {
+        //     console.log('waiting failed');
+        // });
     }
     start()
 });
