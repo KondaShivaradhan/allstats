@@ -30,7 +30,8 @@
     <script>
         function loaded() {
             var load = document.getElementById('load')
-            $('#load').hide()
+            load.style.display = 'none'
+
             setInterval(() => {
                 start()
             }, 5000);
@@ -50,7 +51,7 @@
 
 <body onload="loaded()">
     <div id="load">
-        <img id="bb" src="/public/images/bb.gif" alt="">
+        <img id="bb" src="/public/images/bb.png" alt="">
     </div>
     <%- include('header'); -%>
         <div class="parallax-window" data-parallax="scroll" data-image-src="https://wallpaperaccess.com/full/4278344.jpg">
