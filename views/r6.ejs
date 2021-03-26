@@ -74,8 +74,8 @@
     }
 
     function loaded() {
-        var load = document.getElementById('load')
-        $('#load').hide()
+        // var load = document.getElementById('load')
+        // $('#load').hide()
         setInterval(() => {
             start()
         }, 5000);
@@ -101,10 +101,10 @@
 </script>
 
 <body onload="loaded()">
-    <div id="load">
+    <!-- <div id="load">
         <img id="bb" src="/public/images/bb.png" alt="">
 
-    </div>
+    </div> -->
     <%- include('header'); -%>
         <audio id="music" loop src="/public/music/r6.mp3"></audio>
         <div id="audio" onclick="audio()">
