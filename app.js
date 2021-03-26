@@ -10,7 +10,7 @@ var r6 = require('./stats/r6.js')
     // var bot = require('./stats/bot.js')
     // const API_KEY = 'f582bd87-1ccb-4f27-ad72-61900e1408d6' // from https://battlefieldtracker.com/site-api
 const R6API = require('r6api.js');
-const r6api = new R6API(process.env.username, process.env.password);
+const r6api = new R6API(process.env.username || "kondashivaradhan007@gmail.com", process.env.password || "Rlsss@5007");
 
 const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
 
