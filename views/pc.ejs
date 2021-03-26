@@ -31,10 +31,6 @@
         function loaded() {
             var load = document.getElementById('load')
             load.style.display = 'none'
-
-            setInterval(() => {
-                start()
-            }, 5000);
         }
 
         $(document).on("click", 'a[href^="#"]', function(event) {
@@ -49,10 +45,10 @@
     </script>
 </head>
 
-<body onload="loaded()">
-    <div id="load">
+<body>
+    <!-- <div id="load">
         <img id="bb" src="/public/images/bb.png" alt="">
-    </div>
+    </div> -->
     <%- include('header'); -%>
         <div class="parallax-window" data-parallax="scroll" data-image-src="https://wallpaperaccess.com/full/4278344.jpg">
             <div style="background: linear-gradient(140deg,rgba(0, 0, 0, 0.466),rgba(0, 0, 0, 0.472),black);top: 50%;position: relative;height: 100%;
