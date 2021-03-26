@@ -19,6 +19,21 @@ body {
     transform: translate(-50%, -50%);
 }
 
+#load {
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    background: black;
+    z-index: 10000;
+    transition: all 0.7s;
+}
+
+#bb {
+    position: relative;
+    top: 50%;
+    transform: translate(0, -50%);
+}
+
 #heading {
     width: 70%;
     font-family: "Ping 2", sans-serif;

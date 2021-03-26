@@ -40,29 +40,62 @@
 
         <body style="background: url('<%= element.metadata.bgimage%>');background-position: center;background-repeat: no-repeat;">
             <% }%>
-
                 <% }); %>
                     <%- include('header'); -%>
                         <div class="container-fluid" style="background-color: rgb(0, 0, 0);padding: 20px; ">
                             <div class="container">
                                 <% adata.children.forEach(element=> {%>
                                     <% if(element.metadata.legend_name == legend) {%>
-
-                                        <!-- <div class="row" style="height:auto;overflow:hidden;border-radius: 20px;  border: 1px solid #ffffff;
-                        box-shadow:  -1px 1px 5px #ffffff,
-                             -2px 2px 5px #ffffff,
-                             -3px 3px 5px #ffffff,
-                             -4px 4px 5px #ffffff,
-                             -5px 5px 5px #ffffff;">
-                            <img src="<%= element.metadata.bgimage%>" alt="" height="100%" width="100%" srcset="">
-                        </div> -->
                                         <center>
                                             <h2>
                                                 <%= legend%>
                                             </h2>
                                         </center>
                                         <hr>
-                                        <div id="stats">
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <img src="<%= element.metadata.icon%>" height="100%" width="100%" alt="">
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <table>
+                                                    <thead style="border-bottom:black 2px solid ;">
+                                                        <tr>
+                                                            <th scope="col">Name</th>
+                                                            <th scope="col">Value</th>
+                                                            <th scope="col">Rank</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <% element.stats.forEach(stat=> {%>
+                                                            <tr>
+                                                                <th>
+                                                                    <%= stat.metadata.name%>
+                                                                </th>
+                                                                <td>
+                                                                    <%= stat.displayValue%>
+                                                                </td>
+                                                                <%if(stat.displayRank!=''){ %>
+                                                                    <td>
+                                                                        <%=stat.displayRank %>
+                                                                    </td>
+                                                                    <% } else{ %>
+                                                                        <td>
+                                                                            Still NOOB!
+                                                                        </td>
+                                                                        <% } %>
+
+                                                            </tr>
+                                                            <% }); %>
+
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <!-- <div id="stats">
+                                            <div class="container">
+
+
+                                            </div>
                                             <div style="background: rgba(117, 117, 75, 0);position: relative;top:-60px">
                                                 <img src="<%= element.metadata.icon%>" height="100%" width="100%" alt="">
                                             </div>
@@ -100,27 +133,15 @@
 
                                                     </tbody>
                                                 </table>
-                                                <!-- <% element.stats.forEach(stat=> {%>
-                                    <%= stat.metadata.name%> :
-                                        <%= stat.displayValue%> <br>
-                                            <%if(stat.displayRank!=''){ %>
-                                                RANK :
-                                                <%=stat.displayRank %> <br>
-                                                    <% } %>
-                                                        <% }); %> -->
+
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <% }%>
 
                                             <% }); %>
-                                                <!-- <%= JSON.stringify(adata)%> -->
                             </div>
                         </div>
                         </div>
-                        <!-- <h1>
-            <%= id%>
-        </h1> -->
-
         </body>
         <%- include('footer'); -%>
 

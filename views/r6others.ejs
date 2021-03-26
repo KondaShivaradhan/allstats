@@ -4,10 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>
+        <%= ro.username %>
+    </title>
     <!-- bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <!-- css -->
+    <link rel="icon" href="https://img1.cgtrader.com/items/2018582/0dd527fc09/3d-printed-rainbow-six-siege-operator-icons-3d-model-stl.jpg">
+
     <link rel="stylesheet" href="/public/css/r6.css">
     <link rel="stylesheet" href="/public/css/head.css">
     <link rel="preload" href="https://www.teahub.io/photos/full/12-124675_rainbow-six-siege.jpg" as="image">
@@ -71,6 +75,14 @@
         i++
         j++;
     }
+
+    function loaded() {
+        var load = document.getElementById('load')
+        $('#load').hide()
+        setInterval(() => {
+            start()
+        }, 5000);
+    }
     $(document).ready(function() {
         var audio = document.getElementById("music");
         audio.volume = 0.04;
@@ -91,8 +103,10 @@
     }
 </script>
 
-<body onload="setInterval(() => {start()}, 5000);">
-
+<body onload="loaded()">
+    <div id="load">
+        <img id="bb" src="/public/images/bb.gif" alt="">
+    </div>
     <%- include('headerO'); -%>
         <audio id="music" loop src="/public/music/r6.mp3"></audio>
 

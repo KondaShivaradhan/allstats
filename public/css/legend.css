@@ -15,13 +15,13 @@ thead {}
 
 table {
     padding: 10px;
-    background-color: white;
+    color: white;
+    /* background-color: white; */
     position: relative;
-    /* top: 50%;
+    top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%); */
+    transform: translate(-50%, -50%);
     width: 100%;
-    height: 100%;
 }
 
 h2 {
@@ -33,7 +33,8 @@ h2 {
 }
 
 thead th {
-    background-color: aqua;
+    color: white;
+    background-color: rgb(133, 133, 133);
 }
 
 th,

@@ -30,7 +30,7 @@ app.get('/BlazingBaneApex', function(req, res) {
         global.ap = aap
 
     });
-    wait(3 * 1000).then(() => {
+    wait(1 * 1000).then(() => {
         if (typeof ap != 'undefined')
             res.render('apexold', { ap });
         else {
@@ -51,7 +51,7 @@ app.get('/apex/:Name', function(req, res) {
         console.log(aap.children[0].stats);
         global.ap = aap
     });
-    wait(3 * 1000).then(() => {
+    wait(1 * 1000).then(() => {
         if (typeof ap != 'undefined')
             res.render('apexold', { ap });
         else {
@@ -168,7 +168,7 @@ app.get('/:User/:Legend', function(req, res) {
 
         adata = {...data.data }
 
-        wait(2 * 1000).then(() => {
+        wait(1 * 1000).then(() => {
             if (typeof adata != 'undefined')
                 res.render('legends', { id, legend, adata })
             else {

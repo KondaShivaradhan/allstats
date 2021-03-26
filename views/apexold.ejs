@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Apex</title>
+    <link rel="icon" href="https://i.redd.it/w8cver361nf21.png">
+
     <link rel="preload" href="https://images.hdqwalls.com/wallpapers/4k-apex-legends-2020-ja.jpg" as="image">
     <link rel="preload" href="https://cdn.wallpapersafari.com/62/4/KyTmfc.jpg" as="image">
     <link rel="preload" href="https://wallpapercave.com/wp/wp5400337.png" as="image">
@@ -62,20 +64,7 @@
             j++;
         }
 
-        function test(y) {
-            var temp = '<span id="close">x</span>'
-            var content = document.createTextNode(temp);
-            var modal = document.getElementById('modal');
-            modal.style.display = 'block'
-            $("#modal").empty();
-            var cln = y.cloneNode(true);
-            cln.appendChild(content);
-
-            modal.appendChild(cln)
-        }
-
         function audio() {
-
             var audio = document.getElementById('music')
             var acon = document.getElementById('audiocon')
             if (audio.paused) {
@@ -89,32 +78,31 @@
             }
         }
 
-
+        function loaded() {
+            var load = document.getElementById('load')
+            $('#load').hide()
+            setInterval(() => {
+                start()
+            }, 5000);
+        }
         $(document).ready(function() {
             var audio = document.getElementById("music");
             audio.volume = 0.04;
-            $("#close").click(function() {
-                alert('came')
-                $('#modal').hide()
-                var modal = document.getElementById('modal');
 
-            });
         });
     </script>
 
 </head>
 
-<body onload=" setInterval(() => {
-    start()
-}, 5000);">
+<body onload="loaded()">
+    <div id="load">
+        <img id="bb" src="/public/images/bb.gif" alt="">
+    </div>
     <%- include('header'); -%>
         <audio autoplay id="music" loop src="/public/music/apex.mp3"></audio>
         <div id="audio" onclick="audio()">
             <i id="audiocon" class="fa fa-volume-off" aria-hidden="true"></i>
         </div>
-        <!-- <div id="modal">
-            <span id="close">x</span>
-        </div> -->
         <div id="card" name="apexlegends">
             <div id="apexL">
                 <div class="row" id="back" style="text-align: center;">

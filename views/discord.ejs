@@ -36,12 +36,20 @@
     <script src="/public/script/parallax.js"></script>
     <!-- RXJS -->
     <script src="https://unpkg.com/rxjs/bundles/rxjs.umd.min.js"></script>
+    <script>
+        function loaded() {
+            var load = document.getElementById('load')
 
+            $('#load').hide()
+        }
+    </script>
 </head>
 
-<body>
+<body onload="loaded()">
+    <div id="load">
+        <img id="bb" src="/public/images/bb.gif" alt="">
+    </div>
     <%- include('header'); -%>
-
         <div class="wrap">
             <div class="bg"></div>
             <div class="container" id="text" style="height: 90vh;padding: 10px;">

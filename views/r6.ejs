@@ -4,10 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Bane's R6</title>
     <!-- bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <!-- css -->
+    <link rel="icon" href="https://img1.cgtrader.com/items/2018582/0dd527fc09/3d-printed-rainbow-six-siege-operator-icons-3d-model-stl.jpg">
     <link rel="stylesheet" href="/public/css/r6.css">
     <link rel="stylesheet" href="/public/css/head.css">
     <link rel="preload" href="https://www.teahub.io/photos/full/12-124675_rainbow-six-siege.jpg" as="image">
@@ -72,6 +73,18 @@
         j++;
     }
 
+    function loaded() {
+        var load = document.getElementById('load')
+        $('#load').hide()
+        setInterval(() => {
+            start()
+        }, 5000);
+    }
+    $(document).ready(function() {
+        var audio = document.getElementById("music");
+        audio.volume = 0.04;
+    });
+
     function audio() {
         var audio = document.getElementById('music')
         var acon = document.getElementById('audiocon')
@@ -85,257 +98,256 @@
             acon.className = "fa fa-volume-off";
         }
     }
-    $(document).ready(function() {
-        var audio = document.getElementById("music");
-        audio.volume = 0.04;
-    });
 </script>
 
-<body onload="setInterval(() => {start()}, 5000);">
-
+<body onload="loaded()">
+    <div id="load">
+        <img id="bb" src="/public/images/bb.gif" alt="">
+    </div>
     <%- include('header'); -%>
         <audio id="music" loop src="/public/music/r6.mp3"></audio>
         <div id="audio" onclick="audio()">
             <i id="audiocon" class="fa fa-volume-off" aria-hidden="true"></i>
         </div>
-        <div id="R6C">
-            <div class="row" id="back" style="text-align: center;">
-                <div id="shade" class="col-md-12" style="height: 60vh;">
-                    <div style="position: relative;left: 50%;top: 50%;transform: translate(-50%,-50%);">
-                        <div id="eddi" style="font-size: 28px;width: auto;margin: 0 auto;background-color:rgba(80, 18, 18, 0);">
-                            Rainbow 6 Siege
+        <div id="card" name="apexlegends">
+            <div id="R6C">
+                <div class="row" id="back" style="text-align: center;overflow-x:hidden ;">
+                    <div id="shade" class="col-md-12" style="height: 60vh;overflow-x:hidden ;">
+                        <div style="overflow-x:hidden ;position: relative;left: 50%;top: 50%;transform: translate(-50%,-50%);">
+                            <div id="eddi" style="overflow-x:hidden ;font-size: 28px;width: 100%;margin: 0 auto;background-color:rgba(80, 18, 18, 0);">
+                                Rainbow 6 Siege
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="parawindow">
+                    <div id="para">
+                        <h3 id="Ghead">
+                            <%= r.username %>
+                        </h3>
+                    </div>
+                </div>
+                <div class="con">
+                    <div style="text-align: center;margin-top: 2%;">
+
+                        <div style="display: inline-block;">
+
+                            <table>
+
+                                <tr style=" font-family: 'Roboto', sans-serif;">
+                                    <td> <span style="font-size: 15px;font-weight: 900;letter-spacing: 2px;">Level</span>
+                                    </td>
+                                    <td><span style="font-size: 15px;font-weight: 900;letter-spacing: 2px;">Kills</span>
+                                    </td>
+                                    <td> <span style="font-size: 15px;font-weight: 900;letter-spacing: 2px;">W/L</span>
+
+                                    </td>
+                                    <td>
+                                        </span><span style="font-size: 15px;font-weight: 900;letter-spacing: 2px;">
+                                        K/D</span></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span style="font-size: 20px;color: rgb(255, 255, 255);">
+                                        <%= r.progression.level%>
+                                    </span>
+                                    </td>
+                                    <td>
+                                        <span style="font-size: 20px;color: white;">
+                                            <%= r.stats.general.kills%>
+                                    </span>
+                                    </td>
+                                    <td><span style="font-size: 20px;color: white;">
+                                        <%= r.stats.general.wl%>
+                                </td>
+                                <td> <span style="font-size: 20px;color: white;">
+                                        <%= r.stats.general.kd%>
+                                    </span></td>
+                                </tr>
+                            </table>
+
+                        </div>
+
+                    </div>
+                    <br>
+
+                    <!-- ranked -->
+                    <div id="ranked" class="container" style="text-align: center;">
+                        <table style="overflow: hidden;width: auto;background-color: rgba(76, 95, 98, 0.404);margin: 0 auto;border-radius: 12px;">
+                            <tr>
+                                <th colspan="2"> <span style="font-size: 20px;letter-spacing: 1px;"><%= ra.current.name%></span></th>
+                            </tr>
+                            <tr style="border-bottom: none;">
+                                <td rowspan="6" style="border-right: white solid 1px;"><img d src="<%= ra.current.image%>" alt="Silver 1" style="width: 120px;"></td>
+                            </tr>
+
+                            <tr>
+                                <td>MMR - <span>  <%= ra.current.mmr%></span></td>
+
+                            </tr>
+                            <tr>
+                                <td>Kills - <span>  <%= ra.kills%></span></td>
+
+                            </tr>
+                            <tr>
+                                <td>Death - <span>  <%= ra.deaths%></span></td>
+
+                            </tr>
+                            <tr>
+                                <td>Wins - <span>  <%= ra.wins%></span></td>
+
+                            </tr>
+                            <tr style="border: none;">
+                                <td>Loss - <span>  <%= ra.losses%></span></td>
+                            </tr>
+
+                        </table>
+                    </div>
+                    <br>
+                    <!-- top operators -->
+                    <div class="row" id="topOp">
+                        <div class="col-md-12">
+                            <h3 id="Ghead">Most Played</h3>
+
+                        </div>
+                        <div class="col-md-6" id="attackB">
+                            <% r1.operators.forEach(element=> {%>
+                                <% if(element.kills == amax) { var maxd = element %>
+                                    <div>
+                                        <span style="font-weight: 600;color: rgb(127, 255, 255);letter-spacing: 1px;">
+                                                    <%= element.name%>
+                                                    </span>
+                                        <img src="<%= element.badge_image%>" alt="">
+                                        <p class="price">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <%= element.kills%> <span style="color:rgb(223, 169, 10);font-weight: 600;">Kills</span><br>
+                                                        <%= parseFloat(element.kd).toFixed(2) %> <span style="color:rgb(223, 169, 10);font-weight: 600;">KD</span><br>
+
+                                                            <%= parseFloat(element.wl).toFixed(2) %> <span style="color:rgb(223, 169, 10);font-weight: 600;">WL</span><br>
+                                                                <%= element.headshots %> <span style="color:rgb(223, 169, 10);font-weight: 600;">Kills</span><br>
+
+                                                                    <%= Math.round(element.playtime/3600) %> <span style="color:rgb(223, 169, 10);font-weight: 600;">Hours</span></div>
+
+                                                <div class="col-md-6">
+
+                                                    <% for (const value of element.abilities) { %>
+                                                        <% for(var value2 in value){ %>
+                                                            <%= value[value2] %> <br>
+                                                                <% } %>
+                                                                    <%  }%>
+                                                </div>
+                                            </div>
+                                        </p>
+                                    </div>
+                                    <% } %>
+                                        <% }); %>
+                        </div>
+                        <div class="col-md-6" id="defendB">
+                            <% r1.operators.forEach(element=> {%>
+                                <% if(element.kills == dmax) { var maxd = element %>
+
+                                    <div>
+                                        <span style="font-weight: 600;color: rgb(127, 255, 255);letter-spacing: 1px;">
+                                                    <%= element.name%>
+                                                    </span>
+                                        <img src="<%= element.badge_image%>" alt="">
+                                        <p class="price">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <%= element.kills%> <span style="color:rgb(223, 169, 10);font-weight: 600;">Kills</span><br>
+                                                        <%= parseFloat(element.kd).toFixed(2) %> <span style="color:rgb(223, 169, 10);font-weight: 600;">KD</span><br>
+
+                                                            <%= parseFloat(element.wl).toFixed(2) %> <span style="color:rgb(223, 169, 10);font-weight: 600;">WL</span><br>
+                                                                <%= element.headshots %> <span style="color:rgb(223, 169, 10);font-weight: 600;">Kills</span><br>
+
+                                                                    <%= Math.round(element.playtime/3600) %> <span style="color:rgb(223, 169, 10);font-weight: 600;">Hours</span></div>
+                                                <br>
+
+                                                <div class="col-md-6">
+
+                                                    <% for (const value of element.abilities) { %>
+                                                        <% for(var value2 in value){ %>
+
+                                                            <%= value[value2] %> <br>
+                                                                <% } %>
+                                                                    <%  }%>
+                                                </div>
+                                            </div>
+
+                                        </p>
+                                    </div>
+
+                                    <% } %>
+                                        <% }); %>
+                        </div>
+                    </div>
+                    <!-- Attacking Operators -->
+                    <div id="parawindow">
+                        <div id="para">
+                            <h3 id="Ghead">Attackers </h3>
+                        </div>
+                    </div>
+                    <div style="padding: 30px; text-align: center;height:70%;position: relative;width: 100%;background: linear-gradient(45deg,rgb(57, 132, 245), rgba(0, 0, 0, 0.315), rgba(0, 0, 0, 0.315), rgb(57, 132, 245));">
+                        <div style="display: flex; flex-direction: row-reverse;flex-wrap: wrap;justify-content: space-evenly;gap: 1%;">
+                            <% r1.operators.forEach(element=> {%>
+                                <% if(!element.name.includes('Recruit') && !element.role.includes('Defender')) {%>
+                                    <div id="opp" style="background: url('<%= element.badge_image%>');background-size: cover;background-repeat: no-repeat;border-radius: 20px;">
+                                        <div id="stattop" style="height: 100%;width:100%;position: relative;top:50%;left:50%;transform: translate(-50%,-50%);">
+                                            <div id="stats">
+                                                <h5 style="font-weight: 500;">
+                                                    <span style="font-weight: 600;color: rgb(127, 255, 255);">
+                                                    <%= element.name%>
+                                                </span>
+                                                </h5>
+                                                <p class="price">
+                                                    <%= element.kills%> <span style="color:rgb(223, 169, 10);font-weight: 600;">Kills</span><br>
+
+                                                        <%= element.kd%> <span style="color:rgb(223, 169, 10);font-weight: 600;">KD</span><br>
+                                                            <%= element.wl%> <span style="color:rgb(223, 169, 10);font-weight: 600;">WL</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <% } %>
+
+                                        <% }); %>
+                        </div>
+                    </div>
+                    <!-- Defending Operators -->
+                    <div id="parawindow">
+                        <div id="para">
+                            <h3 id="Ghead">Defenders</h3>
+                        </div>
+                    </div>
+                    <div style="padding: 30px;text-align: center; height:70%;position: relative;width: 100%;background: linear-gradient(135deg,rgb(240, 177, 60),rgb(0, 0, 0),rgb(0, 0, 0),rgb(240, 177, 60));">
+                        <div style="display: flex; flex-direction: row-reverse;flex-wrap: wrap;justify-content: space-evenly;gap: 1%;">
+                            <% r1.operators.forEach(element=> {%>
+                                <% if( !element.name.includes('Recruit') && !element.role.includes('Attacker')) {%>
+                                    <div id="opp" style="background: url('<%= element.badge_image%>');background-size: cover;background-repeat: no-repeat;border-radius: 20px;">
+                                        <div id="stattop" style="height: 100%;width:100%;position: relative;top:50%;left:50%;transform: translate(-50%,-50%);">
+                                            <div id="stats">
+                                                <h5 style="font-weight: 500;">
+                                                    <span style="font-weight: 600;color: rgb(127, 255, 255);">
+                                                        <%= element.name%>
+                                                    </span>
+                                                </h5>
+                                                <p class="price">
+                                                    <%= element.kills%> <span style="color:rgb(223, 169, 10);font-weight: 600;">Kills</span><br>
+                                                        <%= element.kd%> <span style="color:rgb(223, 169, 10);font-weight: 600;">KD</span><br>
+                                                            <%= element.wl%> <span style="color:rgb(223, 169, 10);font-weight: 600;">WL</span>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <% } %>
+                                        <% }); %>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div id="parawindow">
-                <div id="para">
-                    <h3 id="Ghead">
-                        <%= r.username %>
-                    </h3>
-                </div>
-            </div>
-            <div class="con">
-                <div style="text-align: center;margin-top: 2%;">
-
-                    <div style="display: inline-block;">
-
-                        <table>
-
-                            <tr style=" font-family: 'Roboto', sans-serif;">
-                                <td> <span style="font-size: 15px;font-weight: 900;letter-spacing: 2px;">Level</span>
-                                </td>
-                                <td><span style="font-size: 15px;font-weight: 900;letter-spacing: 2px;">Kills</span>
-                                </td>
-                                <td> <span style="font-size: 15px;font-weight: 900;letter-spacing: 2px;">W/L</span>
-
-                                </td>
-                                <td>
-                                    </span><span style="font-size: 15px;font-weight: 900;letter-spacing: 2px;">
-                                        K/D</span></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <span style="font-size: 30px;color: rgb(255, 255, 255);">
-                                        <%= r.progression.level%>
-                                    </span>
-                                </td>
-                                <td>
-                                    <span style="font-size: 30px;color: white;">
-                                            <%= r.stats.general.kills%>
-                                    </span>
-                                </td>
-                                <td><span style="font-size: 30px;color: white;">
-                                        <%= r.stats.general.wl%>
-                                </td>
-                                <td> <span style="font-size: 30px;color: white;">
-                                        <%= r.stats.general.kd%>
-                                    </span></td>
-                            </tr>
-                        </table>
-
-                    </div>
-
-                </div>
-                <br>
-
-                <!-- ranked -->
-                <div id="ranked" class="container" style="text-align: center;">
-                    <table style="overflow: hidden;width: auto;background-color: rgba(76, 95, 98, 0.404);margin: 0 auto;border-radius: 12px;">
-                        <tr>
-                            <th colspan="2"> <span style="font-size: 20px;letter-spacing: 1px;"><%= ra.current.name%></span></th>
-                        </tr>
-                        <tr style="border-bottom: none;">
-                            <td rowspan="6" style="border-right: white solid 1px;"><img d src="<%= ra.current.image%>" alt="Silver 1" style="width: 120px;"></td>
-                        </tr>
-
-                        <tr>
-                            <td>MMR - <span>  <%= ra.current.mmr%></span></td>
-
-                        </tr>
-                        <tr>
-                            <td>Kills - <span>  <%= ra.kills%></span></td>
-
-                        </tr>
-                        <tr>
-                            <td>Death - <span>  <%= ra.deaths%></span></td>
-
-                        </tr>
-                        <tr>
-                            <td>Wins - <span>  <%= ra.wins%></span></td>
-
-                        </tr>
-                        <tr style="border: none;">
-                            <td>Loss - <span>  <%= ra.losses%></span></td>
-                        </tr>
-
-                    </table>
-                </div>
-                <br>
-                <!-- top operators -->
-                <div class="row" id="topOp">
-                    <div class="col-md-12">
-                        <h3 id="Ghead">Most Played</h3>
-
-                    </div>
-                    <div class="col-md-6" id="attackB">
-                        <% r1.operators.forEach(element=> {%>
-                            <% if(element.kills == amax) { var maxd = element %>
-                                <div>
-                                    <span style="font-weight: 600;color: rgb(127, 255, 255);letter-spacing: 1px;">
-                                                    <%= element.name%>
-                                                    </span>
-                                    <img src="<%= element.badge_image%>" alt="">
-                                    <p class="price">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <%= element.kills%> <span style="color:rgb(223, 169, 10);font-weight: 600;">Kills</span><br>
-                                                    <%= parseFloat(element.kd).toFixed(2) %> <span style="color:rgb(223, 169, 10);font-weight: 600;">KD</span><br>
-
-                                                        <%= parseFloat(element.wl).toFixed(2) %> <span style="color:rgb(223, 169, 10);font-weight: 600;">WL</span><br>
-                                                            <%= element.headshots %> <span style="color:rgb(223, 169, 10);font-weight: 600;">Kills</span><br>
-
-                                                                <%= Math.round(element.playtime/3600) %> <span style="color:rgb(223, 169, 10);font-weight: 600;">Hours</span></div>
-
-                                            <div class="col-md-6">
-
-                                                <% for (const value of element.abilities) { %>
-                                                    <% for(var value2 in value){ %>
-                                                        <%= value[value2] %> <br>
-                                                            <% } %>
-                                                                <%  }%>
-                                            </div>
-                                        </div>
-                                    </p>
-                                </div>
-                                <% } %>
-                                    <% }); %>
-                    </div>
-                    <div class="col-md-6" id="defendB">
-                        <% r1.operators.forEach(element=> {%>
-                            <% if(element.kills == dmax) { var maxd = element %>
-
-                                <div>
-                                    <span style="font-weight: 600;color: rgb(127, 255, 255);letter-spacing: 1px;">
-                                                    <%= element.name%>
-                                                    </span>
-                                    <img src="<%= element.badge_image%>" alt="">
-                                    <p class="price">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <%= element.kills%> <span style="color:rgb(223, 169, 10);font-weight: 600;">Kills</span><br>
-                                                    <%= parseFloat(element.kd).toFixed(2) %> <span style="color:rgb(223, 169, 10);font-weight: 600;">KD</span><br>
-
-                                                        <%= parseFloat(element.wl).toFixed(2) %> <span style="color:rgb(223, 169, 10);font-weight: 600;">WL</span><br>
-                                                            <%= element.headshots %> <span style="color:rgb(223, 169, 10);font-weight: 600;">Kills</span><br>
-
-                                                                <%= Math.round(element.playtime/3600) %> <span style="color:rgb(223, 169, 10);font-weight: 600;">Hours</span></div>
-                                            <br>
-
-                                            <div class="col-md-6">
-
-                                                <% for (const value of element.abilities) { %>
-                                                    <% for(var value2 in value){ %>
-
-                                                        <%= value[value2] %> <br>
-                                                            <% } %>
-                                                                <%  }%>
-                                            </div>
-                                        </div>
-
-                                    </p>
-                                </div>
-
-                                <% } %>
-                                    <% }); %>
-                    </div>
-                </div>
-                <!-- Attacking Operators -->
-                <div id="parawindow">
-                    <div id="para">
-                        <h3 id="Ghead">Attackers </h3>
-                    </div>
-                </div>
-                <div style="padding: 30px; text-align: center;height:70%;position: relative;width: 100%;background: linear-gradient(45deg,rgb(57, 132, 245), rgba(0, 0, 0, 0.315), rgba(0, 0, 0, 0.315), rgb(57, 132, 245));">
-                    <div style="display: flex; flex-direction: row-reverse;flex-wrap: wrap;justify-content: space-evenly;gap: 1%;">
-                        <% r1.operators.forEach(element=> {%>
-                            <% if(!element.name.includes('Recruit') && !element.role.includes('Defender')) {%>
-                                <div id="opp" style="background: url('<%= element.badge_image%>');background-size: cover;background-repeat: no-repeat;border-radius: 20px;">
-                                    <div id="stattop" style="height: 100%;width:100%;position: relative;top:50%;left:50%;transform: translate(-50%,-50%);">
-                                        <div id="stats">
-                                            <h5 style="font-weight: 500;">
-                                                <span style="font-weight: 600;color: rgb(127, 255, 255);">
-                                                    <%= element.name%>
-                                                </span>
-                                            </h5>
-                                            <p class="price">
-                                                <%= element.kills%> <span style="color:rgb(223, 169, 10);font-weight: 600;">Kills</span><br>
-
-                                                    <%= element.kd%> <span style="color:rgb(223, 169, 10);font-weight: 600;">KD</span><br>
-                                                        <%= element.wl%> <span style="color:rgb(223, 169, 10);font-weight: 600;">WL</span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <% } %>
-
-                                    <% }); %>
-                    </div>
-                </div>
-                <!-- Defending Operators -->
-                <div id="parawindow">
-                    <div id="para">
-                        <h3 id="Ghead">Defenders</h3>
-                    </div>
-                </div>
-                <div style="padding: 30px;text-align: center; height:70%;position: relative;width: 100%;background: linear-gradient(135deg,rgb(240, 177, 60),rgb(0, 0, 0),rgb(0, 0, 0),rgb(240, 177, 60));">
-                    <div style="display: flex; flex-direction: row-reverse;flex-wrap: wrap;justify-content: space-evenly;gap: 1%;">
-                        <% r1.operators.forEach(element=> {%>
-                            <% if( !element.name.includes('Recruit') && !element.role.includes('Attacker')) {%>
-                                <div id="opp" style="background: url('<%= element.badge_image%>');background-size: cover;background-repeat: no-repeat;border-radius: 20px;">
-                                    <div id="stattop" style="height: 100%;width:100%;position: relative;top:50%;left:50%;transform: translate(-50%,-50%);">
-                                        <div id="stats">
-                                            <h5 style="font-weight: 500;">
-                                                <span style="font-weight: 600;color: rgb(127, 255, 255);">
-                                                        <%= element.name%>
-                                                    </span>
-                                            </h5>
-                                            <p class="price">
-                                                <%= element.kills%> <span style="color:rgb(223, 169, 10);font-weight: 600;">Kills</span><br>
-                                                    <%= element.kd%> <span style="color:rgb(223, 169, 10);font-weight: 600;">KD</span><br>
-                                                        <%= element.wl%> <span style="color:rgb(223, 169, 10);font-weight: 600;">WL</span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <% } %>
-                                    <% }); %>
-                    </div>
-                </div>
-            </div>
         </div>
-
 </body>
 <%- include('footer') -%>
 

@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PC</title>
+    <link rel="icon" href="https://icons-for-free.com/iconfiles/png/512/desktop+monitor+pc+screen+web+icon-1320168141814699293.png">
+
     <!-- bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <!-- css -->
@@ -26,6 +28,14 @@
     <!-- parallaxjs -->
     <script src="/public/script/parallax.js"></script>
     <script>
+        function loaded() {
+            var load = document.getElementById('load')
+            $('#load').hide()
+            setInterval(() => {
+                start()
+            }, 5000);
+        }
+
         $(document).on("click", 'a[href^="#"]', function(event) {
             event.preventDefault();
 
@@ -38,7 +48,10 @@
     </script>
 </head>
 
-<body>
+<body onload="loaded()">
+    <div id="load">
+        <img id="bb" src="/public/images/bb.gif" alt="">
+    </div>
     <%- include('header'); -%>
         <div class="parallax-window" data-parallax="scroll" data-image-src="https://wallpaperaccess.com/full/4278344.jpg">
             <div style="background: linear-gradient(140deg,rgba(0, 0, 0, 0.466),rgba(0, 0, 0, 0.472),black);top: 50%;position: relative;height: 100%;
