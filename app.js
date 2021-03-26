@@ -26,43 +26,51 @@ app.get('/bfv', function(req, res) {
 app.get('/BlazingBaneApex', function(req, res) {
     apex.user('BlazingBane', 'PC').then(data => {
         var aap = data.data
-        console.log(aap.children[0].stats);
         global.ap = aap
-
-    });
-    wait(2 * 1000).then(() => {
         if (typeof ap != 'undefined')
             res.render('apexold', { ap });
         else {
             res.render('refresh')
 
         }
-        throw new Error("error occurred");
-    }).catch(() => {
-        console.log('waiting failed');
     });
+
+    // wait(1 * 1000).then(() => {
+    //     if (typeof ap != 'undefined')
+    //         res.render('apexold', { ap });
+    //     else {
+    //         res.render('refresh')
+    //     }
+    //     throw new Error("error occurred");
+    // }).catch(() => {
+    //     console.log('waiting failed');
+    // });
 
 });
 app.get('/apex/:Name', function(req, res) {
     const id = req.params.Name
     apex.user(id, 'PC').then(data => {
 
-        var aap = data.data
-        console.log(aap.children[0].stats);
-        global.ap = aap
-    });
-    wait(2 * 1000).then(() => {
+        global.ap = {...data.data }
         if (typeof ap != 'undefined')
             res.render('apexold', { ap });
         else {
             res.render('refresh')
 
         }
-        throw new Error("error occurred");
-    }).catch(() => {
-        console.log('waiting failed');
     });
 
+    // wait(1 * 1000).then(() => {
+    //     if (typeof ap != 'undefined')
+    //         res.render('apexold', { ap });
+    //     else {
+    //         res.render('refresh')
+
+    //     }
+    //     throw new Error("error occurred");
+    // }).catch(() => {
+    //     console.log('waiting failed');
+    // });
 });
 app.get('/r6/:Name', function(req, res) {
     const un = req.params.Name
@@ -71,20 +79,16 @@ app.get('/r6/:Name', function(req, res) {
     const start = async function() {
         const id = await r6api.getId(platform, username).then(el => el[0].userId);
         const stats = await r6api.getStats(platform, id).then(el => el[0]);
-        const rank = await r6api.getRank('uplay', id);
+        const rank = await r6api.getRank('uplay', id, { regions: ['apac'] });
         ba = rank[0]
         ra = rank[0].seasons[Object.keys(ba.seasons)].regions.apac
         r6.getGenericStats(un, 'pc', 'all').then(userStats => {
             rdatao = userStats
             global.ro = rdatao
-
         })
         r6.getOperatorStats(un, 'pc').then(userStats => {
             var rdatao = userStats
             global.r1o = rdatao
-        })
-
-        wait(1000).then(() => {
             if (typeof ro != 'undefined' && typeof r1o != 'undefined') {
                 var dmax = 1;
                 var amax = 1;
@@ -99,12 +103,35 @@ app.get('/r6/:Name', function(req, res) {
                         amax = element.kills
                     }
                 })
+
                 res.render('r6others', { ro, r1o, dmax, amax, ra });
+            } else {
+                res.render('refresh')
             }
-            throw new Error("error occurred");
-        }).catch(() => {
-            console.log('waiting failed');
-        });
+        })
+
+        // wait(1000).then(() => {
+        //     if (typeof ro != 'undefined' && typeof r1o != 'undefined') {
+        //         var dmax = 1;
+        //         var amax = 1;
+        //         r1o.operators.forEach(element => {
+        //             if (dmax < element.kills && element.role == 'Defender') {
+        //                 dmax = element.kills
+        //             }
+        //         })
+        //         r1o.operators.forEach(element => {
+
+        //             if (amax < element.kills && element.role == 'Attacker') {
+        //                 amax = element.kills
+        //             }
+        //         })
+
+        //         res.render('r6others', { ro, r1o, dmax, amax, ra });
+        //     }
+        //     throw new Error("error occurred");
+        // }).catch(() => {
+        //     console.log('waiting failed');
+        // });
     }
     start()
 });
@@ -129,7 +156,7 @@ app.get('/BlazingBaneR6', function(req, res) {
             global.r1 = rdata
                 // JSON.stringify
         })
-        wait(1000).then(() => {
+        wait(100).then(() => {
             if (typeof r != 'undefined' && typeof r1 != 'undefined') {
                 var dmax = 1;
                 var amax = 1;
@@ -147,7 +174,6 @@ app.get('/BlazingBaneR6', function(req, res) {
                 res.render('r6', { r, r1, dmax, amax, ra });
             } else {
                 res.render('refresh')
-
             }
             throw new Error("error occurred");
         }).catch(() => {
@@ -165,19 +191,23 @@ app.get('/:User/:Legend', function(req, res) {
 
     apex.user(id, 'PC').then(data => {
 
-
+        // var aap = data.data
         adata = {...data.data }
-
-        wait(1 * 1000).then(() => {
-            if (typeof adata != 'undefined')
-                res.render('legends', { id, legend, adata })
-            else {
-                res.render('refresh')
-            }
-            throw new Error("error occurred");
-        }).catch(() => {
-            console.log('waiting failed');
-        });
+        if (typeof adata != 'undefined')
+            res.render('legends', { id, legend, adata })
+        else {
+            res.render('refresh')
+        }
+        // wait(1 * 1000).then(() => {
+        //     if (typeof adata != 'undefined')
+        //         res.render('legends', { id, legend, adata })
+        //     else {
+        //         res.render('refresh')
+        //     }
+        //     throw new Error("error occurred");
+        // }).catch(() => {
+        //     console.log('waiting failed');
+        // });
     });
 
 });
