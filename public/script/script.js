@@ -3,7 +3,7 @@ function ed() {
     var panes = document.getElementsByClassName('pane')
     var shade = document.getElementById('shade')
     var overlap = document.getElementById('overlap')
-    var links = ['/bfv', '/BlazingBaneR6', '/BlazingBaneApex', '/discord', '/pc']
+    var links = ['/battlefield', '/r6s', '/apex', '/discord', '/pc']
     rect = panes[0].getBoundingClientRect();
     x = rect.left;
     y = rect.top;

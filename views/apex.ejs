@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R6</title>
+    <link rel="icon" href="https://img1.cgtrader.com/items/2018582/0dd527fc09/3d-printed-rainbow-six-siege-operator-icons-3d-model-stl.jpg">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <!-- css -->
+    <link rel="stylesheet" href="/public/css/head.css">
+    <link rel="stylesheet" href="/public/css/r6s.css">
+
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Potta+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
+    <!-- font awesome -->
+    <script src="https://use.fontawesome.com/4afcb75146.js"></script>
+    <!-- parallaxjs -->
+    <script src="/public/script/parallax.js"></script>
+
+</head>
+
+<body>
+    <%- include('header'); -%>
+
+        <div class="bg"></div>
+        <div class="bg bg2"></div>
+        <div class="bg bg3"></div>
+        <div class="content">
+            <h3>Origin ID</h3>
+            <input type="text" id="qta_field" placeholder="BlazingBane" value="BlazingBane">
+            <a id="r6a" href='' onclick="this.href='apex/'+document.getElementById('qta_field').value">
+                <br>
+                <br>
+                <button type="button" name="" id="" class="btn btn-dark">Search <i class="fa fa-search" aria-hidden="true"></i> </button>
+            </a>
+        </div>
+</body>
+
+</html>

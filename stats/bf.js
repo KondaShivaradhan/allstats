@@ -1,5 +1,5 @@
 const BattlefieldStats = require('battlefield-stats');
-const API_KEY = '917d0574-21b0-47cf-9939-aed14f96fe06' // from https://battlefieldtracker.com/site-api
+const API_KEY = '16b5b870-f507-4e4d-b522-fa2818a03137' // from https://battlefieldtracker.com/site-api
 const bf = new BattlefieldStats(API_KEY);
 
 // All params mirror params listed at http://docs.trnbattlefield.apiary.io/#
@@ -15,5 +15,7 @@ bf.Api.request(route, params, (error, response) => {
     // response callback
     if (!error && response) {
         console.log(response);
+    } else {
+        console.log(error);
     }
 })

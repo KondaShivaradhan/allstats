@@ -91,7 +91,6 @@ footer {
     margin: 0 auto;
     width: 250px;
     display: flex;
-    font-family: ;
 }
 
 a {
@@ -175,4 +174,25 @@ a:hover {
 
 .follow-text {
     color: #9E9E9E
+}
+
+
+/* coming soon */
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+#soon {
+    padding: 20px;
+    height: 100vh;
+    width: 100%;
+    background-color: rgb(148, 47, 126);
+}
+
+#soon div {
+    padding: 10px;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 3px;
 }
