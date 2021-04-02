@@ -180,11 +180,20 @@
                                         <a href="/<%= ap.metadata.platformUserHandle %>/<%= element.metadata.legend_name%>">
                                             <div id="opp" onclick="test(this)" style=" height: 150px;width: 150px;background: url('<%= element.metadata.icon%>');background-size: cover;background-repeat: no-repeat;border-radius: 20px;">
 
-                                            <% if(stat.value>=500){%>
-                                                <div id="flame">
+                                            <% if(stat.value>=500 && stat.value<=999){%>
+                                                <div id="flame" style="background: url('/public/images/blue.gif'); background-position: 0% -100% !important;
+                                                background-size: 100%;
+                                                background-repeat: no-repeat;">
 
                                                 </div>
                                                 <% } %>
+                                                <% if(stat.value>=1000){%>
+                                                    <div id="flame" style="background: url('/public/images/flame.gif'); background-position: 0% -100%;
+                                                    background-size: 100%;
+                                                    background-repeat: no-repeat;">
+    
+                                                    </div>
+                                                    <% } %>
                                                     <div id="stattop" style="height: 100%;width:100%;position: relative;top:50%;left:50%;transform: translate(-50%,-50%);">
 
                                                         <div id="stats">
@@ -220,7 +229,9 @@
                                                 <% }); %>
                         </div>
                     </div>
-                    <p style="font-size: 13px;">*Note: Legends with 'KILLS' trackers active will be displayed</p>
+                    <p style="font-size: 13px;">*Note: Legends with 'KILLS' trackers active will be displayed
+
+                    </p>
                 </div>
             </div>
         </div>
