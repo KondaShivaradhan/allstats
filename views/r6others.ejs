@@ -26,9 +26,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Potta+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 
@@ -50,14 +48,31 @@
     var j = 0;
 
     function start() {
-        if (i >= 5) {
+        String.prototype.capitalize = function() {
+            return this.charAt(0).toUpperCase() + this.slice(1);
+        }
+        let test = '<%- JSON.stringify(obj) %>'
+        var obj = JSON.parse(test)
+        var h2text = [""]
+        Object.keys(obj).forEach(element => {
+            var res = element.replace("_", " ");
+            if (res == "playtime") {
+                obj[element] = (obj[element] / 86400).toFixed(2) + 'D'
+            }
+            if (res == "distance travelled") {
+                obj[element] = (obj[element] / 3281).toFixed(2) + 'KM'
+            }
+            var cap = res.capitalize()
+
+            h2text.push("<b>" + cap + "</b><br><span id='banner'>" + obj[element] + "</span>");
+        });
+        if (i >= h2text.length) {
             i = 0
         }
         if (j >= 3) {
             j = 0
         }
         var back = document.getElementById('back')
-        var h2text = ["", "Games Played<br> <span id='banner'>  <%= ro.stats.general.games_played %></span>", "Melee Kills <br> <span id='banner'><%= ro.stats.general.melee_kills %></span>", "<span id='banner'><%= ro.username %></span>", "Headshots<br> <span id='banner'> <%= ro.stats.general.headshots %></span>", "Play Time <br> <span id='banner'><%= Math.round( ro.stats.general.playtime/86400) %>Days</span>"]
         var h2 = document.getElementById("eddi");
         h2.style.transition = "0.5s"; //fade speed
         var images = ['', 'https://www.teahub.io/photos/full/12-124675_rainbow-six-siege.jpg', 'https://www.wallpapertip.com/wmimgs/30-304388_rainbow-six-siege.jpg', 'https://i.pinimg.com/originals/18/75/19/187519a4719ca8baead7eba222787ef1.jpg', 'https://www.wallpapertip.com/wmimgs/30-304388_rainbow-six-siege.jpg']
@@ -77,8 +92,7 @@
     }
 
     function loaded() {
-        // var load = document.getElementById('load')
-        // $('#load').hide()
+
         setInterval(() => {
             start()
         }, 5000);
@@ -104,10 +118,7 @@
 </script>
 
 <body onload="loaded()">
-    <!-- <div id="load">
-        <img id="bb" src="/public/images/bb.png" alt="">
 
-    </div> -->
     <%- include('header'); -%>
         <audio id="music" loop src="/public/music/r6.mp3"></audio>
 
@@ -303,17 +314,17 @@
                                 <div id="opp" style="background: url('<%= element.badge_image%>');background-size: cover;background-repeat: no-repeat;border-radius: 20px;">
                                     <div id="stattop" style="height: 100%;width:100%;position: relative;top:50%;left:50%;transform: translate(-50%,-50%);">
                                         <div id="stats">
-                                            <h3 style="font-weight: 500;">
+                                            <h5 style="font-weight: 500;">
                                                 <span style="font-weight: 600;color: rgb(127, 255, 255);">
                                                     <%= element.name%>
                                                 </span>
-                                                </h5>
-                                                <p class="price">
-                                                    <%= element.kills%> <span style="color:rgb(223, 169, 10);font-weight: 600;">Kills</span><br>
+                                            </h5>
+                                            <p class="price">
+                                                <%= element.kills%> <span style="color:rgb(223, 169, 10);font-weight: 600;">Kills</span><br>
 
-                                                        <%= element.kd%> <span style="color:rgb(223, 169, 10);font-weight: 600;">KD</span><br>
-                                                            <%= element.wl%> <span style="color:rgb(223, 169, 10);font-weight: 600;">WL</span>
-                                                </p>
+                                                    <%= element.kd%> <span style="color:rgb(223, 169, 10);font-weight: 600;">KD</span><br>
+                                                        <%= element.wl%> <span style="color:rgb(223, 169, 10);font-weight: 600;">WL</span>
+                                            </p>
                                         </div>
                                     </div>
                                 </div>

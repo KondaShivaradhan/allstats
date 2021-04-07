@@ -1,0 +1,84 @@
+::-webkit-scrollbar {
+    display: none;
+}
+
+html,
+body {
+    background-color: rgb(53, 53, 53);
+    max-width: 100%;
+    /* overflow-x: hidden; */
+}
+
+* {
+    margin: 0;
+}
+
+#content {
+    height: auto;
+    overflow: scroll;
+}
+
+section {
+    padding: 20px;
+    height: 100vh;
+    width: 100%;
+    background-color: antiquewhite;
+}
+
+#audio {
+    animation: buttonA 1s infinite alternate ease;
+    position: fixed;
+    z-index: 1000;
+    border-radius: 50%;
+    border: 2px white solid;
+    height: 40px;
+    width: 40px;
+    right: 50px;
+    bottom: 50px;
+    background-color: rgba(0, 0, 0, 0.377);
+}
+
+@keyframes buttonA {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.2);
+    }
+}
+
+#audiocon {
+    transition: all 0.5s ease-in-out;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 30px;
+}
+
+#parawindow {
+    height: 110px;
+    width: 100%;
+    background-color: black;
+    /* background: linear-gradient(rgba(0, 0, 0, 0.609), rgba(0, 0, 0, 0.568)), url('https://i.redd.it/toy9ezqt6lr41.jpg'); */
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#para {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#Ghead {
+    color: white;
+    text-align: center;
+    letter-spacing: 0.5rem;
+    font-family: 'Russo One', sans-serif;
+    font-size: 35px;
+}

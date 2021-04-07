@@ -32,6 +32,19 @@ h2 {
     transform: scale(1, 2);
 }
 
+#top {
+    color: rgb(255, 115, 0);
+}
+
+#among {
+    color: aqua;
+}
+
+#bottom {
+    vertical-align: sub;
+    color: rgb(157, 255, 0);
+}
+
 thead th {
     color: white;
     background-color: rgb(133, 133, 133);

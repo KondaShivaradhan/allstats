@@ -227,7 +227,6 @@ td {
 }
 
 #banner {
-    animation: spacing 3s ease-out;
     text-align: center;
     letter-spacing: 0.2rem;
     font-size: 40px;
@@ -243,7 +242,9 @@ td {
 }
 
 #eddi {
-    font-family: 'Potta One', cursive;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: bolder;
+    letter-spacing: 2px;
 }
 
 #shade {

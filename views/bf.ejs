@@ -4,137 +4,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Battlefield</title>
+    <title>
+        <%= bfv.userName %>
+    </title>
+    <link rel="icon" href="/public/images/bf.gif">
+
     <!-- bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <!-- css -->
+    <link rel="stylesheet" href="/public/css/bfstyle.css">
     <link rel="stylesheet" href="/public/css/head.css">
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Potta+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
-    <!-- Aos -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- font awesome -->
+    <script src="https://use.fontawesome.com/4afcb75146.js"></script>
+    <!-- parallaxjs -->
+    <script src="/public/script/parallax.js"></script>
+    <script>
+        function audio() {
+            var audio = document.getElementById('music')
+            var acon = document.getElementById('audiocon')
+            if (audio.paused) {
+                console.log('paused');
+                audio.play();
+                acon.className = "fa fa-volume-up";
+            } else {
+                console.log('playing');
+                audio.pause();
+                acon.className = "fa fa-volume-off";
+            }
+        }
+        $(document).ready(function() {
+            var audio = document.getElementById("music");
+            audio.volume = 0.04;
 
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,900" rel="stylesheet">
-    <style>
-        * {
-            -webkit-box-sizing: border-box;
-            box-sizing: border-box
-        }
-        
-        body {
-            background: #000;
-            padding: 0;
-            margin: 0
-        }
-        
-        #notfound {
-            position: relative;
-            height: 100vh
-        }
-        
-        #notfound .notfound {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            -webkit-transform: translate(-50%, -50%);
-            -ms-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%)
-        }
-        
-        .notfound {
-            max-width: 410px;
-            width: 100%;
-            text-align: center
-        }
-        
-        .notfound .notfound-404 {
-            height: 280px;
-            position: relative;
-            z-index: -1
-        }
-        
-        .notfound .notfound-404 h1 {
-            font-family: montserrat, sans-serif;
-            font-size: 230px;
-            margin: 0;
-            font-weight: 900;
-            position: absolute;
-            left: 50%;
-            -webkit-transform: translateX(-50%);
-            -ms-transform: translateX(-50%);
-            transform: translateX(-50%);
-            background: url(https://cdn.wallpapersafari.com/56/11/OIf0lp.jpg) no-repeat;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-size: cover;
-            background-position: center
-        }
-        
-        .notfound h2 {
-            font-family: montserrat, sans-serif;
-            color: rgb(253, 253, 253);
-            font-size: 24px;
-            font-weight: 700;
-            text-transform: uppercase;
-            margin-top: 0
-        }
-        
-        .notfound p {
-            font-family: montserrat, sans-serif;
-            color: rgb(255, 255, 255);
-            font-size: 14px;
-            font-weight: 400;
-            margin-bottom: 20px;
-            margin-top: 0
-        }
-        
-        .notfound a {
-            font-family: montserrat, sans-serif;
-            font-size: 14px;
-            text-decoration: none;
-            text-transform: uppercase;
-            background: #0046d5;
-            display: inline-block;
-            padding: 15px 30px;
-            border-radius: 40px;
-            color: #fff;
-            font-weight: 700;
-            -webkit-box-shadow: 0 4px 15px -5px #0046d5;
-            box-shadow: 0 4px 15px -5px #0046d5
-        }
-        
-        @media only screen and (max-width:767px) {
-            .notfound .notfound-404 {
-                height: 142px
-            }
-            .notfound .notfound-404 h1 {
-                font-size: 112px
-            }
-        }
-    </style>
+        });
+    </script>
+
 </head>
 
 <body>
     <%- include('header'); -%>
-        <div id="notfound">
-            <div class="notfound">
-                <div class="notfound-404">
-                    <h1>SOON!</h1>
-                </div>
+        <audio autoplay id="music" loop src="/public/music/battlefield.mp3"></audio>
+        <div id="audio" onclick="audio()">
+            <i id="audiocon" class="fa fa-volume-off" aria-hidden="true"></i>
+        </div>
+        <div id="parawindow">
+            <div id="para">
+                <h3 id="Ghead">
+                    Battlefield V
+                </h3>
             </div>
         </div>
+        <section id="bfv">
+            <img src="<%= bfv.avatar %>" alt=""> <br>
+            <%= bfv.Rank %> <br>
+                <%= bfv.KPM %> <br>
+                    <%= bfv.Win %> <br>
+                        <%= bfv['Best Class'] %> <br>
+        </section>
+        <div id="parawindow">
+            <div id="para">
+                <h3 id="Ghead">
+                    Battlefield 1
+                </h3>
+            </div>
+        </div>
+        <section id="bf1">
 
+        </section>
+        <div id="parawindow">
+            <div id="para">
+                <h3 id="Ghead">
+                    Battlefield 4
+                </h3>
+            </div>
+        </div>
+        <section id="bf4">
+
+        </section>
 </body>
+<%- include('footer'); -%>
 
 </html>

@@ -26,9 +26,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Potta+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
     <!-- font awesome -->
     <script src="https://use.fontawesome.com/4afcb75146.js"></script>
@@ -40,16 +38,22 @@
 
         function start() {
 
-            if (i >= 4) {
-                i = 0
-            }
+
             if (j >= 3) {
                 j = 0
             }
             var back = document.getElementById('back')
-            var h2text = ["", "Games Played<br> <span id='banner'>  <% ap.stats.forEach(element=> {%><% if (element.metadata.name=='Matches Played' ) { %><%= element.value %><% }%><% });%></span>", "Total Damage <br> <span id='banner'><% ap.stats.forEach(element=> {%><% if (element.metadata.name=='Damage' ) { %><%= element.value %><% }%><% });%></span>", "<span id='banner'><%= ap.metadata.platformUserHandle %> </span>", "Headshots<br> <span id='banner'>  <% ap.stats.forEach(element=> {%><% if (element.metadata.name=='Headshots' ) { %><%= element.value %><% }%><% });%></span>", '<img style="border-radius: 20px;max-width:100%;max-height:100%;" src="<%= ap.metadata.rankImage %>" alt="">']
+            let test = '<%- JSON.stringify(obj) %>'
+            var obj = JSON.parse(test)
+            var h2text = [""]
+            Object.keys(obj).forEach(element => {
+                h2text.push("<b>" + element + "</b><br><span id='banner'>" + obj[element] + "</span>");
+            });
+            if (i >= h2text.length) {
+                i = 0
+            }
             var h2 = document.getElementById("eddi");
-            h2.style.transition = "0.5s"; //fade speed
+            h2.style.transition = "0.5s";
             var images = ['', 'https://images.hdqwalls.com/wallpapers/4k-apex-legends-2020-ja.jpg', 'https://cdn.wallpapersafari.com/62/4/KyTmfc.jpg', 'https://wallpapercave.com/wp/wp5400337.png', 'https://wallpapercave.com/wp/wp4013111.png']
             setTimeout(function() {
                 h2.style.opacity = 0;
@@ -169,7 +173,6 @@
                         </div>
                     </div>
 
-                    <!-- Modal -->
 
                     <div class="container" style="padding: 30px; height:auto;position: relative;">
                         <div style="display: flex; flex-direction: row;flex-wrap: wrap;justify-content: space-between; gap: 2%;height: 100%;">
@@ -204,6 +207,7 @@
                                                             </h5>
                                                             <p class="price">
                                                                 <% element.stats.forEach(stat=> {%>
+                                    
                                                                     <% if(stat.metadata.name=='Kills' ){%>
                                                                         <% if(stat.value>=500){%>
 

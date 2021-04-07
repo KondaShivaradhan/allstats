@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <!-- css -->
     <link rel="stylesheet" href="/public/css/head.css">
-    <link rel="stylesheet" href="/public/css/r6s.css">
+    <link rel="stylesheet" href="/public/css/search.css">
 
 
     <!-- jQuery -->
@@ -28,23 +28,52 @@
     <script src="https://use.fontawesome.com/4afcb75146.js"></script>
     <!-- parallaxjs -->
     <script src="/public/script/parallax.js"></script>
+    <script>
+        function audio() {
+            var audio = document.getElementById('music')
+            var acon = document.getElementById('audiocon')
+            if (audio.paused) {
+                console.log('paused');
+                audio.play();
+                acon.className = "fa fa-volume-up";
+            } else {
+                console.log('playing');
+                audio.pause();
+                acon.className = "fa fa-volume-off";
+            }
+        }
+        $(document).ready(function() {
+            var audio = document.getElementById("music");
+            audio.volume = 0.32;
 
+        });
+    </script>
 </head>
 
 <body>
     <%- include('header'); -%>
-
-        <div class="bg"></div>
-        <div class="bg bg2"></div>
-        <div class="bg bg3"></div>
+        <audio autoplay id="music" loop src="/public/music/apex2.mp3"></audio>
+        <div id="audio" onclick="audio()">
+            <i id="audiocon" class="fa fa-volume-off" aria-hidden="true"></i>
+        </div>
+        <div id="test">
+            <iframe width='100' id="game" height='100' src="https://www.youtube.com/embed/0VzBCPi2YdY?&theme=dark&autoplay=1&loop=1&keyboard=1&autohide=1&modestbranding=1&fs=0&rel=0&start=8&end=120&iv_load_policy=3&mute=1&playlist=2pn3YoI9dtQ" frameborder="0"></iframe>
+        </div>
+        <div id="mob">
+            <div class="bg"></div>
+            <div class="bg bg2"></div>
+            <div class="bg bg3"></div>
+        </div>
         <div class="content">
-            <h3>Origin ID</h3>
-            <input type="text" id="qta_field" placeholder="BlazingBane" value="BlazingBane">
-            <a id="r6a" href='' onclick="this.href='apex/'+document.getElementById('qta_field').value">
-                <br>
-                <br>
-                <button type="button" name="" id="" class="btn btn-dark">Search <i class="fa fa-search" aria-hidden="true"></i> </button>
-            </a>
+            <div id="stuff">
+                <h3 style="letter-spacing: 2px;">Origin ID</h3>
+                <input type="text" id="qta_field" placeholder="BlazingBane" value="BlazingBane">
+                <a id="r6a" href='' onclick="this.href='apex/'+document.getElementById('qta_field').value">
+                    <br>
+                    <br>
+                    <button type="button" name="" id="" class="btn btn-dark">Search <i class="fa fa-search" aria-hidden="true"></i> </button>
+                </a>
+            </div>
         </div>
 </body>
 

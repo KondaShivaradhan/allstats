@@ -25,9 +25,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Potta+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
     <!-- font awesome -->
     <script src="https://use.fontawesome.com/4afcb75146.js"></script>
@@ -68,11 +66,24 @@
                                                     <tbody>
                                                         <% element.stats.forEach(stat=> {%>
                                                             <tr>
+
                                                                 <th>
                                                                     <%= stat.metadata.name%>
                                                                 </th>
                                                                 <td>
-                                                                    <%= stat.displayValue%>
+                                                                    <%= stat.displayValue %>
+                                                                        <% if(stat.percentile <='30'){ %>
+                                                                            <sub id="top"> Top
+                                                                            <%= stat.percentile %>% </sub>
+                                                                            <%} %>
+                                                                                <% if(stat.percentile >'30' && stat.percentile <='70'){ %>
+                                                                                    <sub id="among"> Among 
+                                                                                        <%= stat.percentile %>% </sub>
+                                                                                    <%} %>
+                                                                                        <% if(stat.percentile >'70'){ %>
+                                                                                            <sub id="bottom"> Bottom 
+                                                                                                <%= (100-stat.percentile) %>% </sub>
+                                                                                            <%} %>
                                                                 </td>
                                                                 <%if(stat.displayRank!=''){ %>
                                                                     <td>

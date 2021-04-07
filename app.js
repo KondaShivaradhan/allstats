@@ -1,5 +1,8 @@
 var express = require('express');
 var app = express();
+const https = require('https');
+const axios = require('axios')
+
 var path = require('path');
 app.use("/public", express.static(path.join(__dirname, "/public")));
 app.set('view engine', 'ejs');
@@ -21,8 +24,7 @@ app.get('/', function(req, res) {
     res.render('index')
 });
 app.get('/battlefield', function(req, res) {
-
-    res.render('bf')
+    res.render('bfs')
 });
 app.get('/BlazingBaneApex', function(req, res) {
     apex.user('BlazingBane', 'PC').then(data => {
@@ -35,16 +37,53 @@ app.get('/BlazingBaneApex', function(req, res) {
 
         }
     });
+});
+app.get('/bf/:Name', function(req, res) {
+    // console.log("entered bf main");
+    var id = req.params.Name
+        // console.log(id);
+    const start = async function() {
+        let response5 = await axios.get(
+            "https://api.gametools.network/bfv/stats/?name=" + id + "&lang=en-us", {}
+        ).catch(error => {
+            console.log(error);
+        });
+        let response4 = await axios.get(
+            "https://api.gametools.network/bf4/stats/?name=" + id + "&lang=en-us", {}
+        ).catch(error => {
+            console.log(error);
+        });
+        let response1 = await axios.get(
+            "https://api.gametools.network/bf1/stats/?name=" + id + "&lang=en-us", {}
+        ).catch(error => {
+            console.log(error);
+        });
+        const bfv = response5.data
+        const bf1 = response1.data
+        const bf4 = response4.data
+            // console.log(bf4);
+            // console.log(bf1);
+        console.log(bfv);
+        res.render('soon', { bfv, bf4, bf1 })
+            // res.send(bfv + bf1 + bf4 + id)
 
-
+    }
+    start()
 });
 app.get('/apex/:Name', function(req, res) {
     const id = req.params.Name
     apex.user(id, 'PC').then(data => {
-
         global.ap = {...data.data }
+            // console.log(ap.stats);
+        var obj = {};
+        ap.stats.forEach(element => {
+            Object.assign(obj, {
+                [element.metadata.name]: element.value
+            });
+        });
+
         if (typeof ap != 'undefined')
-            res.render('apexold', { ap });
+            res.render('apexold', { ap, obj });
         else {
             res.render('refresh')
 
@@ -61,10 +100,23 @@ app.get('/r6/:Name', function(req, res) {
         const rank = await r6api.getRank('uplay', id, { regions: ['apac'] });
         ba = rank[0]
         ra = rank[0].seasons[Object.keys(ba.seasons)].regions.apac
+        var obj = {};
+
         await r6.getGenericStats(un, 'pc', 'all').then(userStats => {
             rdatao = userStats
             global.ro = rdatao
+            console.log('====================================');
+            console.log(ro.stats.general);
+            console.log('====================================');
+
+
+            Object.keys(ro.stats.general).forEach(element => {
+                Object.assign(obj, {
+                    [element]: ro.stats.general[element]
+                });
+            });
         })
+
         await r6.getOperatorStats(un, 'pc').then(userStats => {
             var rdatao = userStats
             global.r1o = rdatao
@@ -83,7 +135,7 @@ app.get('/r6/:Name', function(req, res) {
                     }
                 })
 
-                res.render('r6others', { ro, r1o, dmax, amax, ra });
+                res.render('r6others', { ro, r1o, dmax, amax, ra, obj });
             } else {
                 res.render('refresh')
             }
