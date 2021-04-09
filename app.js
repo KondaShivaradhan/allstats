@@ -40,32 +40,63 @@ app.get('/BlazingBaneApex', function(req, res) {
 });
 app.get('/bf/:Name', function(req, res) {
     // console.log("entered bf main");
+    var bfv = 0
+    var bf1 = 0
+    var bf4 = 0
+    var nobf = 0
     var id = req.params.Name
         // console.log(id);
     const start = async function() {
-        let response5 = await axios.get(
+        let response5
+        response5 = await axios.get(
             "https://api.gametools.network/bfv/stats/?name=" + id + "&lang=en-us", {}
         ).catch(error => {
             console.log(error);
+            bfv = undefined
         });
-        let response4 = await axios.get(
+        if (response5.data.error) {
+            bfv = undefined
+        }
+        let response6
+        response6 = await axios.get(
+            "https://api.gametools.network/bfv/weapons/?name=" + id + "&lang=en-us", {}
+        ).catch(error => {
+            bfv = undefined
+        });
+        if (response5.data.error) {
+            bfv = undefined
+        }
+        let response4
+        response4 = await axios.get(
             "https://api.gametools.network/bf4/stats/?name=" + id + "&lang=en-us", {}
         ).catch(error => {
-            console.log(error);
+            bf4 = 'No bf4'
         });
-        let response1 = await axios.get(
+        if (response4.data.error) {
+            bf4 = undefined
+        }
+        let response1
+        response1 = await axios.get(
             "https://api.gametools.network/bf1/stats/?name=" + id + "&lang=en-us", {}
         ).catch(error => {
-            console.log(error);
+            bf1 = undefined
         });
-        const bfv = response5.data
-        const bf1 = response1.data
-        const bf4 = response4.data
-            // console.log(bf4);
-            // console.log(bf1);
-        console.log(bfv);
-        res.render('soon', { bfv, bf4, bf1 })
-            // res.send(bfv + bf1 + bf4 + id)
+
+        if (bf1 != undefined)
+            bf1 = response1.data
+        if (bf4 != undefined)
+            bf4 = response4.data
+        if (bfv != undefined)
+            bfv = {...response5.data, ...response6.data }
+        console.log('====================================');
+        console.log('====================================');
+        console.log(bf1);
+        // console.log(bf4);
+        // console.log(bfv);
+        if (bf1 == undefined && bfv == undefined && bf4 == undefined) {
+            nobf = 'Buy a Game NOOB'
+        }
+        res.render('bf', { bfv, bf4, bf1, id, nobf })
 
     }
     start()
@@ -75,6 +106,18 @@ app.get('/apex/:Name', function(req, res) {
     apex.user(id, 'PC').then(data => {
         global.ap = {...data.data }
             // console.log(ap.stats);
+
+        // ap.children.forEach(element => {
+        //     if (element.metadata.legend_name == "Bloodhound") {
+        //         // console.log(element);
+        //         element.stats.forEach(stat => {
+
+        //             console.log(stat);
+
+        //         });
+        //     }
+        // });
+        // console.log(ap.children[1]);
         var obj = {};
         ap.stats.forEach(element => {
             Object.assign(obj, {

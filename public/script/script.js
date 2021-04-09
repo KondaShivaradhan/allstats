@@ -4,6 +4,26 @@ function ed() {
     var shade = document.getElementById('shade')
     var overlap = document.getElementById('overlap')
     var links = ['/battlefield', '/r6s', '/apex', '/discord', '/pc']
+    var scrollableElement = document.body; //document.getElementById('scrollableElement');
+
+    scrollableElement.addEventListener('wheel', checkScrollDirection);
+
+    function checkScrollDirection(event) {
+        if (checkScrollDirectionIsUp(event)) {
+            console.log('UP');
+            overlap.style
+        } else {
+            console.log('Down');
+        }
+    }
+
+    function checkScrollDirectionIsUp(event) {
+        if (event.wheelDelta) {
+            return event.wheelDelta > 0;
+        }
+        return event.deltaY < 0;
+    }
+
     rect = panes[0].getBoundingClientRect();
     x = rect.left;
     y = rect.top;

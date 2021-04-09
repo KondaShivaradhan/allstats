@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        <%= bfv.userName %>
+        <%= id %>
     </title>
     <link rel="icon" href="/public/images/bf.gif">
 
@@ -58,40 +58,80 @@
         <div id="audio" onclick="audio()">
             <i id="audiocon" class="fa fa-volume-off" aria-hidden="true"></i>
         </div>
-        <div id="parawindow">
-            <div id="para">
-                <h3 id="Ghead">
-                    Battlefield V
-                </h3>
+        <% if(nobf){ %>
+            <div class="jumbotron jumbotron-fluid">
+                <div class="container">
+                    <h1 class="display-3">Get a Game NIgga</h1>
+                    <p class="lead">Jumbo helper text</p>
+                    <hr class="my-2">
+                    <p>More info</p>
+                    <p class="lead">
+                        <a class="btn btn-primary btn-lg" href="Jumbo action link" role="button">Jumbo action name</a>
+                    </p>
+                </div>
             </div>
-        </div>
-        <section id="bfv">
-            <img src="<%= bfv.avatar %>" alt=""> <br>
-            <%= bfv.Rank %> <br>
-                <%= bfv.KPM %> <br>
-                    <%= bfv.Win %> <br>
-                        <%= bfv['Best Class'] %> <br>
-        </section>
-        <div id="parawindow">
-            <div id="para">
-                <h3 id="Ghead">
-                    Battlefield 1
-                </h3>
-            </div>
-        </div>
-        <section id="bf1">
+            <%} %>
+                <% if(bfv){ %>
+                    <div id="parawindow">
+                        <div id="para">
+                            <h3 id="Ghead">
+                                Battlefield V
+                            </h3>
+                        </div>
+                    </div>
+                    <section id="bfv">
+                        <% if(bfv !="No bfv"){ %>
 
-        </section>
-        <div id="parawindow">
-            <div id="para">
-                <h3 id="Ghead">
-                    Battlefield 4
-                </h3>
-            </div>
-        </div>
-        <section id="bf4">
+                            <img src="<%= bfv.avatar %>" alt=""> <br>
+                            <%= bfv.Rank %> <br>
+                                <%= bfv.KPM %> <br>
+                                    <%= bfv.Win %> <br>
+                                        <%= bfv['Best Class'] %> <br>
+                                            <%= bfv.Accuracy %> <br>
+                                                <%= bfv. Headshots %> <br>
+                                                    <%= bfv.Kills %> <br>
+                                                        <%= bfv.Deaths %> <br>
+                                                            <%= bfv.longestHeadShot %> <br>
+                                                                <%= bfv.revives %> <br>
+                                                                    <%= bfv.highestKillStreak %> <br>
+                                                                        <%= bfv.roundsPlayed %> <br>
+                                                                            <%= bfv['Time played'] %> <br>
+                                                                                <%= bfv['K/D'] %> <br>
+                                                                                    <%} %>
+                    </section>
+                    <%} %>
+                        <% if(bf1){ %>
+                            <div id="parawindow">
+                                <div id="para">
+                                    <h3 id="Ghead">
+                                        Battlefield 1
+                                    </h3>
+                                </div>
+                            </div>
+                            <section id="bf1">
+                                <%= bf1.Rank %> <br>
+                            </section>
+                            <%} %>
+                                <% if(bf4){ %>
+                                    <div id="parawindow">
+                                        <div id="para">
+                                            <h3 id="Ghead">
+                                                Battlefield 4
+                                            </h3>
+                                        </div>
+                                    </div>
 
-        </section>
+                                    <section id="bf4">
+
+
+                                        <img src="<%= bf4.avatar %>" alt=""> <br>
+                                        <%= bf4.Rank %> <br>
+                                            <%= bf4.KPM %> <br>
+                                                <%= bf4.Win %> <br>
+                                                    <%= bf4['Best Class'] %> <br>
+
+                                    </section>
+                                    <%} %>
 </body>
 <%- include('footer'); -%>
 
