@@ -11,9 +11,9 @@ function ed() {
     function checkScrollDirection(event) {
         if (checkScrollDirectionIsUp(event)) {
             console.log('UP');
-            overlap.style
+            overlap.style.left = "45%"
         } else {
-            console.log('Down');
+            overlap.style.left = "50%"
         }
     }
 
