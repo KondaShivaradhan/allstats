@@ -13,9 +13,9 @@ var r6 = require('./stats/r6.js')
     // var bot = require('./stats/bot.js')
     // const API_KEY = 'f582bd87-1ccb-4f27-ad72-61900e1408d6' // from https://battlefieldtracker.com/site-api
 const R6API = require('r6api.js');
-// const r6api = new R6API("kondashivaradhan007@gmail.com", "Rlsss@5007");
+const r6api = new R6API("kondashivaradhan007@gmail.com", "Rlsss@5007");
 
-const r6api = new R6API(process.env.username || "kondashivaradhan007@gmail.com", process.env.password || "Rlsss@5007");
+// const r6api = new R6API(process.env.username || "kondashivaradhan007@gmail.com", process.env.password || "Rlsss@5007");
 
 const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
 
@@ -39,13 +39,11 @@ app.get('/BlazingBaneApex', function(req, res) {
     });
 });
 app.get('/bf/:Name', function(req, res) {
-    // console.log("entered bf main");
     var bfv = 0
     var bf1 = 0
     var bf4 = 0
     var nobf = 0
     var id = req.params.Name
-        // console.log(id);
     const start = async function() {
         let response5
         response5 = await axios.get(
@@ -88,15 +86,47 @@ app.get('/bf/:Name', function(req, res) {
             bf4 = response4.data
         if (bfv != undefined)
             bfv = {...response5.data, ...response6.data }
-        console.log('====================================');
-        console.log('====================================');
-        console.log(bf1);
-        // console.log(bf4);
-        // console.log(bfv);
+        console.log(bfv);
         if (bf1 == undefined && bfv == undefined && bf4 == undefined) {
             nobf = 'Buy a Game NOOB'
         }
         res.render('bf', { bfv, bf4, bf1, id, nobf })
+
+    }
+    start()
+});
+app.get('/bfv/:Name', function(req, res) {
+    var bfv = 0
+
+    var nobf = 0
+    var id = req.params.Name
+    const start = async function() {
+        let response5
+        response5 = await axios.get(
+            "https://api.gametools.network/bfv/stats/?name=" + id + "&lang=en-us", {}
+        ).catch(error => {
+            console.log(error);
+            bfv = undefined
+        });
+        if (response5.data.error) {
+            bfv = undefined
+        }
+        let response6
+        response6 = await axios.get(
+            "https://api.gametools.network/bfv/weapons/?name=" + id + "&lang=en-us", {}
+        ).catch(error => {
+            bfv = undefined
+        });
+        if (response5.data.error) {
+            bfv = undefined
+        }
+        if (bfv != undefined)
+            bfv = {...response5.data, ...response6.data }
+        console.log(bfv);
+        if (bf1 == undefined && bfv == undefined && bf4 == undefined) {
+            nobf = 'Buy a Game NOOB'
+        }
+        res.render('bf', { bfv, id, nobf })
 
     }
     start()

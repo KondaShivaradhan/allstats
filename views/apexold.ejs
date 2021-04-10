@@ -184,7 +184,7 @@
                                 <% element.stats.forEach(stat=> {%>
                                     <% if(stat.metadata.name=='Kills' ){%>
                                         <!-- <div id="opp" onclick="test('<%= element.metadata.legend_name%>')" style=" height: 150px;width: 150px;background: url('<%= element.metadata.icon%>');background-size: cover;background-repeat: no-repeat;border-radius: 20px;"> -->
-                                        <a href="/<%= ap.metadata.platformUserHandle %>/<%= element.metadata.legend_name%>">
+                                        <a id="an" href="/<%= ap.metadata.platformUserHandle %>/<%= element.metadata.legend_name%>">
                                             <div id="opp" onclick="test(this)" style=" height: 150px;width: 150px;background: url('<%= element.metadata.icon%>');background-size: cover;background-repeat: no-repeat;border-radius: 20px;">
 
                                             <% if(stat.value>=500 && stat.value<=999){%>
@@ -243,7 +243,16 @@
                 </div>
             </div>
         </div>
-
+        <div id="parawindow">
+            <div id="para">
+                <div id="Ghead2">
+                    <input type="text" id="qta_field" placeholder="BlazingBane" value="BlazingBane">
+                    <a id="r6a" href='' onclick="this.href='/apex/'+document.getElementById('qta_field').value">
+                        <button type="button" name="" id="" class="btn btn-dark">Search <i class="fa fa-search" aria-hidden="true"></i> </button>
+                    </a>
+                </div>
+            </div>
+        </div>
 </body>
 <%- include('footer'); -%>
 

@@ -20,9 +20,16 @@ body {
 
 section {
     padding: 20px;
-    height: 100vh;
+    min-height: 100vh;
     width: 100%;
     background-color: antiquewhite;
+}
+
+#weapon {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
 }
 
 #audio {

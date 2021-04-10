@@ -216,3 +216,17 @@ td {
     animation: back 1s alternate infinite;
     background: linear-gradient(rgba(0, 0, 0, 0.589), rgba(0, 0, 0, 0.589));
 }
+
+#Ghead2 {
+    width: auto;
+    color: white;
+    text-align: center;
+}
+
+@media screen and (max-width: 407px) {
+    #an {
+        position: relative;
+        left: 50%;
+        transform: translate(-50%);
+    }
+}

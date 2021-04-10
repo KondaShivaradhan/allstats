@@ -14,6 +14,12 @@ body {
     background-color: black;
 }
 
+#Ghead2 {
+    width: auto;
+    color: white;
+    text-align: center;
+}
+
 #load {
     position: fixed;
     height: 100vh;

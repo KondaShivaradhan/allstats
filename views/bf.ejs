@@ -80,24 +80,29 @@
                         </div>
                     </div>
                     <section id="bfv">
-                        <% if(bfv !="No bfv"){ %>
-
-                            <img src="<%= bfv.avatar %>" alt=""> <br>
-                            <%= bfv.Rank %> <br>
-                                <%= bfv.KPM %> <br>
-                                    <%= bfv.Win %> <br>
-                                        <%= bfv['Best Class'] %> <br>
-                                            <%= bfv.Accuracy %> <br>
-                                                <%= bfv. Headshots %> <br>
-                                                    <%= bfv.Kills %> <br>
-                                                        <%= bfv.Deaths %> <br>
-                                                            <%= bfv.longestHeadShot %> <br>
-                                                                <%= bfv.revives %> <br>
-                                                                    <%= bfv.highestKillStreak %> <br>
-                                                                        <%= bfv.roundsPlayed %> <br>
-                                                                            <%= bfv['Time played'] %> <br>
-                                                                                <%= bfv['K/D'] %> <br>
-                                                                                    <%} %>
+                        <%= bfv.Rank %> <br>
+                            <%= bfv.KPM %> <br>
+                                <%= bfv.Win %> <br>
+                                    <%= bfv['Best Class'] %> <br>
+                                        <%= bfv.Accuracy %> <br>
+                                            <%= bfv. Headshots %> <br>
+                                                <%= bfv.Kills %> <br>
+                                                    <%= bfv.Deaths %> <br>
+                                                        <%= bfv.longestHeadShot %> <br>
+                                                            <%= bfv.revives %> <br>
+                                                                <%= bfv.highestKillStreak %> <br>
+                                                                    <%= bfv.roundsPlayed %> <br>
+                                                                        <%= bfv['Time played'] %> <br>
+                                                                            <%= bfv['K/D'] %> <br>
+                                                                                <div id="weapon">
+                                                                                    <% bfv.weapons.forEach(element=> {%>
+                                                                                        <div>
+                                                                                            <img src="<%= element.image %>" alt="">
+                                                                                            <%= element.weaponName %>
+                                                                                                <%= element.kills %>
+                                                                                                    <% }); %>
+                                                                                        </div>
+                                                                                </div>
                     </section>
                     <%} %>
                         <% if(bf1){ %>
