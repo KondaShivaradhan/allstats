@@ -8,27 +8,52 @@
     <link rel="icon" href="https://image.shutterstock.com/image-vector/gamepad-controller-icon-260nw-707536078.jpg">
 
     <!-- Jquery -->
+
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <!-- links -->
-    <script src="/public/script/script.js"></script>
-    <link rel="stylesheet" href="/public/css/main.css">
+    <!-- <script src="public/script/script.js"></script> -->
+    <link rel="stylesheet" href="public/css/main.css">
+
     <!-- Bootstrap -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function() {
+            var panes = document.getElementsByClassName('pane')
+            console.log('====================================');
+            console.log('came');
+            console.log('====================================');
+            var links = ['/battlefield', '/r6s', '/apex', '/discord', '/pc']
+            panes[0].addEventListener("click", () => {
+                location.href = links[0];
+            });
+            panes[1].addEventListener("click", () => {
+                location.href = links[1];
+            });
+            panes[2].addEventListener("click", () => {
+                location.href = links[2];
+            });
+            panes[3].addEventListener("click", () => {
+                location.href = links[3];
+            });
+            panes[4].addEventListener("click", () => {
+                location.href = links[4];
+            });
+        });
+    </script>
+
 </head>
 
-<body onload="loaded()">
-
-    <div id="overlap"></div>
+<body>
+    <!-- <div id="overlap"></div> -->
     <div id="options">
-        <div onscroll="ed()" id="shade">
+        <div id="shade">
             <div style="background: url('https://media2.giphy.com/media/y0NFayaBeiWEU/200.gif');background-size: cover;background-position: center;">
-
             </div>
-            <!-- <div class="pane" id="bfv">
+            <div class="pane" id="bfv">
                 <div>
-                    <div class="logo" style="background: url('/public/images/bf.gif');background-size: cover;">
+                    <div class="logo" style="background: url('./public/images/bf.gif');background-size: cover;">
                     </div>
                     <div id="contains">
                         <h4>
@@ -39,10 +64,10 @@
                     </div>
                 </div>
 
-            </div> -->
+            </div>
             <div class="pane" style="background:linear-gradient(rgba(0, 0, 0, 0.335), rgba(0, 0, 0, 0.418)), url('https://wallpapercave.com/wp/wp4796862.jpg');background-size: cover;" id="d1">
                 <div>
-                    <div class="logo" style="background: url('/public/images/r6.gif');background-size: cover;background-position: center;">
+                    <div class="logo" style="background: url('./public/images/r6.gif');background-size: cover;background-position: center;">
                     </div>
                     <div id="contains">
                         <h4>
@@ -54,9 +79,9 @@
                 </div>
 
             </div>
-            <div class="pane" style="background:linear-gradient(rgba(0, 0, 0, 0.335), rgba(0, 0, 0, 0.418)), url('https://i.pinimg.com/originals/85/1f/c2/851fc253690b344178aae202f1c6a926.jpg');background-size: cover;" id="d2">
+            <div class="pane" id="test" style="background:linear-gradient(rgba(0, 0, 0, 0.335), rgba(0, 0, 0, 0.418)), url('https://i.pinimg.com/originals/a6/12/2a/a6122a82dea0df73d8f92c1ba7c1319e.png');background-size: cover;" id="d2">
                 <div>
-                    <div class="logo" style="background: url('/public/images/apex.gif');background-size: cover;">
+                    <div class="logo" style="background: url('./public/images/apex.gif');background-size: cover;">
                     </div>
                     <div id="contains">
                         <h4>
@@ -67,9 +92,9 @@
                     </div>
                 </div>
             </div>
-            <div class="pane" style="background: linear-gradient(rgba(0, 0, 0, 0.335), rgba(0, 0, 0, 0.418)),url('/public/images/discord.jpg');background-size: cover;">
+            <div class="pane" style="background: linear-gradient(rgba(0, 0, 0, 0.335), rgba(0, 0, 0, 0.418)),url('https://i.pinimg.com/originals/95/00/2f/95002f8f70bfaad8ef6fc4570cda8d00.png');background-size: cover;">
                 <div>
-                    <div class="logo" style="background: url('/public/images/discord.gif');background-size: cover;background-position: center;">
+                    <div class="logo" style="background: url('./public/images/discord.gif');background-size: cover;background-position: center;">
                     </div>
                     <div id="contains">
                         <h4>
@@ -80,9 +105,9 @@
                     </div>
                 </div>
             </div>
-            <div class="pane" style="background:linear-gradient(rgba(0, 0, 0, 0.335), rgba(0, 0, 0, 0.418)), url('/public/images/PC.jpg');background-size: cover;background-position: center;">
+            <div class="pane" style="background:linear-gradient(rgba(0, 0, 0, 0.335), rgba(0, 0, 0, 0.418)), url('./public/images/PC.jpg');background-size: cover;background-position: center;">
                 <div>
-                    <div class="logo" style="background: url('/public/images/pclogo.png');background-size: cover;background-position: center;">
+                    <div class="logo" style="background: url('./public/images/pclogo.png');background-size: cover;background-position: center;">
                     </div>
                     <div id="contains">
                         <h4>
@@ -93,8 +118,7 @@
                     </div>
                 </div>
             </div>
-            <div style="background: url('https://media2.giphy.com/media/y0NFayaBeiWEU/200.gif');background-size: cover;">
-
+            <div style="background: url('https://media2.giphy.com/media/y0NFayaBeiWEU/200.gif');background-size: cover;background-position: center;">
             </div>
         </div>
     </div>
