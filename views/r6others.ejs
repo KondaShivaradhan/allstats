@@ -170,7 +170,7 @@
                                 </td>
                                 <td>
                                     <span style="font-size:  20px;color: white;">
-                                            <%= ro.stats.general.kills%>
+                                        <%= ro.stats.general.kills%>
                                     </span>
                                 </td>
                                 <td><span style="font-size:  20px;color: white;">
@@ -190,30 +190,42 @@
                 <div id="ranked" class="container" style="text-align: center;">
                     <table style="overflow: hidden;width: auto;background-color: rgba(76, 95, 98, 0.404);margin: 0 auto;border-radius: 12px;">
                         <tr>
-                            <th colspan="2"> <span style="font-size: 20px;letter-spacing: 1px;"><%= ra.current.name%></span></th>
+                            <th colspan="2"> <span style="font-size: 20px;letter-spacing: 1px;">
+                                    <%= ra.current.name%>
+                                </span></th>
                         </tr>
                         <tr style="border-bottom: none;">
                             <td rowspan="6" style="border-right: white solid 1px;"><img d src="<%= ra.current.image%>" alt="Silver 1" style="width: 120px;"></td>
                         </tr>
 
                         <tr>
-                            <td>MMR - <span>  <%= ra.current.mmr%></span></td>
+                            <td>MMR - <span>
+                                    <%= ra.current.mmr%>
+                                </span></td>
 
                         </tr>
                         <tr>
-                            <td>Kills - <span>  <%= ra.kills%></span></td>
+                            <td>Kills - <span>
+                                    <%= ra.kills%>
+                                </span></td>
 
                         </tr>
                         <tr>
-                            <td>Death - <span>  <%= ra.deaths%></span></td>
+                            <td>Death - <span>
+                                    <%= ra.deaths%>
+                                </span></td>
 
                         </tr>
                         <tr>
-                            <td>Wins - <span>  <%= ra.wins%></span></td>
+                            <td>Wins - <span>
+                                    <%= ra.wins%>
+                                </span></td>
 
                         </tr>
                         <tr style="border: none;">
-                            <td>Loss - <span>  <%= ra.losses%></span></td>
+                            <td>Loss - <span>
+                                    <%= ra.losses%>
+                                </span></td>
                         </tr>
 
                     </table>
@@ -230,11 +242,11 @@
                 <div class="row" id="topOp">
                     <div class="col-md-6" id="attackB">
                         <% r1o.operators.forEach(element=> {%>
-                            <% if(element.kills == amax) { var maxd = element %>
+                            <% if(element.kills==amax) { var maxd=element %>
                                 <div>
                                     <span style="font-weight: 600;color: rgb(127, 255, 255);letter-spacing: 1px;">
-                                                    <%= element.name%>
-                                                    </span>
+                                        <%= element.name%>
+                                    </span>
                                     <img src="<%= element.badge_image%>" alt="">
                                     <p class="price">
                                         <div class="row">
@@ -245,7 +257,8 @@
                                                         <%= parseFloat(element.wl).toFixed(2) %> <span style="color:rgb(223, 169, 10);font-weight: 600;">WL</span><br>
                                                             <%= element.headshots %> <span style="color:rgb(223, 169, 10);font-weight: 600;">Kills</span><br>
 
-                                                                <%= Math.round(element.playtime/3600) %> <span style="color:rgb(223, 169, 10);font-weight: 600;">Hours</span></div>
+                                                                <%= Math.round(element.playtime/3600) %> <span style="color:rgb(223, 169, 10);font-weight: 600;">Hours</span>
+                                            </div>
 
                                             <div class="col-md-6">
 
@@ -253,7 +266,7 @@
                                                     <% for(var value2 in value){ %>
                                                         <%= value[value2] %> <br>
                                                             <% } %>
-                                                                <%  }%>
+                                                                <% }%>
                                             </div>
                                         </div>
                                     </p>
@@ -263,12 +276,12 @@
                     </div>
                     <div class="col-md-6" id="defendB">
                         <% r1o.operators.forEach(element=> {%>
-                            <% if(element.kills == dmax) { var maxd = element %>
+                            <% if(element.kills==dmax) { var maxd=element %>
 
                                 <div>
                                     <span style="font-weight: 600;color: rgb(127, 255, 255);letter-spacing: 1px;">
-                                                    <%= element.name%>
-                                                    </span>
+                                        <%= element.name%>
+                                    </span>
                                     <img src="<%= element.badge_image%>" alt="">
                                     <p class="price">
                                         <div class="row">
@@ -279,7 +292,8 @@
                                                         <%= parseFloat(element.wl).toFixed(2) %> <span style="color:rgb(223, 169, 10);font-weight: 600;">WL</span><br>
                                                             <%= element.headshots %> <span style="color:rgb(223, 169, 10);font-weight: 600;">Kills</span><br>
 
-                                                                <%= Math.round(element.playtime/3600) %> <span style="color:rgb(223, 169, 10);font-weight: 600;">Hours</span></div>
+                                                                <%= Math.round(element.playtime/3600) %> <span style="color:rgb(223, 169, 10);font-weight: 600;">Hours</span>
+                                            </div>
                                             <br>
 
                                             <div class="col-md-6">
@@ -289,7 +303,7 @@
 
                                                         <%= value[value2] %> <br>
                                                             <% } %>
-                                                                <%  }%>
+                                                                <% }%>
                                             </div>
                                         </div>
 
@@ -348,8 +362,8 @@
                                         <div id="stats">
                                             <h5 style="font-weight: 500;">
                                                 <span style="font-weight: 600;color: rgb(127, 255, 255);">
-                                                        <%= element.name%>
-                                                    </span>
+                                                    <%= element.name%>
+                                                </span>
                                             </h5>
                                             <p class="price">
                                                 <%= element.kills%> <span style="color:rgb(223, 169, 10);font-weight: 600;">Kills</span><br>
@@ -366,10 +380,12 @@
             </div>
             <div id="parawindow">
                 <div id="para">
+
                     <div id="Ghead2">
                         <input type="text" id="qta_field" placeholder="BlazingBane" value="BlazingBane">
                         <a id="r6a" href='' onclick="this.href='/r6/'+document.getElementById('qta_field').value">
-                            <button type="button" name="" id="" class="btn btn-dark">Search <i class="fa fa-search" aria-hidden="true"></i> </button>
+                            <button type="button" name="" id="" class="btn btn-dark">Search <i class="fa fa-search"
+                                    aria-hidden="true"></i> </button>
                         </a>
                     </div>
                 </div>

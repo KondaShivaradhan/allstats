@@ -19,6 +19,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Krona+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Potta+One&display=swap" rel="stylesheet">
@@ -59,15 +60,11 @@
             <i id="audiocon" class="fa fa-volume-off" aria-hidden="true"></i>
         </div>
         <% if(nobf){ %>
-            <div class="jumbotron jumbotron-fluid">
-                <div class="container">
-                    <h1 class="display-3">Get a Game NIgga</h1>
-                    <p class="lead">Jumbo helper text</p>
-                    <hr class="my-2">
-                    <p>More info</p>
-                    <p class="lead">
-                        <a class="btn btn-primary btn-lg" href="Jumbo action link" role="button">Jumbo action name</a>
-                    </p>
+            <div class="container-fluid" id="nogame">
+                <div id="content">
+                    <h3>
+                        Get a Game Nigga
+                    </h3>
                 </div>
             </div>
             <%} %>
@@ -79,22 +76,96 @@
                             </h3>
                         </div>
                     </div>
-                    <section id="bfv">
-                        <img src="<%= bfv.avatar %>" alt=""> <br>
-                        <%= bfv.rank %> <br>
-                            <%= bfv.winPercent %> <br>
-                                <%= bfv.bestClass %> <br>
-                                    <%= bfv.Accuracy %> <br>
-                                        <%= bfv. headshots %> <br>
-                                            <%= bfv.bestClass %> <br>
-                                                <%= bfv.rank %> <br>
-                                                    <%= bfv.winPercent %> <br>
-                                                        <%= bfv.bestClass %> <br>
-                                                            <%= bfv.rank %> <br>
-                                                                <%= bfv.winPercent %> <br>
-                                                                    <%= bfv.bestClass %> <br>
-                                                                        <%= bfv['Best Class'] %> <br>
-
+                    <section id="bfv" class="container-fluid">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-2" id="imgp">
+                                    <img src="<%= bfv.avatar %>" alt="">
+                                </div>
+                                <div class="col-md-10">
+                                    <ul>
+                                        <li>
+                                            <h5>Rank</h5>
+                                            <h6>
+                                                <%= bfv.rank %>
+                                            </h6>
+                                        </li>
+                                        <li>
+                                            <h5>Winning Percent</h5>
+                                            <h6>
+                                                <%= bfv.winPercent %>
+                                            </h6>
+                                        </li>
+                                        <li>
+                                            <h5>Best Class</h5>
+                                            <h6>
+                                                <%= bfv.bestClass %>
+                                            </h6>
+                                        </li>
+                                        <li>
+                                            <h5>Accuracy</h5>
+                                            <h6>
+                                                <%= bfv.accuracy %>
+                                            </h6>
+                                        </li>
+                                        <li>
+                                            <h5>Headshots</h5>
+                                            <h6>
+                                                <%= bfv.headshots %>
+                                            </h6>
+                                        </li>
+                                        <li>
+                                            <h5>Time Played</h5>
+                                            <h6>
+                                                <%= bfv.timePlayed %>
+                                            </h6>
+                                        </li>
+                                        <li>
+                                            <h5>K/D</h5>
+                                            <h6>
+                                                <%= bfv.killDeath %>
+                                            </h6>
+                                        </li>
+                                        <li>
+                                            <h5>Kills</h5>
+                                            <h6>
+                                                <%= bfv.kills %>
+                                            </h6>
+                                        </li>
+                                        <li>
+                                            <h5>Deaths</h5>
+                                            <h6>
+                                                <%= bfv.deaths %>
+                                            </h6>
+                                        </li>
+                                        <li>
+                                            <h5>Longest Headshot</h5>
+                                            <h6>
+                                                <%= bfv.longestHeadShot %>
+                                            </h6>
+                                        </li>
+                                        <li>
+                                            <h5>Dogtags Taken</h5>
+                                            <h6>
+                                                <%= bfv.dogtagsTaken %>
+                                            </h6>
+                                        </li>
+                                        <li>
+                                            <h5>Highest kill Streak</h5>
+                                            <h6>
+                                                <%= bfv.highestKillStreak %>
+                                            </h6>
+                                        </li>
+                                        <li>
+                                            <h5>Matches Played</h5>
+                                            <h6>
+                                                <%= bfv.roundsPlayed %>
+                                            </h6>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
 
                     </section>
                     <%}%>
@@ -106,8 +177,97 @@
                                     </h3>
                                 </div>
                             </div>
-                            <section id="bf1">
-                                <%= bf1.rank %> <br>
+                            <section id="bf1" class="container-fluid">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-2" id="imgp">
+                                            <img src="<%= bf1.avatar %>" alt="">
+                                        </div>
+                                        <div class="col-md-10">
+                                            <ul>
+                                                <li>
+                                                    <h5>Rank</h5>
+                                                    <h6>
+                                                        <%= bf1.rank %>
+                                                    </h6>
+                                                </li>
+                                                <li>
+                                                    <h5>Winning Percent</h5>
+                                                    <h6>
+                                                        <%= bf1.winPercent %>
+                                                    </h6>
+                                                </li>
+                                                <li>
+                                                    <h5>Best Class</h5>
+                                                    <h6>
+                                                        <%= bf1.bestClass %>
+                                                    </h6>
+                                                </li>
+                                                <li>
+                                                    <h5>Accuracy</h5>
+                                                    <h6>
+                                                        <%= bf1.Accuracy %>
+                                                    </h6>
+                                                </li>
+                                                <li>
+                                                    <h5>Headshots</h5>
+                                                    <h6>
+                                                        <%= bf1.headshots %>
+                                                    </h6>
+                                                </li>
+                                                <li>
+                                                    <h5>Time Played</h5>
+                                                    <h6>
+                                                        <%= bf1.timePlayed %>
+                                                    </h6>
+                                                </li>
+                                                <li>
+                                                    <h5>K/D</h5>
+                                                    <h6>
+                                                        <%= bf1.killDeath %>
+                                                    </h6>
+                                                </li>
+                                                <li>
+                                                    <h5>Kills</h5>
+                                                    <h6>
+                                                        <%= bf1.kills %>
+                                                    </h6>
+                                                </li>
+                                                <li>
+                                                    <h5>Deaths</h5>
+                                                    <h6>
+                                                        <%= bf1.deaths %>
+                                                    </h6>
+                                                </li>
+                                                <li>
+                                                    <h5>Longest Headshot</h5>
+                                                    <h6>
+                                                        <%= bf1.longestHeadShot %>
+                                                    </h6>
+                                                </li>
+                                                <li>
+                                                    <h5>Dogtags Taken</h5>
+                                                    <h6>
+                                                        <%= bf1.dogtagsTaken %>
+                                                    </h6>
+                                                </li>
+                                                <li>
+                                                    <h5>Highest kill Streak</h5>
+                                                    <h6>
+                                                        <%= bf1.highestKillStreak %>
+                                                    </h6>
+                                                </li>
+                                                <li>
+                                                    <h5>Matches Played</h5>
+                                                    <h6>
+                                                        <%= bf1.roundsPlayed %>
+                                                    </h6>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </section>
                             <%} %>
                                 <% if(bf4){ %>
@@ -119,7 +279,7 @@
                                         </div>
                                     </div>
 
-                                    <section id="bf4">
+                                    <section id="bf4" class="container">
                                         <img src="<%= bf4.avatar %>" alt=""> <br>
                                         <%= bf4.rank %> <br>
                                             <%= bf4.KPM %> <br>
@@ -128,6 +288,17 @@
 
                                     </section>
                                     <%} %>
+                                        <div id="parawindow">
+                                            <div id="para">
+                                                <div id="Ghead2">
+                                                    <input type="text" id="qta_field" placeholder="BlazingBane" value="BlazingBane">
+                                                    <a id="r6a" href='' onclick="this.href='/bf/'+document.getElementById('qta_field').value">
+                                                        <button type="button" name="" id="" class="btn btn-dark">Search
+                                                            <i class="fa fa-search" aria-hidden="true"></i> </button>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
 </body>
 <%- include('footer'); -%>
 

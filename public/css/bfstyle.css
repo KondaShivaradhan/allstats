@@ -4,35 +4,106 @@
 
 html,
 body {
-    background-color: rgb(53, 53, 53);
+    background-color: black;
     max-width: 100%;
-    /* overflow-x: hidden; */
 }
 
 * {
     margin: 0;
 }
 
-#content {
-    height: auto;
-    overflow: scroll;
+section img {
+    border-radius: 50%;
+    height: 100%;
+    width: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+}
+
+section ul {
+    margin: 0;
+    padding: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+#bfv li {
+    background-color: #33487a;
+}
+
+#bf1 li {
+    background-color: #c0752e;
+}
+
+section li {
+    -ms-flex-preferred-size: content;
+    flex-basis: content;
+    color: white;
+    padding: 5px;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    border-radius: 10px;
+}
+
+section h5 {
+    font-size: 16px;
+}
+
+#bfv {
+    /* background-color: rgb(17, 27, 43); */
+    background: url(https://images8.alphacoders.com/922/thumb-1920-922129.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+#bf1 {
+    /* background-color: rgb(17, 27, 43); */
+    background: url(http://media.contentapi.ea.com/content/dam/ea/battlefield-portal/wallpaper/BF_EEDE_WalllPaper_1920x1080_v2.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+section .container {
+    background-color: rgba(0, 0, 0, 0.384);
+    position: relative;
+    height: 40vh;
+}
+
+section .container .row {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 section {
-    padding: 20px;
-    min-height: 100vh;
+    font-family: 'Roboto', sans-serif;
+    height: 40vh;
     width: 100%;
     background-color: antiquewhite;
 }
 
 #weapon {
     width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -ms-flex-wrap: nowrap;
     flex-wrap: nowrap;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
     flex-direction: row;
 }
 
 #audio {
+    -webkit-animation: buttonA 1s infinite alternate ease;
     animation: buttonA 1s infinite alternate ease;
     position: fixed;
     z-index: 1000;
@@ -45,30 +116,50 @@ section {
     background-color: rgba(0, 0, 0, 0.377);
 }
 
-@keyframes buttonA {
+@-webkit-keyframes buttonA {
     from {
+        -webkit-transform: scale(1);
         transform: scale(1);
     }
     to {
+        -webkit-transform: scale(1.2);
+        transform: scale(1.2);
+    }
+}
+
+@keyframes buttonA {
+    from {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+    to {
+        -webkit-transform: scale(1.2);
         transform: scale(1.2);
     }
 }
 
 #audiocon {
+    -webkit-transition: all 0.5s ease-in-out;
     transition: all 0.5s ease-in-out;
     position: relative;
     top: 50%;
     left: 50%;
+    -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     color: white;
     font-size: 30px;
+}
+
+#Ghead2 {
+    width: auto;
+    color: white;
+    text-align: center;
 }
 
 #parawindow {
     height: 110px;
     width: 100%;
     background-color: black;
-    /* background: linear-gradient(rgba(0, 0, 0, 0.609), rgba(0, 0, 0, 0.568)), url('https://i.redd.it/toy9ezqt6lr41.jpg'); */
     background-attachment: fixed;
     background-position: center;
     background-size: cover;
@@ -79,6 +170,7 @@ section {
     position: relative;
     top: 50%;
     left: 50%;
+    -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
 
@@ -88,4 +180,60 @@ section {
     letter-spacing: 0.5rem;
     font-family: 'Russo One', sans-serif;
     font-size: 35px;
+}
+
+@media only screen and (max-width: 992px) {
+    #imgp {
+        padding: 10px;
+    }
+    section .container {
+        background-color: rgba(0, 0, 0, 0.384);
+        position: relative;
+        height: auto;
+    }
+    section .container .row {
+        backdrop-filter: blur(5px);
+        padding: 10px;
+        top: 0;
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+    section li {
+        flex: 0 0 45%;
+        margin: 6px;
+    }
+    section {
+        padding: 10px;
+        height: auto;
+    }
+    #nogame {
+        height: 100vh;
+    }
+}
+
+#nogame {
+    font-family: 'Krona One', sans-serif;
+    text-align: center;
+    height: 70vh;
+}
+
+#nogame h3 {
+    text-align: center;
+    margin: 0;
+    font-size: 6rem;
+    font-weight: 900;
+    background: url(https://i.pinimg.com/originals/99/84/73/998473f2eca3fc915089005c5be35f2d.gif) no-repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: cover;
+    background-position: center;
+}
+
+#content {
+    font-family: 'Krona One', sans-serif;
+    height: auto;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
