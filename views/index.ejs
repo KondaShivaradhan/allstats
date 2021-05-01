@@ -20,10 +20,9 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     <script>
         $(document).ready(function() {
+
             var panes = document.getElementsByClassName('pane')
-            console.log('====================================');
-            console.log('came');
-            console.log('====================================');
+
             var links = ['/battlefield', '/r6s', '/apex', '/discord', '/pc']
             panes[0].addEventListener("click", () => {
                 location.href = links[0];
@@ -47,6 +46,11 @@
 
 <body>
     <!-- <div id="overlap"></div> -->
+    <div id="video-container">
+        <video autoplay loop>
+            <source src="../public/bb.mp4" type="video/mp4" />
+        </video>
+    </div>
     <div id="options">
         <div id="shade">
             <div style="background: url('https://media2.giphy.com/media/y0NFayaBeiWEU/200.gif');background-size: cover;background-position: center;">

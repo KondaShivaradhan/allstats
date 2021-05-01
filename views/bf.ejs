@@ -80,31 +80,24 @@
                         </div>
                     </div>
                     <section id="bfv">
-                        <%= bfv.Rank %> <br>
-                            <%= bfv.KPM %> <br>
-                                <%= bfv.Win %> <br>
-                                    <%= bfv['Best Class'] %> <br>
-                                        <%= bfv.Accuracy %> <br>
-                                            <%= bfv. Headshots %> <br>
-                                                <%= bfv.Kills %> <br>
-                                                    <%= bfv.Deaths %> <br>
-                                                        <%= bfv.longestHeadShot %> <br>
-                                                            <%= bfv.revives %> <br>
-                                                                <%= bfv.highestKillStreak %> <br>
-                                                                    <%= bfv.roundsPlayed %> <br>
-                                                                        <%= bfv['Time played'] %> <br>
-                                                                            <%= bfv['K/D'] %> <br>
-                                                                                <div id="weapon">
-                                                                                    <% bfv.weapons.forEach(element=> {%>
-                                                                                        <div>
-                                                                                            <img src="<%= element.image %>" alt="">
-                                                                                            <%= element.weaponName %>
-                                                                                                <%= element.kills %>
-                                                                                                    <% }); %>
-                                                                                        </div>
-                                                                                </div>
+                        <img src="<%= bfv.avatar %>" alt=""> <br>
+                        <%= bfv.rank %> <br>
+                            <%= bfv.winPercent %> <br>
+                                <%= bfv.bestClass %> <br>
+                                    <%= bfv.Accuracy %> <br>
+                                        <%= bfv. headshots %> <br>
+                                            <%= bfv.bestClass %> <br>
+                                                <%= bfv.rank %> <br>
+                                                    <%= bfv.winPercent %> <br>
+                                                        <%= bfv.bestClass %> <br>
+                                                            <%= bfv.rank %> <br>
+                                                                <%= bfv.winPercent %> <br>
+                                                                    <%= bfv.bestClass %> <br>
+                                                                        <%= bfv['Best Class'] %> <br>
+
+
                     </section>
-                    <%} %>
+                    <%}%>
                         <% if(bf1){ %>
                             <div id="parawindow">
                                 <div id="para">
@@ -114,7 +107,7 @@
                                 </div>
                             </div>
                             <section id="bf1">
-                                <%= bf1.Rank %> <br>
+                                <%= bf1.rank %> <br>
                             </section>
                             <%} %>
                                 <% if(bf4){ %>
@@ -127,10 +120,8 @@
                                     </div>
 
                                     <section id="bf4">
-
-
                                         <img src="<%= bf4.avatar %>" alt=""> <br>
-                                        <%= bf4.Rank %> <br>
+                                        <%= bf4.rank %> <br>
                                             <%= bf4.KPM %> <br>
                                                 <%= bf4.Win %> <br>
                                                     <%= bf4['Best Class'] %> <br>

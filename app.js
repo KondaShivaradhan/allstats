@@ -79,14 +79,16 @@ app.get('/bf/:Name', function(req, res) {
         ).catch(error => {
             bf1 = undefined
         });
-
+        if (response1.data.error) {
+            bf1 = undefined
+        }
         if (bf1 != undefined)
             bf1 = response1.data
         if (bf4 != undefined)
             bf4 = response4.data
         if (bfv != undefined)
             bfv = {...response5.data, ...response6.data }
-        console.log(bfv);
+        console.log(bf1);
         if (bf1 == undefined && bfv == undefined && bf4 == undefined) {
             nobf = 'Buy a Game NOOB'
         }
@@ -135,19 +137,7 @@ app.get('/apex/:Name', function(req, res) {
     const id = req.params.Name
     apex.user(id, 'PC').then(data => {
         global.ap = {...data.data }
-            // console.log(ap.stats);
 
-        // ap.children.forEach(element => {
-        //     if (element.metadata.legend_name == "Bloodhound") {
-        //         // console.log(element);
-        //         element.stats.forEach(stat => {
-
-        //             console.log(stat);
-
-        //         });
-        //     }
-        // });
-        // console.log(ap.children[1]);
         var obj = {};
         ap.stats.forEach(element => {
             Object.assign(obj, {
