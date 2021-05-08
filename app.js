@@ -114,55 +114,50 @@ app.get('/r6/:Name', function(req, res) {
     const start = async function() {
         try {
             const id = await r6api.getId(platform, username).then(el => el[0].userId);
+            const stats = await r6api.getStats(platform, id).then(el => el[0]);
+            const rank = await r6api.getRank('uplay', id, { regions: ['apac'] });
+
+            ba = rank[0]
+            ra = rank[0].seasons[Object.keys(ba.seasons)].regions.apac
+            var obj = {};
+
+            await r6.getGenericStats(un, 'pc', 'all').then(userStats => {
+                rdatao = userStats
+                global.ro = rdatao
+
+                Object.keys(ro.stats.general).forEach(element => {
+                    Object.assign(obj, {
+                        [element]: ro.stats.general[element]
+                    });
+                });
+            })
+
+            await r6.getOperatorStats(un, 'pc').then(userStats => {
+                var rdatao = userStats
+                global.r1o = rdatao
+                if (typeof ro != 'undefined' && typeof r1o != 'undefined') {
+                    var dmax = 1;
+                    var amax = 1;
+                    r1o.operators.forEach(element => {
+                        if (dmax < element.kills && element.role == 'Defender') {
+                            dmax = element.kills
+                        }
+                    })
+                    r1o.operators.forEach(element => {
+
+                        if (amax < element.kills && element.role == 'Attacker') {
+                            amax = element.kills
+                        }
+                    })
+
+                    res.render('r6others', { ro, r1o, dmax, amax, ra, obj });
+                } else {
+                    res.render('refresh')
+                }
+            })
         } catch (error) {
             res.render('refresh')
         }
-
-        const stats = await r6api.getStats(platform, id).then(el => el[0]);
-        const rank = await r6api.getRank('uplay', id, { regions: ['apac'] });
-
-        ba = rank[0]
-        ra = rank[0].seasons[Object.keys(ba.seasons)].regions.apac
-        var obj = {};
-
-        await r6.getGenericStats(un, 'pc', 'all').then(userStats => {
-            rdatao = userStats
-            global.ro = rdatao
-            console.log('====================================');
-            console.log(ro.stats.general);
-            console.log('====================================');
-
-
-            Object.keys(ro.stats.general).forEach(element => {
-                Object.assign(obj, {
-                    [element]: ro.stats.general[element]
-                });
-            });
-        })
-
-        await r6.getOperatorStats(un, 'pc').then(userStats => {
-            var rdatao = userStats
-            global.r1o = rdatao
-            if (typeof ro != 'undefined' && typeof r1o != 'undefined') {
-                var dmax = 1;
-                var amax = 1;
-                r1o.operators.forEach(element => {
-                    if (dmax < element.kills && element.role == 'Defender') {
-                        dmax = element.kills
-                    }
-                })
-                r1o.operators.forEach(element => {
-
-                    if (amax < element.kills && element.role == 'Attacker') {
-                        amax = element.kills
-                    }
-                })
-
-                res.render('r6others', { ro, r1o, dmax, amax, ra, obj });
-            } else {
-                res.render('refresh')
-            }
-        })
     }
     start()
 
