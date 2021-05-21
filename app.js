@@ -2,7 +2,18 @@ var express = require('express');
 var app = express();
 const https = require('https');
 const axios = require('axios')
-
+var mongo = require('mongodb');
+const MongoClient = require('mongodb').MongoClient;
+const ApexM = require('./modals/Apex');
+var url = process.env.URI;
+MongoClient.connect(url, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}, function(err, db) {
+    if (err) throw err;
+    console.log("Database created!");
+    db.close();
+});
 var path = require('path');
 app.use("/public", express.static(path.join(__dirname, "/public")));
 app.set('view engine', 'ejs');
@@ -13,12 +24,9 @@ var r6 = require('./stats/r6.js')
     // var bot = require('./stats/bot.js')
     // const API_KEY = 'f582bd87-1ccb-4f27-ad72-61900e1408d6' // from https://battlefieldtracker.com/site-api
 const R6API = require('r6api.js');
+const Apex = require('./modals/Apex');
 const r6api = new R6API("kondashivaradhan007@gmail.com", "Rlsss@5007");
-
-// const r6api = new R6API(process.env.username || "kondashivaradhan007@gmail.com", process.env.password || "Rlsss@5007");
-
 const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
-
 app.get('/', function(req, res) {
 
     res.render('index')
@@ -87,17 +95,26 @@ app.get('/apex/:Name', function(req, res) {
     const id = req.params.Name
     apex.user(id, 'PC').then(data => {
         global.ap = {...data.data }
-        console.log(ap);
         var obj = {};
         try {
+            function data() {
+                MongoClient.connect(url, function(err, db) {
+                    if (err) throw err;
+                    var dbo = db.db("Names");
+                    var myobj = { uname: id };
+                    dbo.collection("Apex").updateOne({ uname: id }, { $set: { uname: id } }, { upsert: true })
+                });
+            }
+
             ap.stats.forEach(element => {
                 Object.assign(obj, {
                     [element.metadata.name]: element.value
                 });
             });
-            if (typeof ap != 'undefined')
+            if (typeof ap != 'undefined') {
+                data()
                 res.render('apexold', { ap, obj });
-            else {
+            } else {
                 res.render('refresh')
 
             }
@@ -188,10 +205,38 @@ app.get('/r6s', function(req, res) {
     res.render('r6s')
 });
 app.get('/apex', function(req, res) {
-    res.render('apex')
+    function data() {
+
+        MongoClient.connect(url, function(err, db) {
+            if (err) throw err;
+            var dbo = db.db("Names");
+            dbo.collection("Apex").find({}).toArray(function(err, result) {
+                if (err) throw err;
+                obj = result;
+                var an = [];
+                for (var o in obj) {
+                    an.push(obj[o].uname);
+                }
+                db.close();
+                res.render('apex', { an: an });
+            });
+        });
+        // var sql = "SELECT uname FROM apex";
+
+        // con.query(sql, function(err, result) {
+        //     if (err) throw err;
+        //     obj = result;
+        //     var an = [];
+        //     for (var o in obj) {
+        //         an.push(obj[o].uname);
+        //     }
+        //     res.render('apex', { an: an });
+        //     console.log(an);
+        // });
+    }
+    data()
 });
 
 app.listen(process.env.PORT || 5000)
 console.log('====================================');
 console.log('sever started');
-console.log('====================================');
