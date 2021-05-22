@@ -27,35 +27,13 @@
     <script src="https://use.fontawesome.com/4afcb75146.js"></script>
     <!-- parallaxjs -->
     <script src="/public/script/parallax.js"></script>
+    <!-- autocomplete -->
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script>
         $(function() {
             var availableTags = <%- JSON.stringify(an) %>
-                // var availableTags = [
-                //     "ActionScript",
-                //     "AppleScript",
-                //     "Asp",
-                //     "BASIC",
-                //     "C",
-                //     "C++",
-                //     "Clojure",
-                //     "COBOL",
-                //     "ColdFusion",
-                //     "Erlang",
-                //     "Fortran",
-                //     "Groovy",
-                //     "Haskell",
-                //     "Java",
-                //     "JavaScript",
-                //     "Lisp",
-                //     "Perl",
-                //     "PHP",
-                //     "Python",
-                //     "Ruby",
-                //     "Scala",
-                //     "Scheme"
-                // ];
+
             console.log(availableTags);
 
             $("#tags").autocomplete({

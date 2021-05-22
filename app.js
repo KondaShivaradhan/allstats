@@ -5,7 +5,7 @@ const axios = require('axios')
 var mongo = require('mongodb');
 const MongoClient = require('mongodb').MongoClient;
 const ApexM = require('./modals/Apex');
-var url = process.env.URI;
+var url = process.env.URI
 MongoClient.connect(url, {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -127,9 +127,17 @@ app.get('/apex/:Name', function(req, res) {
 app.get('/r6/:Name', function(req, res) {
     const un = req.params.Name
     const username = req.params.Name
+    console.log(username);
     platform = 'uplay';
     const start = async function() {
         try {
+            function data() {
+                MongoClient.connect(url, function(err, db) {
+                    if (err) throw err;
+                    var dbo = db.db("Names");
+                    dbo.collection("R6").updateOne({ uname: username }, { $set: { uname: username } }, { upsert: true })
+                });
+            }
             const id = await r6api.getId(platform, username).then(el => el[0].userId);
             const stats = await r6api.getStats(platform, id).then(el => el[0]);
             const rank = await r6api.getRank('uplay', id, { regions: ['apac'] });
@@ -166,7 +174,7 @@ app.get('/r6/:Name', function(req, res) {
                             amax = element.kills
                         }
                     })
-
+                    data()
                     res.render('r6others', { ro, r1o, dmax, amax, ra, obj });
                 } else {
                     res.render('refresh')
@@ -202,7 +210,25 @@ app.get('/:User/:Legend', function(req, res) {
 
 });
 app.get('/r6s', function(req, res) {
-    res.render('r6s')
+    function data() {
+
+        MongoClient.connect(url, function(err, db) {
+            if (err) throw err;
+            var dbo = db.db("Names");
+            dbo.collection("R6").find({}).toArray(function(err, result) {
+                if (err) throw err;
+                obj = result;
+                var an = [];
+                for (var o in obj) {
+                    an.push(obj[o].uname);
+                }
+                db.close();
+                res.render('r6s', { an: an });
+            });
+        });
+    }
+    data()
+        // res.render('r6s')
 });
 app.get('/apex', function(req, res) {
     function data() {
@@ -221,18 +247,6 @@ app.get('/apex', function(req, res) {
                 res.render('apex', { an: an });
             });
         });
-        // var sql = "SELECT uname FROM apex";
-
-        // con.query(sql, function(err, result) {
-        //     if (err) throw err;
-        //     obj = result;
-        //     var an = [];
-        //     for (var o in obj) {
-        //         an.push(obj[o].uname);
-        //     }
-        //     res.render('apex', { an: an });
-        //     console.log(an);
-        // });
     }
     data()
 });
