@@ -1,5 +1,5 @@
 {
     "username": "kondashivaradhan007@gmail.com",
     "password": "Rlsss@5007",
-    "uri": "mongodb://root:Rlsss%405007@cluster0-shard-00-00.uj92c.mongodb.net:27017,cluster0-shard-00-01.uj92c.mongodb.net:27017,cluster0-shard-00-02.uj92c.mongodb.net:27017/myFirstDatabase?ssl=true&replicaSet=atlas-fb8wzy-shard-0&authSource=admin&retryWrites=true&w=majority"
+    "URI": "mongodb://root:Rlsss%405007@cluster0-shard-00-00.uj92c.mongodb.net:27017,cluster0-shard-00-01.uj92c.mongodb.net:27017,cluster0-shard-00-02.uj92c.mongodb.net:27017/myFirstDatabase?ssl=true&replicaSet=atlas-fb8wzy-shard-0&authSource=admin&retryWrites=true&w=majority"
 }

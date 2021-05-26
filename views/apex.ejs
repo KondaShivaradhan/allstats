@@ -81,9 +81,15 @@
             <div id="stuff">
                 <h3 style="letter-spacing: 2px;">Origin ID</h3>
                 <div class="ui-widget">
-                    <input id="tags" placeholder="BlazingBane" value="BlazingBane">
+                    <input id="tags" placeholder="e.g BlazingBane">
                 </div>
-                <a id="r6a" href='' onclick="this.href='apex/'+document.getElementById('tags').value">
+                <a id="r6a" href='' onclick=" if( !$('#tags').val() ) {
+                    
+                }
+                else{
+                    this.href='../apex/'+document.getElementById('tags').value
+                }
+              ">
                     <br>
                     <button type="button" name="" id="" class="btn btn-dark">Search <i class="fa fa-search" aria-hidden="true"></i> </button>
                 </a>

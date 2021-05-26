@@ -5,7 +5,7 @@ const axios = require('axios')
 var mongo = require('mongodb');
 const MongoClient = require('mongodb').MongoClient;
 const ApexM = require('./modals/Apex');
-var url = process.env.URI
+var url = process.env.URI || "mongodb://root:Rlsss%405007@cluster0-shard-00-00.uj92c.mongodb.net:27017,cluster0-shard-00-01.uj92c.mongodb.net:27017,cluster0-shard-00-02.uj92c.mongodb.net:27017/myFirstDatabase?ssl=true&replicaSet=atlas-fb8wzy-shard-0&authSource=admin&retryWrites=true&w=majority"
 MongoClient.connect(url, {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -91,14 +91,13 @@ app.get('/bf/:Name', function(req, res) {
 });
 
 app.get('/apex/:Name', function(req, res) {
-
     const id = req.params.Name
     apex.user(id, 'PC').then(data => {
         global.ap = {...data.data }
         var obj = {};
         try {
             function data() {
-                MongoClient.connect(url, function(err, db) {
+                MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, function(err, db) {
                     if (err) throw err;
                     var dbo = db.db("Names");
                     var myobj = { uname: id };
@@ -127,17 +126,19 @@ app.get('/apex/:Name', function(req, res) {
 app.get('/r6/:Name', function(req, res) {
     const un = req.params.Name
     const username = req.params.Name
-    console.log(username);
     platform = 'uplay';
+
+    function data() {
+        MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true },
+            function(err, db) {
+                if (err) throw err;
+                var dbo = db.db("Names");
+                dbo.collection("R6").updateOne({ uname: username }, { $set: { uname: username } }, { upsert: true })
+            });
+    }
     const start = async function() {
         try {
-            function data() {
-                MongoClient.connect(url, function(err, db) {
-                    if (err) throw err;
-                    var dbo = db.db("Names");
-                    dbo.collection("R6").updateOne({ uname: username }, { $set: { uname: username } }, { upsert: true })
-                });
-            }
+
             const id = await r6api.getId(platform, username).then(el => el[0].userId);
             const stats = await r6api.getStats(platform, id).then(el => el[0]);
             const rank = await r6api.getRank('uplay', id, { regions: ['apac'] });
@@ -181,6 +182,7 @@ app.get('/r6/:Name', function(req, res) {
                 }
             })
         } catch (error) {
+            console.log(error);
             res.render('refresh')
         }
     }
@@ -211,21 +213,25 @@ app.get('/:User/:Legend', function(req, res) {
 });
 app.get('/r6s', function(req, res) {
     function data() {
-
-        MongoClient.connect(url, function(err, db) {
-            if (err) throw err;
-            var dbo = db.db("Names");
-            dbo.collection("R6").find({}).toArray(function(err, result) {
+        try {
+            MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, function(err, db) {
                 if (err) throw err;
-                obj = result;
-                var an = [];
-                for (var o in obj) {
-                    an.push(obj[o].uname);
-                }
-                db.close();
-                res.render('r6s', { an: an });
+                var dbo = db.db("Names");
+                dbo.collection("R6").find({}).toArray(function(err, result) {
+                    if (err) throw err;
+                    obj = result;
+                    var an = [];
+                    for (var o in obj) {
+                        an.push(obj[o].uname);
+                    }
+                    db.close();
+                    res.render('r6s', { an: an });
+                });
             });
-        });
+        } catch (error) {
+            console.log(error);
+        }
+
     }
     data()
         // res.render('r6s')
@@ -233,7 +239,7 @@ app.get('/r6s', function(req, res) {
 app.get('/apex', function(req, res) {
     function data() {
 
-        MongoClient.connect(url, function(err, db) {
+        MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, function(err, db) {
             if (err) throw err;
             var dbo = db.db("Names");
             dbo.collection("Apex").find({}).toArray(function(err, result) {
