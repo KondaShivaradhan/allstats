@@ -143,8 +143,8 @@ app.get('/r6/:Name', function(req, res) {
             const stats = await r6api.getStats(platform, id).then(el => el[0]);
             const rank = await r6api.getRank('uplay', id, { regions: ['apac'] });
 
-            ba = rank[0]
-            ra = rank[0].seasons[Object.keys(ba.seasons)].regions.apac
+            ba = await rank[0]
+            ra = await rank[0].seasons[Object.keys(ba.seasons)].regions.apac
             var obj = {};
 
             await r6.getGenericStats(un, 'pc', 'all').then(userStats => {
