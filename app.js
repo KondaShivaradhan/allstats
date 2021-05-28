@@ -1,4 +1,5 @@
 var express = require('express');
+const fetch = require("node-fetch");
 var app = express();
 const https = require('https');
 const axios = require('axios')
@@ -11,7 +12,6 @@ MongoClient.connect(url, {
     useUnifiedTopology: true
 }, function(err, db) {
     if (err) throw err;
-    console.log("Database created!");
     db.close();
 });
 var path = require('path');
@@ -141,20 +141,18 @@ app.get('/r6/:Name', function(req, res) {
             const id = await r6api.getId(platform, username).then(el => el[0].userId);
             const stats = await r6api.getStats(platform, id).then(el => el[0]);
             const rank = await r6api.getRank('uplay', id, { regions: ['apac'] });
-            ba = await rank[0]
-            ra = await rank[0].seasons[Object.keys(ba.seasons)].regions.apac
+            ba = rank[0]
+            ra = rank[0].seasons[Object.keys(ba.seasons)].regions.apac
             var obj = {};
+
             await r6.getGenericStats(un, 'pc', 'all').then(res => {
-                console.log(res);
-                rdatao = res
-                global.ro = rdatao
+                global.ro = res
                 Object.keys(ro.stats.general).forEach(element => {
                     Object.assign(obj, {
                         [element]: ro.stats.general[element]
                     });
                 });
             })
-
             await r6.getOperatorStats(un, 'pc').then(userStats => {
                 var rdatao = userStats
                 global.r1o = rdatao
