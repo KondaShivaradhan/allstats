@@ -64,9 +64,7 @@
                     back.style.backgroundPosition = "50% 30%"
                     back.style.animationName = "back"
                     h2.innerHTML = h2text[i];
-                    // console.log('====================================');
-                    // console.log(h2text[i]);
-                    // console.log('====================================');
+
                     h2.style.opacity = 1;
                 }, 500);
             }, 1000)
@@ -74,45 +72,20 @@
             j++;
         }
 
-        function audio() {
-            var audio = document.getElementById('music')
-            var acon = document.getElementById('audiocon')
-            if (audio.paused) {
-                console.log('paused');
-                audio.play();
-                acon.className = "fa fa-volume-up";
-            } else {
-                console.log('playing');
-                audio.pause();
-                acon.className = "fa fa-volume-off";
-            }
-        }
 
         function loaded() {
-            // var load = document.getElementById('load')
-            // load.style.display = 'none'
             setInterval(() => {
                 start()
             }, 5000);
         }
-        $(document).ready(function() {
-            var audio = document.getElementById("music");
-            audio.volume = 0.04;
-
-        });
     </script>
 
 </head>
 
 <body onload="loaded()">
-    <!-- <div id="load">
-        <img id="bb" src="/public/images/bb.png" alt="">
-    </div> -->
+
     <%- include('header'); -%>
-        <audio autoplay id="music" loop src="/public/music/apex.mp3"></audio>
-        <div id="audio" onclick="audio()">
-            <i id="audiocon" class="fa fa-volume-off" aria-hidden="true"></i>
-        </div>
+
         <div id="card" name="apexlegends">
             <div id="apexL">
                 <div class="row" id="back" style="text-align: center;">

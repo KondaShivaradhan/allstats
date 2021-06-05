@@ -2,14 +2,15 @@
 <html lang="en">
 
 <head>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
     <link rel="icon" href="https://image.shutterstock.com/image-vector/gamepad-controller-icon-260nw-707536078.jpg">
 
     <!-- Jquery -->
-
-    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&display=swap" rel="stylesheet">
     <!-- links -->
     <!-- <script src="public/script/script.js"></script> -->
     <link rel="stylesheet" href="public/css/main.css">
@@ -19,6 +20,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     <script>
+        window.addEventListener('load', (event) => {
+            document.getElementById('loading').style.display = "none"
+        });
         $(document).ready(function() {
 
             var panes = document.getElementsByClassName('pane')
@@ -45,9 +49,63 @@
 </head>
 
 <body>
-    <!-- <div id="overlap"></div> -->
+    <style>
+        #loading {
+            transition: all 1s;
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+            position: fixed;
+            z-index: 1000;
+            background-color: black;
+        }
+        
+        .lds-hourglass {
+            display: inline-block;
+            position: relative;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        .lds-hourglass:after {
+            content: " ";
+            display: block;
+            border-radius: 50%;
+            width: 0;
+            height: 0;
+            box-sizing: border-box;
+            border: 72px solid #fff;
+            border-color: #fff transparent #fff transparent;
+            animation: lds-hourglass 1.8s infinite;
+        }
+        
+        @keyframes lds-hourglass {
+            0% {
+                transform: rotate(0);
+                animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+            }
+            50% {
+                transform: rotate(900deg);
+                animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+            }
+            100% {
+                transform: rotate(1800deg);
+            }
+        }
+        
+        @media only screen and (max-width: 600px) {
+            .lds-hourglass {
+                top: 45%;
+                left: 50%;
+            }
+        }
+    </style>
+    <div id="loading">
+        <div class="lds-hourglass"></div>
+    </div>
     <div id="video-container">
-        <video autoplay loop>
+        <video muted autoplay loop playsinline>
             <source src="../public/bb.mp4" type="video/mp4" />
         </video>
     </div>
@@ -55,49 +113,60 @@
         <div id="shade">
             <div style="background: url('https://media2.giphy.com/media/y0NFayaBeiWEU/200.gif');background-size: cover;background-position: center;">
             </div>
-            <div class="pane" id="test" style="background:linear-gradient(rgba(0, 0, 0, 0.335), rgba(0, 0, 0, 0.418)), url('https://i.pinimg.com/originals/a6/12/2a/a6122a82dea0df73d8f92c1ba7c1319e.png');background-size: cover;" id="d2">
-                <div>
-                    <div class="logo" style="background: url('./public/images/apex.gif');background-size: cover;">
-                    </div>
-                    <div id="contains">
-                        <h4>
-                            Stats for Apex Legends
-                        </h4>
-                        <button type="button" name="" id="" class="btn btn-primary">View Stats</button>
+            <div class="pane" id="d2">
+                <h4>
+                    Apex Legends
+                </h4>
+                <!-- <div class="logo">
+                </div> -->
+                <div style="background:linear-gradient(rgba(0, 0, 0, 0.144), rgba(0, 0, 0, 0.178)), url('https://thumbs.gfycat.com/SpotlessTightAfricanhornbill-max-1mb.gif');background-size: cover;background-position: center;" id="contains">
 
-                    </div>
                 </div>
             </div>
-            <div class="pane" style="background:linear-gradient(rgba(0, 0, 0, 0.335), rgba(0, 0, 0, 0.418)), url('https://wallpapercave.com/wp/wp4796862.jpg');background-size: cover;" id="d1">
-                <div>
-                    <div class="logo" style="background: url('./public/images/r6.gif');background-size: cover;background-position: center;">
-                    </div>
-                    <div id="contains">
-                        <h4>
-                            Stats for R6 Siege
-                        </h4>
-                        <button type="button" name="" id="" class="btn btn-primary">View Stats</button>
+            <div class="pane" id="d1">
+                <h4>
+                    Rainbow 6 siege
+                </h4>
+                <div style="background:linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url('https://media1.tenor.com/images/91d27a2939b3abfafa8d18860eb055bd/tenor.gif?itemid=15884262');background-size: cover;background-position: center;" id="contains">
 
-                    </div>
                 </div>
+                <!-- <div class="logo" style="background: url('./public/images/r6.gif');background-size: cover;background-position: center;">
+                </div>
+                <div id="contains">
+                    <h4>
+                        Stats for R6 Siege
+                    </h4>
+                    <button type="button" name="" id="" class="btn btn-primary">View Stats</button>
+                </div> -->
 
             </div>
-            <div class="pane" id="bfv">
-                <div>
+            <div class="pane">
+                <h4>
+                    Battlefield
+                </h4>
+                <div style="background:linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url('https://i.makeagif.com/media/9-22-2014/3bIiwe.gif');background-size: cover;background-position: center;" id="contains">
+
+                </div>
+                <!-- <div>
                     <div class="logo" style="background: url('./public/images/bf.gif');background-size: cover;">
                     </div>
                     <div id="contains">
                         <h4>
                             Stats for Battlefield V
                         </h4>
-                        <button type="button" name="" id="" class="btn btn-primary">View Stats</button>
 
                     </div>
-                </div>
+                </div> -->
 
             </div>
-            <div class="pane" style="background: linear-gradient(rgba(0, 0, 0, 0.335), rgba(0, 0, 0, 0.418)),url('https://i.pinimg.com/originals/95/00/2f/95002f8f70bfaad8ef6fc4570cda8d00.png');background-size: cover;">
-                <div>
+            <div class="pane">
+                <h4>
+                    Discord
+                </h4>
+                <div style="background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)),url('./public/images/discord.gif');background-size: cover;background-position: center;" id="contains">
+
+                </div>
+                <!-- <div>
                     <div class="logo" style="background: url('./public/images/discord.gif');background-size: cover;background-position: center;">
                     </div>
                     <div id="contains">
@@ -107,21 +176,26 @@
                         <button type="button" name="" id="" class="btn btn-primary">Join Server</button>
 
                     </div>
-                </div>
+                </div> -->
             </div>
-            <div class="pane" style="background:linear-gradient(rgba(0, 0, 0, 0.335), rgba(0, 0, 0, 0.418)), url('./public/images/PC.jpg');background-size: cover;background-position: center;">
-                <div>
-                    <div class="logo" style="background: url('./public/images/pclogo.png');background-size: cover;background-position: center;">
+            <div class="pane">
+                <h4>
+                    PC Specss
+                </h4>
+                <div style="background:linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0)), url('https://media0.giphy.com/media/GC39U8jV5SG4w/giphy-downsized-large.gif');background-size: cover;background-position: center;" id="contains">
+
+                </div>
+                <!-- <div>
+                    <div class="logo" style="background: url('./public/images/pc.gif');background-size: cover;background-position: center;">
                     </div>
                     <div id="contains">
                         <h4>
                             Setup Tour
                         </h4>
-                        <button type="button" name="" id="" class="btn btn-primary">Power ON</button>
-
                     </div>
-                </div>
+                </div> -->
             </div>
+
             <div style="background: url('https://media2.giphy.com/media/y0NFayaBeiWEU/200.gif');background-size: cover;background-position: center;">
             </div>
         </div>

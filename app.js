@@ -177,7 +177,6 @@ app.get('/r6/:Name', function(req, res) {
                 }
             })
         } catch (error) {
-            console.log(error);
             res.render('refresh')
         }
     }
