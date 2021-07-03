@@ -16,7 +16,9 @@
     <!-- jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <!-- fonts -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Potta+One&display=swap" rel="stylesheet">
@@ -50,13 +52,15 @@
         <img id="bb" src="/public/images/bb.png" alt="">
     </div> -->
     <%- include('header'); -%>
-        <div class="parallax-window" data-parallax="scroll" data-image-src="https://wallpaperaccess.com/full/4278344.jpg">
-            <div style="background: linear-gradient(140deg,rgba(0, 0, 0, 0.466),rgba(0, 0, 0, 0.472),black);top: 50%;position: relative;height: 100%;
+        <!-- <div class="parallax-window" data-parallax="scroll" data-image-src="https://wallpaperaccess.com/full/4278344.jpg"> -->
+        <div class="parallax-window" data-parallax="scroll" data-image-src="../public/images/pcback.jpg">
+
+            <div style=" backdrop-filter: blur(3px);background: linear-gradient(140deg,rgba(0, 0, 0, 0.466),rgba(0, 0, 0, 0.472),black);top: 50%;position: relative;height: 100%;
             left: 50%;
             color: white;
             transform: translate(-50%, -50%);">
-                <div id="heading">
-                    <span style="font-size: 60px;">PC</span> <br/> <span style="font-size: 70px;">Spec</span> <br/> <span style="font-size: 80px;"> Details</span>
+                <div id="heading" style="text-align:right;font-family: 'Poppins', sans-serif;">
+                    <span style="font-size: 30px;">IT'S ALL FOR</span> <br><span style="font-size: 80px;">Gaming</span>
                 </div>
             </div>
 
