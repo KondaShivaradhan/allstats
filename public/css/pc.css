@@ -34,6 +34,11 @@ body {
     transform: translate(0, -50%);
 }
 
+.card {
+    margin: 10px auto;
+    width: 400px;
+}
+
 #heading {
     width: 70%;
     font-family: "Ping 2", sans-serif;
