@@ -3,7 +3,7 @@ function ed() {
     var panes = document.getElementsByClassName('pane')
     var shade = document.getElementById('shade')
     var overlap = document.getElementById('overlap')
-    var links = ['/r6s', '/apex', '/discord', '/pc']
+    var links = ['/r6s', '/apex', '/discord', 'https://kondashivaradhan.github.io/gamesite/pc.html']
     var scrollableElement = document.body; //document.getElementById('scrollableElement');
 
     scrollableElement.addEventListener('wheel', checkScrollDirection);
