@@ -41,36 +41,36 @@
             });
         });
 
-        function audio() {
-            var audio = document.getElementById('music')
-            var acon = document.getElementById('audiocon')
-            if (audio.paused) {
-                console.log('paused');
-                audio.play();
-                acon.className = "fa fa-volume-up";
-            } else {
-                console.log('playing');
-                audio.pause();
-                acon.className = "fa fa-volume-off";
-            }
-        }
-        $(document).ready(function() {
-            var audio = document.getElementById("music");
-            audio.volume = 0.32;
+        // function audio() {
+        //     var audio = document.getElementById('music')
+        //     var acon = document.getElementById('audiocon')
+        //     if (audio.paused) {
+        //         console.log('paused');
+        //         audio.play();
+        //         acon.className = "fa fa-volume-up";
+        //     } else {
+        //         console.log('playing');
+        //         audio.pause();
+        //         acon.className = "fa fa-volume-off";
+        //     }
+        // }
+        // $(document).ready(function() {
+        //     var audio = document.getElementById("music");
+        //     audio.volume = 0.32;
 
-        });
+        // });
     </script>
 </head>
 
 <body>
 
     <%- include('header'); -%>
-        <audio autoplay id="music" loop src="/public/music/apex2.mp3"></audio>
+        <!-- <audio autoplay id="music" loop src="/public/music/apex2.mp3"></audio>
         <div id="audio" onclick="audio()">
             <i id="audiocon" class="fa fa-volume-off" aria-hidden="true"></i>
-        </div>
+        </div> -->
         <div id="test">
-            <iframe width='100' id="game" height='100' src="https://www.youtube.com/embed/0VzBCPi2YdY?&theme=dark&autoplay=1&loop=1&keyboard=1&autohide=1&modestbranding=1&fs=0&rel=0&start=8&end=120&iv_load_policy=3&mute=1&playlist=2pn3YoI9dtQ" frameborder="0"></iframe>
+            <iframe width='100' id="game" height='100' src="https://www.youtube.com/embed/3jARgtBFEGI?&theme=dark&autoplay=1&loop=1&keyboard=1&autohide=1&modestbranding=1&fs=0&rel=0&start=1&end=120&iv_load_policy=3&mute=0&playlist=3jARgtBFEGI" frameborder="0"></iframe>
         </div>
         <div id="mob">
             <div class="bg"></div>
